@@ -1,0 +1,1906 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chủ nghĩa Xã hội Khoa học - Bài 2: CNXH & Thời kỳ quá độ lên CNXH</title>
+    <style>
+      :root {
+        --bg1: #f0f4f8;
+        --bg2: #d9e2ec;
+        --card: #ffffff;
+        --ink: #1f2937;
+        --muted: #64748b;
+        --accent: #2563eb;
+        --accent-hover: #1d4ed8;
+        --good: #16a34a;
+        --bad: #dc2626;
+        --border: #e2e8f0;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        color: var(--ink);
+        background: linear-gradient(135deg, var(--bg1), var(--bg2));
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        transition: background 0.3s ease;
+        -webkit-font-smoothing: antialiased;
+      }
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+        transition: box-shadow 0.25s ease;
+      }
+      header.scrolled {
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      }
+      .progress-line {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3.5px;
+        background: rgba(0, 0, 0, 0.04);
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, #3b82f6, #10b981);
+        transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .wrap {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 16px 20px;
+        width: 100%;
+      }
+      .brand-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+      .brand-title-wrap {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .header-titles {
+        display: flex;
+        flex-direction: column;
+      }
+      .header-titles h1 {
+        margin: 0;
+        font-size: clamp(16px, 2.4vw, 22px);
+        font-weight: 800;
+        color: var(--ink);
+        letter-spacing: -0.01em;
+        line-height: 1.25;
+      }
+      .header-titles .sub {
+        font-size: 12px;
+        color: var(--muted);
+        font-weight: 500;
+        margin-top: 2px;
+      }
+      .btn-home {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        text-decoration: none;
+        color: #475569;
+        font-weight: 600;
+        font-size: 13px;
+        background: #ffffff;
+        padding: 6px 12px;
+        border-radius: 10px;
+        border: 1px solid #cbd5e1;
+        transition: all 0.15s ease;
+        white-space: nowrap;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .btn-home:hover {
+        background: #f1f5f9;
+        color: var(--accent);
+        border-color: #94a3b8;
+      }
+      .btn-home:active {
+        transform: scale(0.96);
+      }
+      .toolbar {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      button {
+        border: none;
+        padding: 9px 16px;
+        border-radius: 11px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 13.5px;
+        background: var(--accent);
+        color: #fff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s, opacity 0.15s, background 0.15s;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        user-select: none;
+      }
+      button:hover {
+        background: var(--accent-hover);
+      }
+      button:active {
+        transform: scale(0.96);
+      }
+      button.secondary {
+        background: #334155;
+      }
+      button.secondary:hover {
+        background: #1e293b;
+      }
+      button.ghost {
+        background: #ffffff;
+        color: #334155;
+        border: 1px solid #cbd5e1;
+      }
+      button.ghost:hover {
+        background: #f8fafc;
+        border-color: #94a3b8;
+      }
+      button.ghost.active {
+        background: #eff6ff;
+        color: #2563eb;
+        border-color: #93c5fd;
+      }
+      .meta {
+        font-weight: 600;
+        color: #475569;
+        font-size: 13px;
+        background: #ffffff;
+        padding: 5px 14px;
+        border-radius: 999px;
+        border: 1px solid #cbd5e1;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .cards {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 20px 0 30px;
+      }
+      .card {
+        background: var(--card);
+        border-radius: 18px;
+        padding: 22px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+        border: 1px solid rgba(226, 232, 240, 0.9);
+        transition: border-color 0.25s, box-shadow 0.25s;
+      }
+      .card.card-correct {
+        border-color: #86efac;
+        box-shadow: 0 4px 20px rgba(22, 163, 74, 0.1);
+      }
+      .card.card-wrong {
+        border-color: #fca5a5;
+        box-shadow: 0 4px 20px rgba(220, 38, 38, 0.1);
+      }
+      .qhead {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+      }
+      .qidx {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        display: grid;
+        place-items: center;
+        font-weight: 700;
+        font-size: 14px;
+        color: #fff;
+        background: #334155;
+        flex-shrink: 0;
+      }
+      .qtitle {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+      .hint {
+        font-size: 13px;
+        color: var(--muted);
+        margin-top: 4px;
+        font-weight: normal;
+      }
+      .answers {
+        margin-top: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+      }
+      .answers label {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        padding: 11px 14px;
+        border: 1.5px solid #e2e8f0;
+        border-radius: 12px;
+        cursor: pointer;
+        background: #ffffff;
+        transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        user-select: none;
+      }
+      .answers label:hover {
+        background: #f8fafc;
+        border-color: #cbd5e1;
+      }
+      .answers label:active {
+        transform: scale(0.99);
+      }
+      .answers label:has(input:checked),
+      .answers label.checked {
+        background: #f0f7ff;
+        border-color: #3b82f6;
+        color: #1e40af;
+        box-shadow: 0 2px 8px rgba(59, 130, 246, 0.12);
+        font-weight: 500;
+      }
+      .answers input {
+        width: 18px;
+        height: 18px;
+        accent-color: #2563eb;
+        flex-shrink: 0;
+        cursor: pointer;
+      }
+      .tf-item {
+        padding: 12px 14px;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        background: #fff;
+        margin-bottom: 8px;
+      }
+      .tf-text {
+        font-size: 14.5px;
+        line-height: 1.5;
+        color: var(--ink);
+        font-weight: 500;
+        margin-bottom: 6px;
+      }
+      .tf-row {
+        margin-top: 8px;
+        display: flex;
+        gap: 10px;
+      }
+      .tf-row label {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        cursor: pointer;
+        padding: 7px 14px;
+        border-radius: 9px;
+        background: #f8fafc;
+        border: 1.5px solid #e2e8f0;
+        font-size: 14px;
+        font-weight: 500;
+        transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        user-select: none;
+      }
+      .tf-row label:hover {
+        background: #f1f5f9;
+        border-color: #cbd5e1;
+      }
+      .tf-row label:active {
+        transform: scale(0.98);
+      }
+      .tf-row label:has(input:checked),
+      .tf-row label.checked {
+        background: #f0f7ff;
+        border-color: #3b82f6;
+        color: #1e40af;
+        font-weight: 600;
+        box-shadow: 0 2px 6px rgba(59, 130, 246, 0.1);
+      }
+      .tf-row input {
+        accent-color: #2563eb;
+      }
+
+      /* Drag and Drop Elements */
+      .dragwrap {
+        display: grid;
+        gap: 14px;
+      }
+      .dragzone {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 12px;
+      }
+      .zone {
+        min-height: 70px;
+        border: 2px dashed #94a3b8;
+        border-radius: 14px;
+        padding: 12px 14px;
+        background: #f8fafc;
+        transition: border-color 0.2s, background 0.2s;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .zone h4 {
+        margin: 0 0 10px;
+        font-size: 14px;
+        line-height: 1.5;
+        color: var(--ink);
+        font-weight: 600;
+      }
+      .zone.dragover {
+        border-color: var(--accent);
+        background: #eff6ff;
+      }
+      .droparea {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        min-height: 42px;
+        border-radius: 8px;
+        padding: 4px;
+        background: rgba(255, 255, 255, 0.6);
+        border: 1px solid rgba(226, 232, 240, 0.7);
+        align-items: center;
+      }
+      .pool {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        min-height: 48px;
+        background: #ffffff;
+        border: 1.5px solid #cbd5e1;
+        border-radius: 14px;
+        padding: 12px;
+        align-items: center;
+      }
+      .pill {
+        background: #eef2ff;
+        border: 1px solid #93c5fd;
+        color: #1e3a8a;
+        border-radius: 999px;
+        padding: 7px 14px;
+        display: inline-flex;
+        gap: 6px;
+        align-items: center;
+        font-weight: 600;
+        font-size: 13.5px;
+        user-select: none;
+        -webkit-user-select: none;
+        cursor: grab;
+        margin: 3px;
+        transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.18s, background 0.18s;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+      }
+      .pill:active {
+        cursor: grabbing;
+        transform: scale(0.96);
+      }
+      .pill.selected {
+        outline: 2.5px solid var(--accent);
+        outline-offset: 1px;
+        background: #dbeafe !important;
+        color: #1d4ed8 !important;
+        transform: scale(1.03);
+        box-shadow: 0 2px 10px rgba(37, 99, 235, 0.25);
+      }
+      .pill.placed {
+        animation: popPlaced 0.25s ease;
+      }
+      @keyframes popPlaced {
+        0% { transform: scale(0.9); }
+        50% { transform: scale(1.06); }
+        100% { transform: scale(1); }
+      }
+
+      /* Result Badges and Hint Containers */
+      .result {
+        margin-top: 14px;
+        font-weight: 700;
+        font-size: 14.5px;
+        animation: fadeIn 0.3s ease;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-4px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .r-good {
+        color: var(--good);
+      }
+      .r-bad {
+        color: var(--bad);
+      }
+      .result-hint {
+        margin-top: 8px;
+      }
+      .hint-box {
+        background: #f8fafc;
+        border: 1px solid #cbd5e1;
+        border-left: 4px solid #3b82f6;
+        border-radius: 10px;
+        padding: 12px 14px;
+        font-size: 13.5px;
+        color: #1e293b;
+        line-height: 1.6;
+        animation: fadeIn 0.25s ease;
+      }
+      .hint-box strong {
+        color: #0f172a;
+      }
+      .hint-box em {
+        font-style: normal;
+        color: #334155;
+      }
+
+      /* Lesson Navigation Footer */
+      .lesson-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-top: 24px;
+        margin-bottom: 40px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border);
+        flex-wrap: wrap;
+      }
+      .lesson-nav a {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 10px 16px;
+        background: #ffffff;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        color: var(--ink);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 13.5px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+        transition: all 0.2s ease;
+      }
+      .lesson-nav a:hover {
+        background: #f8fafc;
+        border-color: #94a3b8;
+        color: var(--accent);
+      }
+      .lesson-nav a.nav-primary {
+        background: var(--accent);
+        color: #ffffff;
+        border-color: var(--accent);
+      }
+      .lesson-nav a.nav-primary:hover {
+        background: var(--accent-hover);
+      }
+
+      /* Score Modal Dialog */
+      .score-modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.6);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        padding: 16px;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s ease, visibility 0.2s ease;
+      }
+      .score-modal-backdrop.visible {
+        opacity: 1;
+        visibility: visible;
+      }
+      .score-modal {
+        background: #ffffff;
+        border-radius: 20px;
+        max-width: 440px;
+        width: 100%;
+        padding: 26px 22px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+        text-align: center;
+        transform: translateY(12px) scale(0.97);
+        transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        border: 1px solid #e2e8f0;
+      }
+      .score-modal-backdrop.visible .score-modal {
+        transform: translateY(0) scale(1);
+      }
+      .score-badge {
+        font-size: 42px;
+        line-height: 1;
+        margin-bottom: 10px;
+      }
+      .score-title {
+        margin: 0 0 6px;
+        font-size: 20px;
+        font-weight: 800;
+        color: var(--ink);
+      }
+      .score-number {
+        font-size: 36px;
+        font-weight: 800;
+        color: var(--accent);
+        line-height: 1.2;
+        margin-top: 6px;
+      }
+      .score-pct {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--muted);
+        margin-bottom: 12px;
+      }
+      .score-msg {
+        margin: 0 0 20px;
+        font-size: 14px;
+        color: #475569;
+        line-height: 1.5;
+        padding: 0 8px;
+      }
+      .score-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .score-actions button {
+        width: 100%;
+        padding: 11px 16px;
+        font-size: 14px;
+        border-radius: 12px;
+      }
+      .score-actions .btn-primary {
+        background: var(--accent);
+        color: #ffffff;
+      }
+      .score-actions .btn-secondary {
+        background: #f1f5f9;
+        color: #334155;
+        border: 1px solid #cbd5e1;
+      }
+      .score-actions .btn-ghost {
+        background: transparent;
+        color: var(--muted);
+        border: none;
+        padding: 8px;
+        font-size: 13px;
+      }
+
+      /* Floating Back-To-Top Button */
+      .btn-scroll-top {
+        position: fixed;
+        bottom: 24px;
+        right: 20px;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: #1e293b;
+        color: #ffffff;
+        font-size: 20px;
+        font-weight: 700;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+        border: none;
+        cursor: pointer;
+        display: grid;
+        place-items: center;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(12px);
+        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 99;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+      }
+      .btn-scroll-top.visible {
+        opacity: 0.92;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .btn-scroll-top:hover {
+        opacity: 1;
+        background: #0f172a;
+        transform: translateY(-2px);
+      }
+      .btn-scroll-top:active {
+        transform: scale(0.92);
+      }
+
+      /* Responsive rules */
+      @media (max-width: 768px) {
+        .wrap {
+          padding: 10px 14px;
+        }
+        .brand-row {
+          margin-bottom: 8px;
+        }
+        .header-titles h1 {
+          font-size: 16px;
+          line-height: 1.35;
+        }
+        .meta {
+          font-size: 12px;
+          padding: 4px 10px;
+        }
+        .toolbar {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 6px;
+        }
+        button {
+          padding: 8px 6px;
+          font-size: 12.5px;
+          border-radius: 10px;
+          min-height: 38px;
+          white-space: nowrap;
+        }
+        button span {
+          display: none;
+        }
+        .cards {
+          padding: 12px 0 30px;
+          gap: 12px;
+        }
+        .card {
+          padding: 16px 14px;
+          border-radius: 14px;
+        }
+        .qhead {
+          gap: 10px;
+        }
+        .qidx {
+          width: 28px;
+          height: 28px;
+          font-size: 13px;
+          border-radius: 8px;
+        }
+        .qtitle {
+          font-size: 15px;
+          line-height: 1.45;
+        }
+        .dragzone {
+          grid-template-columns: 1fr;
+        }
+        .lesson-nav {
+          flex-direction: column;
+        }
+        .lesson-nav a {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header id="header">
+      <div class="progress-line"><div id="progressFill" class="progress-fill"></div></div>
+      <div class="wrap">
+        <div class="brand-row">
+          <div class="brand-title-wrap">
+            <a href="index.html" class="btn-home" title="Quay về trang chủ">← Trang chủ</a>
+            <div class="header-titles">
+              <h1>Bài 2: CNXH & Thời kỳ quá độ lên CNXH</h1>
+              <span class="sub">Đặc trưng bản chất của CNXH & con đường quá độ bỏ qua TBCN ở Việt Nam</span>
+            </div>
+          </div>
+          <div class="meta" id="meta">0/0 câu</div>
+        </div>
+        <div class="toolbar">
+          <button id="btnCheck"><span>✓</span> Xem kết quả</button>
+          <button class="secondary" id="btnReset"><span>↻</span> Làm lại</button>
+          <button class="ghost" id="btnToggleKey"><span>👁</span> Đáp án</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <div id="list" class="cards"></div>
+      <nav class="lesson-nav">
+        <a href="bai1.html" class="nav-btn">← Bài 1: Nhập môn & Sứ mệnh GCCN</a>
+        <a href="index.html" class="nav-home-btn">📚 Mục lục 6 bài</a>
+        <a href="bai3.html" class="nav-btn nav-primary">Bài 3: Dân chủ XHCN & Nhà nước →</a>
+      </nav>
+    </main>
+
+    <button id="btnScrollTop" class="btn-scroll-top" title="Lên đầu trang" aria-label="Lên đầu trang">↑</button>
+
+    <script>
+window.LESSON_ID = 2;
+
+const clone = (x) => JSON.parse(JSON.stringify(x));
+const shuffle = (arr) => {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+};
+const el = (tag, attrs = {}, html = "") => {
+  const e = document.createElement(tag);
+  Object.entries(attrs).forEach(([k, v]) => {
+    if (k === "class") e.className = v;
+    else if (k === "dataset") Object.assign(e.dataset, v);
+    else e.setAttribute(k, v);
+  });
+  if (html) e.innerHTML = html;
+  return e;
+};
+const safeId = (str) =>
+  "id_" +
+  str
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-zA-Z0-9]/g, "_");
+
+const BANK = [
+  {
+    "id": 1,
+    "type": "single",
+    "title": "Theo C. Mác và Ph. Ăngghen thì giai đoạn đầu của hình thái kinh tế – xã hội cộng sản chủ nghĩa là gì?",
+    "options": [
+      "Chủ nghĩa cộng sản",
+      "Thời kỳ quá độ",
+      "Cộng sản chủ nghĩa",
+      "Chủ nghĩa xã hội"
+    ],
+    "answer": [
+      "Chủ nghĩa xã hội"
+    ]
+  },
+  {
+    "id": 2,
+    "type": "single",
+    "title": "Chủ nghĩa xã hội có mấy đặc trưng cơ bản?",
+    "options": [
+      "8",
+      "5",
+      "6",
+      "7"
+    ],
+    "answer": [
+      "6"
+    ]
+  },
+  {
+    "id": 3,
+    "type": "single",
+    "title": "Hình thái kinh tế – xã hội cộng sản chủ nghĩa bắt đầu và hoàn thiện khi nào?",
+    "options": [
+      "Bắt đầu từ khi Đảng Cộng sản ra đời và xây dựng xong chủ nghĩa xã hội.",
+      "Bắt đầu từ thời kỳ quá độ và hoàn thiện ở giai đoạn thấp của xã hội cộng sản.",
+      "Bắt đầu từ thời kỳ quá độ cho đến khi xây dựng xong giai đoạn cao của xã hội cộng sản.",
+      "Bắt đầu từ giai đoạn thấp của xã hội cộng sản và hoàn thiện ở giai đoạn cao của xã hội cộng sản."
+    ],
+    "answer": [
+      "Bắt đầu từ thời kỳ quá độ cho đến khi xây dựng xong giai đoạn cao của xã hội cộng sản."
+    ]
+  },
+  {
+    "id": 4,
+    "type": "single",
+    "title": "Đặc trưng về kinh tế của chủ nghĩa xã hội là gì?",
+    "options": [
+      "Có nền kinh tế phát triển cao dựa trên lực lượng sản xuất hiện đại.",
+      "Có nền kinh tế phát triển cao dựa trên lực lượng sản xuất hiện đại và chế độ tư hữu về tư liệu sản xuất.",
+      "Có nền kinh tế phát triển cao dựa trên lực lượng sản xuất hiện đại và chế độ công hữu về tư liệu sản xuất.",
+      "Có nền kinh tế phát triển cao."
+    ],
+    "answer": [
+      "Có nền kinh tế phát triển cao dựa trên lực lượng sản xuất hiện đại và chế độ công hữu về tư liệu sản xuất."
+    ]
+  },
+  {
+    "id": 5,
+    "type": "single",
+    "title": "Nguyên nhân sâu xa dẫn đến sự thay thế hình thái kinh tế – xã hội tư bản chủ nghĩa bằng hình thái kinh tế – xã hội cộng sản chủ nghĩa là gì?",
+    "options": [
+      "Mâu thuẫn giữa lực lượng sản xuất mang tính xã hội hóa ngày càng cao với quan hệ sản xuất tư bản chủ nghĩa dựa trên chế độ chiếm hữu tư nhân tư bản chủ nghĩa về tư liệu sản xuất chủ yếu.",
+      "Mâu thuẫn giữa phương thức sản xuất tư bản chủ nghĩa và phương thức sản xuất xã hội chủ nghĩa dựa trên chế độ chiếm hữu tư nhân tư bản chủ nghĩa về tư liệu sản xuất chủ yếu.",
+      "Mâu thuẫn giữa lực lượng sản xuất và tư liệu sản xuất dựa trên chế độ chiếm hữu tư nhân tư bản chủ nghĩa.",
+      "Mâu thuẫn giữa các giai cấp, tầng lớp trong xã hội dựa trên chế độ chiếm hữu tư nhân tư bản chủ nghĩa về tư liệu sản xuất chủ yếu."
+    ],
+    "answer": [
+      "Mâu thuẫn giữa lực lượng sản xuất mang tính xã hội hóa ngày càng cao với quan hệ sản xuất tư bản chủ nghĩa dựa trên chế độ chiếm hữu tư nhân tư bản chủ nghĩa về tư liệu sản xuất chủ yếu."
+    ]
+  },
+  {
+    "id": 6,
+    "type": "single",
+    "title": "Chọn cụm từ còn thiếu điền vào dấu “…”: “Giữa xã hội tư bản chủ nghĩa và xã hội cộng sản chủ nghĩa là một thời kỳ … từ xã hội nọ sang xã hội kia” (C. Mác).",
+    "options": [
+      "Đột phá cách mạng",
+      "Cách mạng",
+      "Cải biến cách mạng",
+      "Quá độ"
+    ],
+    "answer": [
+      "Cải biến cách mạng"
+    ]
+  },
+  {
+    "id": 7,
+    "type": "single",
+    "title": "Kiểu quá độ lên chủ nghĩa xã hội ở Việt Nam là kiểu quá độ nào?",
+    "options": [
+      "Quá độ trực tiếp",
+      "Quá độ chủ quan",
+      "Quá độ khách quan",
+      "Quá độ gián tiếp"
+    ],
+    "answer": [
+      "Quá độ gián tiếp"
+    ]
+  },
+  {
+    "id": 8,
+    "type": "single",
+    "title": "Cương lĩnh xây dựng đất nước trong thời kỳ quá độ lên chủ nghĩa xã hội (Bổ sung và phát triển năm 2011) được Đảng ta thông qua ở Đại hội lần thứ mấy?",
+    "options": [
+      "Đại hội XI",
+      "Đại hội X",
+      "Đại hội IX",
+      "Đại hội XII"
+    ],
+    "answer": [
+      "Đại hội XI"
+    ]
+  },
+  {
+    "id": 9,
+    "type": "single",
+    "title": "Tìm đáp án sai. Đặc trưng bản chất của chủ nghĩa xã hội Việt Nam theo tinh thần của Đại hội XI:",
+    "options": [
+      "Quyền lực thuộc về giai cấp công nhân",
+      "Con người có cuộc sống ấm no, tự do, hạnh phúc, có điều kiện phát triển toàn diện",
+      "Có nền văn hóa tiên tiến đậm đà bản sắc dân tộc",
+      "Có quan hệ hữu nghị và hợp tác với các nước trên thế giới"
+    ],
+    "answer": [
+      "Quyền lực thuộc về giai cấp công nhân"
+    ]
+  },
+  {
+    "id": 10,
+    "type": "single",
+    "title": "Thời kỳ quá độ lên chủ nghĩa xã hội ở Việt Nam là bước quá độ:",
+    "options": [
+      "Trực tiếp, từ chế độ phong kiến tiến lên chế độ xã hội chủ nghĩa.",
+      "Trực tiếp, từ chế độ tư bản chủ nghĩa lên chế độ xã hội chủ nghĩa.",
+      "Gián tiếp, bỏ qua chế độ tư bản chủ nghĩa tiến lên chủ nghĩa xã hội.",
+      "Gián tiếp, bỏ qua chế độ phong kiến tiến lên chế độ xã hội chủ nghĩa."
+    ],
+    "answer": [
+      "Gián tiếp, bỏ qua chế độ tư bản chủ nghĩa tiến lên chủ nghĩa xã hội."
+    ]
+  },
+  {
+    "id": 11,
+    "type": "multi",
+    "title": "Đặc điểm về chính trị trong thời kỳ quá độ được thể hiện ở điểm nào? (Chọn 2 đáp án đúng)",
+    "options": [
+      "Thiết lập chuyên chính vô sản",
+      "Đa nguyên chính trị, đa đảng đối lập",
+      "Xây dựng nền dân chủ xã hội chủ nghĩa",
+      "Hoàn toàn không còn vai trò của nhà nước"
+    ],
+    "answer": [
+      "Thiết lập chuyên chính vô sản",
+      "Xây dựng nền dân chủ xã hội chủ nghĩa"
+    ]
+  },
+  {
+    "id": 12,
+    "type": "multi",
+    "title": "Đặc điểm nổi bật của thời kỳ quá độ lên chủ nghĩa xã hội ở Việt Nam là gì? (Chọn 2 đáp án đúng)",
+    "options": [
+      "Từ một nền sản xuất nhỏ tiến lên chủ nghĩa xã hội bỏ qua chế độ tư bản chủ nghĩa",
+      "Xây dựng nhà nước pháp quyền tư sản",
+      "Phát triển chủ nghĩa tư bản trong thời gian ngắn để tích lũy",
+      "Có sự lãnh đạo của Đảng Cộng sản Việt Nam"
+    ],
+    "answer": [
+      "Từ một nền sản xuất nhỏ tiến lên chủ nghĩa xã hội bỏ qua chế độ tư bản chủ nghĩa",
+      "Có sự lãnh đạo của Đảng Cộng sản Việt Nam"
+    ]
+  },
+  {
+    "id": 13,
+    "type": "single",
+    "title": "Câu “Cần phải có thời kỳ quá độ khá lâu dài từ chủ nghĩa tư bản lên chủ nghĩa xã hội” là của ai?",
+    "options": [
+      "Ăngghen",
+      "Heghen",
+      "C.Mác",
+      "Lênin"
+    ],
+    "answer": [
+      "Lênin"
+    ]
+  },
+  {
+    "id": 14,
+    "type": "single",
+    "title": "Đặc điểm nổi bật của thời kỳ quá độ đó là:",
+    "options": [
+      "Những yếu tố của xã hội mới đã phát triển, xoá bỏ hoàn toàn yếu tố của xã hội cũ.",
+      "Tàn dư của xã hội cũ còn tồn tại",
+      "Toàn bộ các yếu tố của xã hội bị triệt tiêu.",
+      "Những nhân tố của xã hội mới và những tàn tích của xã hội cũ tồn tại đan xen lẫn nhau, đấu tranh với nhau trên mọi lĩnh vực."
+    ],
+    "answer": [
+      "Những nhân tố của xã hội mới và những tàn tích của xã hội cũ tồn tại đan xen lẫn nhau, đấu tranh với nhau trên mọi lĩnh vực."
+    ]
+  },
+  {
+    "id": 15,
+    "type": "single",
+    "title": "Về nội dung, thời kỳ quá độ lên chủ nghĩa xã hội là thời kỳ cải tạo cách mạng sâu sắc, triệt để xã hội tư bản chủ nghĩa trên các lĩnh vực:",
+    "options": [
+      "Chủ yếu về văn hóa",
+      "Chủ yếu về chính trị",
+      "Chủ yếu là chính trị.",
+      "Kinh tế, chính trị, văn hóa, xã hội"
+    ],
+    "answer": [
+      "Kinh tế, chính trị, văn hóa, xã hội"
+    ]
+  },
+  {
+    "id": 16,
+    "type": "single",
+    "title": "Phát triển bỏ qua chế độ tư bản chủ nghĩa ở Việt Nam được hiểu như thế nào?",
+    "options": [
+      "Bỏ qua sự phát triển của lực lượng sản xuất tư bản chủ nghĩa",
+      "Bỏ qua các yếu tố gắn với phương thức sản xuất tư bản chủ nghĩa",
+      "Không xây dựng quan hệ sản xuất tư bản chủ nghĩa",
+      "Bỏ qua việc xác lập vị trí thống trị của quan hệ sản xuất va kiến trúc thượng tang tư bản chủ nghĩa"
+    ],
+    "answer": [
+      "Bỏ qua việc xác lập vị trí thống trị của quan hệ sản xuất va kiến trúc thượng tang tư bản chủ nghĩa"
+    ]
+  },
+  {
+    "id": 17,
+    "type": "single",
+    "title": "Chọn từ đúng điền vào chỗ trống để hoàn thành mục tiêu của Đảng xác định trong thời kỳ quá độ lên chủ nghĩa xã hội ở nước ta: Độc lập dân tộc gắn liền với chủ nghĩa xã hội; dân giàu, nước mạnh, dân chủ, .... , văn minh",
+    "options": [
+      "Phát triển",
+      "Công bằng",
+      "Bình đắng",
+      "Tiến bộ"
+    ],
+    "answer": [
+      "Công bằng"
+    ]
+  },
+  {
+    "id": 18,
+    "type": "single",
+    "title": "Theo quan điểm của chủ nghĩa Mác - Lênin mốc bắt đầu của thời kỳ quá độ lên chủ nghĩa xã hội từ khi nào?",
+    "options": [
+      "Khi giai cấp công nhân đấu tranh giành chính quyền",
+      "Khi giai cấp công nhân tiến hành cải tạo xã hội cũ và xây dựng xã hội mới",
+      "Khi giai cấp công nhân và nhân dân lao động tiến hành cải tạo xã hội cũ",
+      "Khi giai cấp công nhân và nhân dân lao động giành được chính quyền"
+    ],
+    "answer": [
+      "Khi giai cấp công nhân và nhân dân lao động giành được chính quyền"
+    ]
+  },
+  {
+    "id": 19,
+    "type": "single",
+    "title": "Đặc điểm của thời kỳ quá độ lên chủ nghĩa trên lĩnh vực kinh tế là gì?",
+    "options": [
+      "Tồn tại giai cấp đối kháng",
+      "Tồn tại đấu tranh giai cấp",
+      "Tồn tại nhiều thành phần kinh tế",
+      "Tồn tại nhiểu tàn dư văn hóa của chế độ cũ"
+    ],
+    "answer": [
+      "Tồn tại nhiều thành phần kinh tế"
+    ]
+  },
+  {
+    "id": 20,
+    "type": "single",
+    "title": "Quá độ lên chủ nghĩa xã hội bỏ qua chế độ tư bản chủ nghĩa ở nước ta, được hiểu là:",
+    "options": [
+      "Bỏ qua việc xác lập vị trí thống trị của kiến trúc thượng tầng tư bản chủ nghĩa nhưng không kế thừa những thành tựu mà nhân loại đã đạt được dưới chế độ tư bản chủ nghĩa",
+      "Bỏ qua việc xác lập vị trí thống trị của quan hệ sản xuất tư bản chủ nghĩa nhưng kế thừa những thành tựu mà nhân loại đã đạt được dưới chế độ tư bản chủ nghĩa",
+      "Bỏ qua việc xác lập vị trí thống trị của quan hệ sản xuất và kiến trúc thượng tầng tư bản chủ nghĩa nhưng không kế thừa những thành tựu mà nhân loại đã đạt được dưới chế độ tư bản chủ nghĩa",
+      "Bỏ qua việc xác lập vị trí thống trị của quan hệ sản xuất và kiến trúc thượng tầng tư bản chủ nghĩa, nhưng tiếp thu, kế thừa những thành tựu mà nhân loại đã đạt được dưới chế độ tư bản chủ nghĩa"
+    ],
+    "answer": [
+      "Bỏ qua việc xác lập vị trí thống trị của quan hệ sản xuất và kiến trúc thượng tầng tư bản chủ nghĩa, nhưng tiếp thu, kế thừa những thành tựu mà nhân loại đã đạt được dưới chế độ tư bản chủ nghĩa"
+    ]
+  },
+  {
+    "id": 21,
+    "type": "single",
+    "title": "Trong cuốn sách “Một số vấn đề lý luận và thực tiễn về chủ nghĩa xã hội và con đường đi lên chủ nghĩa xã hội ở Việt Nam\", Tổng Bí thư Nguyễn Phú Trọng khẳng định: đường lối cơ bản, xuyên suốt của cách mạng Việt Nam và cũng là điểm cốt yếu trong di sản tư tưởng của Chủ tịch Hồ Chí Minh là:",
+    "options": [
+      "Phát triển kinh tế thị trường định hướng xã hội chủ nghĩa",
+      "Chủ nghĩa xã hội và giải phóng giai cấp vô sản",
+      "Độc lập dân tộc gắn liền với chủ nghĩa xã hội",
+      "Độc lập dân tộc gắn liền với hội nhập kinh tế quốc tế"
+    ],
+    "answer": [
+      "Độc lập dân tộc gắn liền với chủ nghĩa xã hội"
+    ]
+  },
+  {
+    "id": 22,
+    "type": "single",
+    "title": "Chọn phương án sai:",
+    "options": [
+      "Quá độ lên chủ nghĩa xã hội bỏ qua chế độ tư bản chủ nghĩa nhưng có sự tiếp thu, kế thừa toàn bộ các lĩnh vực đã tạo ra dưới chế độ tư bản chủ nghĩa",
+      "Quá độ lên chủ nghĩa xã hội bỏ qua chế độ tư bản chủ nghĩa tức là bỏ qua việc xác lập vị trí thống trị của quan hệ sản xuất và kiến trúc thượng tầng tư bản chủ nghĩa",
+      "Quá độ lên chủ nghĩa xã hội bỏ qua chế độ tư bản chủ nghĩa là con đường cách mạng tất yếu chủ quan, con đường xây dựng đất nước trong thời kỳ quá độ lên chủ nghĩa xã hội",
+      "Con đường đi lên chủ nghĩa xã hội của nước ta là sự phát triển quá độ lên chủ nghĩa xã hội bỏ qua chế độ tư bản chủ nghĩa"
+    ],
+    "answer": [
+      "Quá độ lên chủ nghĩa xã hội bỏ qua chế độ tư bản chủ nghĩa nhưng có sự tiếp thu, kế thừa toàn bộ các lĩnh vực đã tạo ra dưới chế độ tư bản chủ nghĩa"
+    ]
+  },
+  {
+    "id": 23,
+    "type": "single",
+    "title": "Tại sao cho rằng con đường cách mạng Việt Nam là quá độ lên chủ nghĩa xã hội bỏ qua chế độ tư bản chủ nghĩa là một tất yếu?",
+    "options": [
+      "Vì nó phù hợp với đặc điểm của đất nước và xu thế phát triển của thời đại",
+      "Vì không cần tiếp thu thành tựu khoa học, kỹ thuật dưới chế độ tư bản chủ nghĩa",
+      "Vì sự phát triển của lực lượng sản xuất ngày càng cao",
+      "Vì không cần tạo ra sự biến đổi về chất trên tất cả các lĩnh vực"
+    ],
+    "answer": [
+      "Vì nó phù hợp với đặc điểm của đất nước và xu thế phát triển của thời đại"
+    ]
+  },
+  {
+    "id": 24,
+    "type": "single",
+    "title": "Căn cứ vào giáo trình Chủ nghĩa xã hội khoa học, hãy xác định khái niệm dùng để chỉ một chế độ xã hội tốt đẹp, giai đoạn đầu của hình thái kinh tế - xã hội cộng sản chủ nghĩa",
+    "options": [
+      "Thời kỳ quá độ lên chủ nghĩa xã hội",
+      "Chủ nghĩa xã hội",
+      "Chủ nghĩa cộng sản",
+      "Thời kỳ quá độ"
+    ],
+    "answer": [
+      "Chủ nghĩa xã hội"
+    ]
+  },
+  {
+    "id": 25,
+    "type": "single",
+    "title": "Theo chủ nghĩa Mác – Lênin có mấy hình thức quá độ lên chủ nghĩa xã hội?",
+    "options": [
+      "3",
+      "1",
+      "2",
+      "4"
+    ],
+    "answer": [
+      "2"
+    ]
+  },
+  {
+    "id": 26,
+    "type": "multi",
+    "title": "Thời kỳ quá độ lên chủ nghĩa xã hội có những mâu thuẫn nào cần giải quyết? (Chọn 2 đáp án đúng)",
+    "options": [
+      "Mâu thuẫn giữa cái cũ và cái mới trong xã hội",
+      "Mâu thuẫn giữa các tầng lớp lao động và tư sản hoàn toàn biến mất.",
+      "Mâu thuẫn giữa năng suất lao động và nhu cầu phát triển xã hội.",
+      "Mâu thuẫn giữa các thành phần kinh tế khác nhau trong xã hội"
+    ],
+    "answer": [
+      "Mâu thuẫn giữa cái cũ và cái mới trong xã hội",
+      "Mâu thuẫn giữa các thành phần kinh tế khác nhau trong xã hội"
+    ]
+  },
+  {
+    "id": 27,
+    "type": "multi",
+    "title": "Việc \"bỏ qua chế độ tư bản chủ nghĩa\" ở Việt Nam có nghĩa là: (Chọn 2 đáp án đúng)",
+    "options": [
+      "Bỏ qua việc xác lập vị trí thống trị của quan hệ sản xuất và kiến trúc thượng tầng tư bản chủ nghĩa",
+      "Tiếp thu, kế thừa những thành tựu nhân loại đã đạt được dưới chủ nghĩa tư bản",
+      "Tăng cường sở hữu tư nhân để phát triển lực lượng sản xuất",
+      "Loại bỏ hoàn toàn tất cả yếu tố tư bản trong nền kinh tế"
+    ],
+    "answer": [
+      "Bỏ qua việc xác lập vị trí thống trị của quan hệ sản xuất và kiến trúc thượng tầng tư bản chủ nghĩa",
+      "Tiếp thu, kế thừa những thành tựu nhân loại đã đạt được dưới chủ nghĩa tư bản"
+    ]
+  },
+  {
+    "id": 28,
+    "type": "tfset",
+    "title": "Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
+    "statements": [
+      {
+        "text": "Trong thời kỳ quá độ từ chủ nghĩa tư bản lên chủ nghĩa xã hội tồn tại chủ yếu là tư tưởng vô sản.",
+        "answer": false
+      },
+      {
+        "text": "Trong thời kỳ quá độ từ chủ nghĩa tư bản lên chủ nghĩa xã hội tồn tại nền kinh tế nhiều thành phần.",
+        "answer": true
+      },
+      {
+        "text": "Đặc điểm cơ bản của thời kỳ quá độ lên chủ nghĩa xã hội là thời kỳ cải tạo cách mạng sâu sắc, triệt để trên lĩnh vực kinh tế.",
+        "answer": true
+      },
+      {
+        "text": "Trong thời kỳ quá độ từ chủ nghĩa tư bản lên chủ nghĩa xã hội tồn tại nhiều giai cấp, tầng lớp.",
+        "answer": true
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "type": "tfset",
+    "title": "Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
+    "statements": [
+      {
+        "text": "Trong thời kỳ quá độ lên chủ nghĩa xã hội tồn tại nhiều thành phần kinh tế",
+        "answer": true
+      },
+      {
+        "text": "Thời kỳ quá độ lên chủ nghĩa xã hội có sự tồn tại song song giữa các yếu tố cũ và yếu tố mới",
+        "answer": true
+      },
+      {
+        "text": "Thời kỳ quá độ lên chủ nghĩa xã hội chỉ có kinh tế nhà nước tồn tại và phát triển",
+        "answer": false
+      },
+      {
+        "text": "Trong thời kỳ quá độ lên chủ nghĩa xã hội kinh tế tư nhân bị xóa bỏ hoàn toàn",
+        "answer": false
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "type": "tfset",
+    "title": "Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
+    "statements": [
+      {
+        "text": "Việt Nam quá độ lên chủ nghĩa xã hội từ một nền sản xuất nhỏ, bỏ qua chế độ tư bản chủ nghĩa",
+        "answer": true
+      },
+      {
+        "text": "Nhà nước pháp quyền xã hội chủ nghĩa Việt Nam là nhà nước của nhân dân, do nhân dân, vì nhân dân",
+        "answer": true
+      },
+      {
+        "text": "Chủ nghĩa xã hội ở Việt Nam không chấp nhận kinh tế tư nhân tồn tại song song với kinh tế nhà nước",
+        "answer": false
+      },
+      {
+        "text": "Việc “bỏ qua\" chế độ tư bản chủ nghĩa là không kế thừa bất kỳ yếu tố tích cực nào của chủ nghĩa tư bản",
+        "answer": false
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "type": "tfset",
+    "title": "Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
+    "statements": [
+      {
+        "text": "Thực chất của thời kỳ quá độ lên chủ nghĩa xã hội là thời kỳ cải biến cách mạng từ xã hội tiền tư bản chủ nghĩa và tư bản chủ nghĩa sang xã hội xã hội chủ nghĩa",
+        "answer": true
+      },
+      {
+        "text": "Quá độ gián tiếp từ chủ nghĩa tư bản lên chủ nghĩa cộng sản đối với những nước chưa trải qua chủ nghĩa tư bản phát triển",
+        "answer": true
+      },
+      {
+        "text": "Quá độ trực tiếp từ chủ nghĩa tư bản lên chủ nghĩa cộng sản đối với những nước đã trải qua chủ nghĩa tư bản phát triển",
+        "answer": true
+      },
+      {
+        "text": "Học thuyết hình thái kinh tế - xã hội của chủ nghĩa Mác - Lênin đã chỉ rõ: Lịch sử xã hội đã trải qua 4 hình thái kinh tế - xã hội",
+        "answer": false
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "type": "tfset",
+    "title": "Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
+    "statements": [
+      {
+        "text": "Chủ nghĩa xã hội ở Việt Nam không bao gồm việc xây dựng nền kinh tế thị trường",
+        "answer": false
+      },
+      {
+        "text": "Quá độ lên chủ nghĩa xã hội bỏ qua chế độ tư bản chủ nghĩa là sự lựa chọn duy nhất đúng, khoa học, phản ánh đúng quy luật phát triển khách quan của cách mạng Việt Nam trong thời đại ngày nay",
+        "answer": true
+      },
+      {
+        "text": "Việt Nam thực hiện quá độ trực tiếp đi lên chủ nghĩa xã hội",
+        "answer": false
+      },
+      {
+        "text": "Phát triển nền kinh tế thị trường định hướng xã hội chủ nghĩa là một trong những phương hướng xây dựng chủ nghĩa xã hội ở Việt Nam",
+        "answer": true
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "type": "drag_pairs",
+    "title": "Kéo thả các đáp án khớp với các phát biểu từ 1–3:",
+    "pairs": {
+      "____ từ chủ nghĩa tư bản lên chủ nghĩa cộng sản đối với những nước đã trải qua chủ nghĩa tư bản phát triển.": "Quá độ trực tiếp",
+      "____ từ chủ nghĩa tư bản lên chủ nghĩa cộng sản đối với những nước chưa trải qua chủ nghĩa tư bản phát triển.": "Quá độ gián tiếp",
+      "Thực chất của ____ lên chủ nghĩa xã hội là thời kỳ cải biến cách mạng từ xã hội tiền tư bản chủ nghĩa và tư bản chủ nghĩa sang xã hội xã hội chủ nghĩa.": "Thời kỳ quá độ"
+    }
+  },
+  {
+    "id": 34,
+    "type": "drag_pairs",
+    "title": "Kéo thả các đáp án khớp với các phát biểu từ 1 – 3 về trái dưới đây:",
+    "pairs": {
+      "Việt Nam thực hiện______ đi lên chủ nghĩa xã hội": "quá độ gián tiếp",
+      "Quá độ lên chủ nghĩa xã hội bỏ qua chế độ tư bản chủ nghĩa, tức là bỏ qua việc xác lập______ của quan hệ sản xuất và kiến trúc thượng tầng tư bản chủ nghĩa.": "vị trí thống trị",
+      "Quá độ lên chủ nghĩa xã hội bỏ qua chế độ tư bản chủ nghĩa là con đường cách mạng______": "tất yếu khách quan"
+    }
+  },
+  {
+    "id": 35,
+    "type": "multi",
+    "title": "Đặc điểm về kinh tế của thời kỳ quá độ lên chủ nghĩa xã hội gồm: (Chọn 2 đáp án đúng)",
+    "options": [
+      "Có những thành phần kinh tế đổi lập nhau",
+      "Hoàn toàn không còn kinh tế tư nhân.",
+      "Chỉ có kinh tế nhà nước tổn tại và phát triển.",
+      "Tồn tại nền kinh tế nhiều thành phần"
+    ],
+    "answer": [
+      "Có những thành phần kinh tế đổi lập nhau",
+      "Tồn tại nền kinh tế nhiều thành phần"
+    ]
+  },
+  {
+    "id": 36,
+    "type": "drag_pairs",
+    "title": "Kéo thả các đáp án khớp với các phát biểu từ 1 – 3 về trái dưới đây:",
+    "pairs": {
+      "Việt Nam xây dựng nền ______ có sự điều tiết của nhà nước.": "kinh tế thị trường",
+      "Một đặc trưng chính trị của chủ nghĩa xã hội là xây dựng _____ xã hội chủ nghĩa của nhân dân, do nhân dân, vì nhân dân.": "nhà nước pháp quyền",
+      "Nhà nước pháp quyền xã hội chủ nghĩa Việt Nam tôn trọng, bảo vệ và bảo đảm ______": "quyền con người"
+    }
+  },
+  {
+    "id": 37,
+    "type": "single",
+    "title": "Cuộc cách mạng của giai cấp công nhân và nhân dân lao động dưới sự lãnh đạo của Đảng cộng sản chống lại giai cấp tư sản, là cuộc cách mạng:",
+    "options": [
+      "Cách mạng vô sản",
+      "Cách mạng tư sản",
+      "Cách mạng xã hội",
+      "Cách mạng dân chủ tư sản"
+    ],
+    "answer": [
+      "Cách mạng vô sản"
+    ]
+  },
+  {
+    "id": 38,
+    "type": "multi",
+    "title": "Hai loại quá độ từ chủ nghĩa tư bản lên chủ nghĩa cộng sản đó là: (Chọn 2 đáp án đúng nhất)",
+    "options": [
+      "Quá độ gián tiếp",
+      "Quá độ trực tiếp",
+      "Quá độ cơ bản",
+      "Quá độ không cơ bản."
+    ],
+    "answer": [
+      "Quá độ gián tiếp",
+      "Quá độ trực tiếp"
+    ]
+  },
+  {
+    "id": 39,
+    "type": "multi",
+    "title": "Những đặc điểm nổi bật trong thời kỳ quá độ lên chủ nghĩa xã hội gồm: (Chọn 2 đáp án đúng nhất)",
+    "options": [
+      "Tổn tại nhiều thành phần kinh tế khác nhau.",
+      "Xã hội hoàn toàn không còn giai cấp.",
+      "Không còn mâu thuẫn xã hội nào.",
+      "Sự tồn tại song song của các yếu tổ củ và yếu tố mới"
+    ],
+    "answer": [
+      "Tổn tại nhiều thành phần kinh tế khác nhau.",
+      "Sự tồn tại song song của các yếu tổ củ và yếu tố mới"
+    ]
+  },
+  {
+    "id": 40,
+    "type": "multi",
+    "title": "Đặc điểm cơ bản của thời kỳ quá độ lên chủ nghĩa xã hội ở Việt Nam là gì? (Chọn 2 đáp án đúng nhất)",
+    "options": [
+      "Chuyển thẳng từ chế độ phong kiến lên chủ nghĩa xã hội",
+      "Bò qua chế độ phong kiến",
+      "Xây dựng nên kinh tế thị trường định hướng xã hội chủ nghĩa",
+      "Bò qua chế độ tư bản chủ nghĩa"
+    ],
+    "answer": [
+      "Xây dựng nên kinh tế thị trường định hướng xã hội chủ nghĩa",
+      "Bò qua chế độ tư bản chủ nghĩa"
+    ]
+  }
+];
+
+let WORK = [];
+let keyVisible = false;
+let selectedPill = null;
+
+function triggerHaptic(duration = 10) {
+  if (typeof navigator !== "undefined" && navigator.vibrate) {
+    try { navigator.vibrate(duration); } catch (e) {}
+  }
+}
+
+function reset(shuffleAll = true) {
+  WORK = clone(BANK);
+  if (shuffleAll) WORK = shuffle(WORK);
+  WORK.forEach((q) => {
+    if (q.options) q.options = shuffle(q.options);
+    if (q.type === "drag_pairs") {
+      const entries = Object.entries(q.pairs);
+      q.__prompts = shuffle(entries.map(([k]) => k));
+      q.__options = shuffle(entries.map(([_, v]) => v));
+      q.__extras = q.extras ? shuffle(q.extras) : [];
+    }
+    if (q.type === "drag_groups") {
+      q.__items = shuffle(q.items);
+      q.__groupNames = Object.keys(q.groups);
+    }
+  });
+  keyVisible = false;
+  selectedPill = null;
+  const btnToggle = document.getElementById("btnToggleKey");
+  if (btnToggle) btnToggle.classList.remove("active");
+  const meta = document.getElementById("meta");
+  if (meta) delete meta.dataset.showScore;
+  render();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function render() {
+  const list = document.getElementById("list");
+  list.innerHTML = "";
+  document.getElementById("meta").textContent = "0/" + WORK.length + " câu";
+
+  WORK.forEach((q, qi) => {
+    const card = el("div", { class: "card", id: "q_" + qi });
+    const head = el("div", { class: "qhead" });
+    head.append(el("div", { class: "qidx" }, String(qi + 1)));
+    const title = el("div", { class: "qtitle" }, q.title);
+    if (q.type === "single")
+      title.append(el("div", { class: "hint" }, "(Chọn 1 đáp án đúng)"));
+    if (q.type === "multi")
+      title.append(el("div", { class: "hint" }, "(Chọn nhiều đáp án đúng)"));
+    if (q.type === "tfset")
+      title.append(el("div", { class: "hint" }, "(Đúng / Sai theo từng phát biểu)"));
+    if (q.type && q.type.includes("drag"))
+      title.append(el("div", { class: "hint" }, "(Kéo thả hoặc chạm vào thẻ từ rồi chạm vào ô tương ứng)"));
+    head.append(title);
+    card.append(head);
+
+    const body = el("div", { class: "answers" });
+
+    if (q.type === "single" || q.type === "multi") {
+      q.options.forEach((opt) => {
+        const id = "q" + qi + "_" + safeId(opt);
+        const lab = el("label");
+        const ipt = el("input", {
+          type: q.type === "single" ? "radio" : "checkbox",
+          name: "q" + qi,
+          value: opt,
+          id,
+        });
+        lab.append(ipt, el("span", {}, opt));
+        body.append(lab);
+      });
+    }
+
+    if (q.type === "tfset") {
+      q.statements.forEach((st, si) => {
+        const row = el("div", { class: "tf-item" });
+        row.append(el("div", { class: "tf-text" }, st.text));
+        const ch = el("div", { class: "tf-row" });
+        ["Đúng", "Sai"].forEach((v) => {
+          const lab = el("label");
+          const ipt = el("input", {
+            type: "radio",
+            name: "q" + qi + "_s" + si,
+            value: v,
+          });
+          lab.append(ipt, el("span", {}, v));
+          ch.append(lab);
+        });
+        row.append(ch);
+        body.append(row);
+      });
+    }
+
+    if (q.type === "drag_pairs") {
+      const wrap = el("div", { class: "dragwrap" });
+      const zones = el("div", { class: "dragzone" });
+      q.__prompts.forEach((promptText) => {
+        const z = el("div", { class: "zone", dataset: { prompt: promptText } });
+        z.append(el("h4", {}, promptText), el("div", { class: "droparea" }));
+        zones.append(z);
+      });
+      wrap.append(zones);
+      const pool = el("div", { class: "pool" });
+      [...q.__options, ...(q.__extras || [])].forEach((optText) => {
+        pool.append(
+          el(
+            "div",
+            { class: "pill", draggable: true, dataset: { txt: optText } },
+            optText,
+          ),
+        );
+      });
+      wrap.append(pool);
+      body.append(wrap);
+    }
+
+    if (q.type === "drag_groups") {
+      const wrap = el("div", { class: "dragwrap" });
+      const zones = el("div", { class: "dragzone" });
+      q.__groupNames.forEach((g) => {
+        const z = el("div", { class: "zone", dataset: { gname: g } });
+        z.append(el("h4", {}, g), el("div", { class: "droparea" }));
+        zones.append(z);
+      });
+      wrap.append(zones);
+      const pool = el("div", { class: "pool" });
+      q.__items.forEach((item) => {
+        pool.append(
+          el(
+            "div",
+            { class: "pill", draggable: true, dataset: { txt: item } },
+            item,
+          ),
+        );
+      });
+      wrap.append(pool);
+      body.append(wrap);
+    }
+
+    const res = el("div", { class: "result", id: "res_" + qi });
+    const hint = el("div", { class: "result-hint", id: "hint_" + qi });
+    card.append(body, res, hint);
+    list.append(card);
+  });
+
+  enableDragDrop();
+  updateProgress();
+}
+
+function bindPill(p) {
+  p.addEventListener("dragstart", (e) => {
+    const card = p.closest(".card");
+    const cardId = card ? card.id : "";
+    e.dataTransfer.setData(
+      "text/plain",
+      JSON.stringify({ cardId, txt: p.dataset.txt })
+    );
+  });
+
+  p.addEventListener("click", (e) => {
+    e.stopPropagation();
+    triggerHaptic(10);
+    const card = p.closest(".card");
+    if (!card) return;
+
+    if (selectedPill === p) {
+      p.classList.remove("selected");
+      selectedPill = null;
+    } else {
+      if (selectedPill) selectedPill.classList.remove("selected");
+      selectedPill = p;
+      p.classList.add("selected");
+    }
+  });
+}
+
+function placePillInArea(pill, area, card) {
+  if (!pill || !area || !card) return;
+
+  if (area.classList.contains("droparea")) {
+    const isPairZone = area.closest(".zone")?.dataset?.prompt !== undefined;
+    if (isPairZone) {
+      const existing = area.querySelector(".pill");
+      if (existing && existing !== pill) {
+        const pool = card.querySelector(".pool");
+        if (pool) pool.append(existing);
+      }
+    }
+  }
+
+  pill.classList.remove("selected");
+  pill.classList.add("placed");
+  setTimeout(() => pill.classList.remove("placed"), 300);
+  area.append(pill);
+  selectedPill = null;
+  updateProgress();
+  triggerHaptic(14);
+}
+
+function enableDragDrop() {
+  selectedPill = null;
+  document.querySelectorAll(".pill").forEach(bindPill);
+
+  document.querySelectorAll(".droparea, .pool").forEach((area) => {
+    const card = area.closest(".card");
+
+    area.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      area.closest(".zone")?.classList.add("dragover");
+    });
+
+    area.addEventListener("dragleave", (e) => {
+      area.closest(".zone")?.classList.remove("dragover");
+    });
+
+    area.addEventListener("drop", (e) => {
+      e.preventDefault();
+      area.closest(".zone")?.classList.remove("dragover");
+      let data;
+      try {
+        data = JSON.parse(e.dataTransfer.getData("text/plain"));
+      } catch (err) {
+        return;
+      }
+      if (!data || !data.cardId || data.cardId !== card?.id) return;
+
+      const pills = Array.from(card.querySelectorAll(".pill"));
+      const targetPill = pills.find(
+        (p) => p.dataset.txt === data.txt && (selectedPill === p || !area.contains(p))
+      );
+      if (targetPill) {
+        placePillInArea(targetPill, area, card);
+      }
+    });
+
+    area.addEventListener("click", (e) => {
+      if (!selectedPill) return;
+      if (card && card.contains(selectedPill)) {
+        placePillInArea(selectedPill, area, card);
+      }
+    });
+  });
+
+  document.addEventListener("click", (e) => {
+    if (selectedPill && !e.target.closest(".pill")) {
+      selectedPill.classList.remove("selected");
+      selectedPill = null;
+    }
+  });
+}
+
+function getUserAnswer(q, qi) {
+  if (q.type === "single" || q.type === "multi") {
+    return Array.from(
+      document.querySelectorAll("#q_" + qi + " input:checked"),
+    ).map((x) => x.value);
+  }
+  if (q.type === "tfset") {
+    return q.statements.map((st, si) => {
+      const inp = document.querySelector(
+        'input[name="q' + qi + '_s' + si + '"]:checked',
+      );
+      return inp ? inp.value === "Đúng" : null;
+    });
+  }
+  if (q.type === "drag_pairs") {
+    const ans = {};
+    document.querySelectorAll("#q_" + qi + " .zone").forEach((z) => {
+      const prompt = z.dataset.prompt;
+      const pill = z.querySelector(".pill");
+      if (pill) ans[prompt] = pill.dataset.txt;
+    });
+    return ans;
+  }
+  if (q.type === "drag_groups") {
+    const ans = {};
+    document.querySelectorAll("#q_" + qi + " .zone").forEach((z) => {
+      const gname = z.dataset.gname;
+      ans[gname] = Array.from(z.querySelectorAll(".pill")).map(
+        (p) => p.dataset.txt,
+      );
+    });
+    return ans;
+  }
+  return null;
+}
+
+function isCorrect(q, ans) {
+  if (!ans) return false;
+  if (q.type === "single" || q.type === "multi") {
+    return (
+      ans.length === q.answer.length &&
+      ans.every((a) => q.answer.includes(a))
+    );
+  }
+  if (q.type === "tfset") {
+    return ans.every((a, i) => a === q.statements[i].answer);
+  }
+  if (q.type === "drag_pairs") {
+    return Object.entries(q.pairs).every(
+      ([prompt, expected]) => ans[prompt] === expected
+    );
+  }
+  if (q.type === "drag_groups") {
+    return Object.entries(q.groups).every(
+      ([g, arr]) =>
+        ans[g] &&
+        arr.every((item) => ans[g].includes(item)) &&
+        ans[g].length === arr.length
+    );
+  }
+  return false;
+}
+
+function updateProgress() {
+  if (!WORK.length) return;
+  let answered = 0;
+  WORK.forEach((q, qi) => {
+    const user = getUserAnswer(q, qi);
+    let has = false;
+    if (q.type === "single" || q.type === "multi") {
+      has = user && user.length > 0;
+    } else if (q.type === "tfset") {
+      has = user && user.some((x) => x !== null);
+    } else if (q.type === "drag_pairs" || q.type === "drag_groups") {
+      has = user && Object.keys(user).length > 0;
+    }
+    if (has) answered++;
+  });
+  const pct = Math.round((answered / WORK.length) * 100);
+  const fill = document.getElementById("progressFill");
+  if (fill) fill.style.width = pct + "%";
+  const meta = document.getElementById("meta");
+  if (meta && !meta.dataset.showScore) {
+    meta.textContent = answered + "/" + WORK.length + " câu";
+  }
+}
+
+function showKey(q, qi) {
+  const hint = document.getElementById("hint_" + qi);
+  if (!hint) return;
+  hint.innerHTML = "";
+  if (q.type === "single" || q.type === "multi") {
+    hint.innerHTML = '<div class="hint-box"><strong>Đáp án:</strong> <b>' + q.answer.join(", ") + '</b></div>';
+  } else if (q.type === "tfset") {
+    hint.innerHTML = '<div class="hint-box"><strong>Đáp án:</strong> <b>' + q.statements
+      .map((s, idx) => "Phát biểu " + (idx + 1) + ": " + (s.answer ? "Đúng" : "Sai"))
+      .join(" · ") + "</b></div>";
+  } else if (q.type === "drag_pairs") {
+    hint.innerHTML = '<div class="hint-box"><strong>Đáp án đúng:</strong><br>' + Object.entries(q.pairs)
+      .map(([prompt, ans]) => "• <em>" + prompt + "</em> → <strong>" + ans + "</strong>")
+      .join("<br>") + "</div>";
+  } else if (q.type === "drag_groups") {
+    hint.innerHTML = '<div class="hint-box"><strong>Đáp án đúng:</strong><br>' + Object.entries(q.groups)
+      .map(([group, items]) => "• <strong>" + group + ":</strong> " + items.join("; "))
+      .join("<br>") + "</div>";
+  }
+}
+
+function checkAll() {
+  let correct = 0;
+  WORK.forEach((q, qi) => {
+    const card = document.getElementById("q_" + qi);
+    const res = document.getElementById("res_" + qi);
+    const user = getUserAnswer(q, qi);
+    if (card) card.classList.remove("card-correct", "card-wrong");
+    if (isCorrect(q, user)) {
+      correct++;
+      if (res) {
+        res.textContent = "✔ Đúng";
+        res.className = "result r-good";
+      }
+      if (card) card.classList.add("card-correct");
+    } else {
+      if (res) {
+        res.textContent = "✘ Sai";
+        res.className = "result r-bad";
+      }
+      if (card) card.classList.add("card-wrong");
+    }
+  });
+
+  const total = WORK.length;
+  const pct = Math.round((correct / total) * 100);
+  const meta = document.getElementById("meta");
+  if (meta) {
+    meta.textContent = correct + "/" + total + " đúng (" + pct + "%)";
+    meta.dataset.showScore = "1";
+  }
+
+  try {
+    const lessonId = window.LESSON_ID || 1;
+    localStorage.setItem(
+      "cnxh_score_bai_" + lessonId,
+      JSON.stringify({ score: correct, total, pct, time: Date.now() })
+    );
+  } catch (e) {}
+
+  triggerHaptic(25);
+  showScoreModal(correct, total, pct);
+}
+
+function showScoreModal(correct, total, pct) {
+  let modalBackdrop = document.getElementById("scoreModal");
+  if (!modalBackdrop) {
+    modalBackdrop = el("div", { class: "score-modal-backdrop", id: "scoreModal" });
+    document.body.append(modalBackdrop);
+  }
+
+  let gradeMsg = "Cần cố gắng thêm! Hãy xem lại các đáp án sai và luyện tập lại nhé.";
+  let gradeBadge = "🌱";
+  if (pct >= 90) {
+    gradeMsg = "Xuất sắc! Bạn đã nắm rất vững kiến thức và sẵn sàng thi đạt điểm cao.";
+    gradeBadge = "🏆";
+  } else if (pct >= 75) {
+    gradeMsg = "Rất tốt! Bạn đã nắm chắc hầu hết các nội dung trọng tâm.";
+    gradeBadge = "⭐";
+  } else if (pct >= 50) {
+    gradeMsg = "Đạt yêu cầu! Hãy ôn luyện lại một số phần để tự tin hơn khi làm bài.";
+    gradeBadge = "📈";
+  }
+
+  modalBackdrop.innerHTML =
+    '<div class="score-modal">' +
+    '<div class="score-badge">' + gradeBadge + '</div>' +
+    '<h2 class="score-title">Kết Quả Bài Làm</h2>' +
+    '<div class="score-number">' + correct + ' / ' + total + '</div>' +
+    '<div class="score-pct">' + pct + '% chính xác</div>' +
+    '<p class="score-msg">' + gradeMsg + '</p>' +
+    '<div class="score-actions">' +
+    '<button id="modalBtnKey" class="btn-primary">👁 Xem đáp án chi tiết</button>' +
+    '<button id="modalBtnRetry" class="btn-secondary">↻ Làm lại bài</button>' +
+    '<button id="modalBtnClose" class="btn-ghost">Đóng cửa sổ</button>' +
+    '</div>' +
+    '</div>';
+
+  modalBackdrop.classList.add("visible");
+
+  document.getElementById("modalBtnKey").addEventListener("click", () => {
+    modalBackdrop.classList.remove("visible");
+    if (!keyVisible) {
+      document.getElementById("btnToggleKey").click();
+    }
+  });
+
+  document.getElementById("modalBtnRetry").addEventListener("click", () => {
+    modalBackdrop.classList.remove("visible");
+    reset(true);
+  });
+
+  document.getElementById("modalBtnClose").addEventListener("click", () => {
+    modalBackdrop.classList.remove("visible");
+  });
+
+  modalBackdrop.addEventListener("click", (e) => {
+    if (e.target === modalBackdrop) modalBackdrop.classList.remove("visible");
+  });
+}
+
+document.getElementById("btnCheck").addEventListener("click", () => {
+  triggerHaptic(12);
+  checkAll();
+});
+
+document.getElementById("btnReset").addEventListener("click", () => {
+  triggerHaptic(12);
+  reset(true);
+});
+
+document.getElementById("btnToggleKey").addEventListener("click", () => {
+  triggerHaptic(12);
+  keyVisible = !keyVisible;
+  const btn = document.getElementById("btnToggleKey");
+  if (btn) btn.classList.toggle("active", keyVisible);
+  WORK.forEach((q, qi) => {
+    const hint = document.getElementById("hint_" + qi);
+    if (hint) {
+      if (keyVisible) showKey(q, qi);
+      else hint.innerHTML = "";
+    }
+  });
+});
+
+document.getElementById("list").addEventListener("change", (e) => {
+  if (e.target.matches("input[type=radio], input[type=checkbox]")) {
+    const label = e.target.closest("label");
+    if (label) {
+      if (e.target.type === "radio") {
+        const name = e.target.name;
+        document.querySelectorAll('input[name="' + name + '"]').forEach((r) => {
+          r.closest("label")?.classList.remove("checked");
+        });
+        label.classList.add("checked");
+      } else {
+        label.classList.toggle("checked", e.target.checked);
+      }
+    }
+    updateProgress();
+    triggerHaptic(8);
+  }
+});
+
+const headerEl = document.getElementById("header");
+const btnScrollTop = document.getElementById("btnScrollTop");
+
+window.addEventListener(
+  "scroll",
+  () => {
+    const y = window.scrollY || document.documentElement.scrollTop;
+    if (headerEl) {
+      if (y > 10) headerEl.classList.add("scrolled");
+      else headerEl.classList.remove("scrolled");
+    }
+    if (btnScrollTop) {
+      if (y > 320) btnScrollTop.classList.add("visible");
+      else btnScrollTop.classList.remove("visible");
+    }
+  },
+  { passive: true }
+);
+
+if (btnScrollTop) {
+  btnScrollTop.addEventListener("click", () => {
+    triggerHaptic(15);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+// Initial render in natural sequence
+reset(false);
+    </script>
+  </body>
+</html>

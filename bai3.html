@@ -1,0 +1,1892 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chủ nghĩa Xã hội Khoa học - Bài 3: Dân chủ XHCN & Nhà nước XHCN</title>
+    <style>
+      :root {
+        --bg1: #f0f4f8;
+        --bg2: #d9e2ec;
+        --card: #ffffff;
+        --ink: #1f2937;
+        --muted: #64748b;
+        --accent: #2563eb;
+        --accent-hover: #1d4ed8;
+        --good: #16a34a;
+        --bad: #dc2626;
+        --border: #e2e8f0;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        color: var(--ink);
+        background: linear-gradient(135deg, var(--bg1), var(--bg2));
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        transition: background 0.3s ease;
+        -webkit-font-smoothing: antialiased;
+      }
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+        transition: box-shadow 0.25s ease;
+      }
+      header.scrolled {
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      }
+      .progress-line {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3.5px;
+        background: rgba(0, 0, 0, 0.04);
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, #3b82f6, #10b981);
+        transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .wrap {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 16px 20px;
+        width: 100%;
+      }
+      .brand-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+      .brand-title-wrap {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .header-titles {
+        display: flex;
+        flex-direction: column;
+      }
+      .header-titles h1 {
+        margin: 0;
+        font-size: clamp(16px, 2.4vw, 22px);
+        font-weight: 800;
+        color: var(--ink);
+        letter-spacing: -0.01em;
+        line-height: 1.25;
+      }
+      .header-titles .sub {
+        font-size: 12px;
+        color: var(--muted);
+        font-weight: 500;
+        margin-top: 2px;
+      }
+      .btn-home {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        text-decoration: none;
+        color: #475569;
+        font-weight: 600;
+        font-size: 13px;
+        background: #ffffff;
+        padding: 6px 12px;
+        border-radius: 10px;
+        border: 1px solid #cbd5e1;
+        transition: all 0.15s ease;
+        white-space: nowrap;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .btn-home:hover {
+        background: #f1f5f9;
+        color: var(--accent);
+        border-color: #94a3b8;
+      }
+      .btn-home:active {
+        transform: scale(0.96);
+      }
+      .toolbar {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      button {
+        border: none;
+        padding: 9px 16px;
+        border-radius: 11px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 13.5px;
+        background: var(--accent);
+        color: #fff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s, opacity 0.15s, background 0.15s;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        user-select: none;
+      }
+      button:hover {
+        background: var(--accent-hover);
+      }
+      button:active {
+        transform: scale(0.96);
+      }
+      button.secondary {
+        background: #334155;
+      }
+      button.secondary:hover {
+        background: #1e293b;
+      }
+      button.ghost {
+        background: #ffffff;
+        color: #334155;
+        border: 1px solid #cbd5e1;
+      }
+      button.ghost:hover {
+        background: #f8fafc;
+        border-color: #94a3b8;
+      }
+      button.ghost.active {
+        background: #eff6ff;
+        color: #2563eb;
+        border-color: #93c5fd;
+      }
+      .meta {
+        font-weight: 600;
+        color: #475569;
+        font-size: 13px;
+        background: #ffffff;
+        padding: 5px 14px;
+        border-radius: 999px;
+        border: 1px solid #cbd5e1;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .cards {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 20px 0 30px;
+      }
+      .card {
+        background: var(--card);
+        border-radius: 18px;
+        padding: 22px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+        border: 1px solid rgba(226, 232, 240, 0.9);
+        transition: border-color 0.25s, box-shadow 0.25s;
+      }
+      .card.card-correct {
+        border-color: #86efac;
+        box-shadow: 0 4px 20px rgba(22, 163, 74, 0.1);
+      }
+      .card.card-wrong {
+        border-color: #fca5a5;
+        box-shadow: 0 4px 20px rgba(220, 38, 38, 0.1);
+      }
+      .qhead {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+      }
+      .qidx {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        display: grid;
+        place-items: center;
+        font-weight: 700;
+        font-size: 14px;
+        color: #fff;
+        background: #334155;
+        flex-shrink: 0;
+      }
+      .qtitle {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+      .hint {
+        font-size: 13px;
+        color: var(--muted);
+        margin-top: 4px;
+        font-weight: normal;
+      }
+      .answers {
+        margin-top: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+      }
+      .answers label {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        padding: 11px 14px;
+        border: 1.5px solid #e2e8f0;
+        border-radius: 12px;
+        cursor: pointer;
+        background: #ffffff;
+        transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        user-select: none;
+      }
+      .answers label:hover {
+        background: #f8fafc;
+        border-color: #cbd5e1;
+      }
+      .answers label:active {
+        transform: scale(0.99);
+      }
+      .answers label:has(input:checked),
+      .answers label.checked {
+        background: #f0f7ff;
+        border-color: #3b82f6;
+        color: #1e40af;
+        box-shadow: 0 2px 8px rgba(59, 130, 246, 0.12);
+        font-weight: 500;
+      }
+      .answers input {
+        width: 18px;
+        height: 18px;
+        accent-color: #2563eb;
+        flex-shrink: 0;
+        cursor: pointer;
+      }
+      .tf-item {
+        padding: 12px 14px;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        background: #fff;
+        margin-bottom: 8px;
+      }
+      .tf-text {
+        font-size: 14.5px;
+        line-height: 1.5;
+        color: var(--ink);
+        font-weight: 500;
+        margin-bottom: 6px;
+      }
+      .tf-row {
+        margin-top: 8px;
+        display: flex;
+        gap: 10px;
+      }
+      .tf-row label {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        cursor: pointer;
+        padding: 7px 14px;
+        border-radius: 9px;
+        background: #f8fafc;
+        border: 1.5px solid #e2e8f0;
+        font-size: 14px;
+        font-weight: 500;
+        transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        user-select: none;
+      }
+      .tf-row label:hover {
+        background: #f1f5f9;
+        border-color: #cbd5e1;
+      }
+      .tf-row label:active {
+        transform: scale(0.98);
+      }
+      .tf-row label:has(input:checked),
+      .tf-row label.checked {
+        background: #f0f7ff;
+        border-color: #3b82f6;
+        color: #1e40af;
+        font-weight: 600;
+        box-shadow: 0 2px 6px rgba(59, 130, 246, 0.1);
+      }
+      .tf-row input {
+        accent-color: #2563eb;
+      }
+
+      /* Drag and Drop Elements */
+      .dragwrap {
+        display: grid;
+        gap: 14px;
+      }
+      .dragzone {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 12px;
+      }
+      .zone {
+        min-height: 70px;
+        border: 2px dashed #94a3b8;
+        border-radius: 14px;
+        padding: 12px 14px;
+        background: #f8fafc;
+        transition: border-color 0.2s, background 0.2s;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .zone h4 {
+        margin: 0 0 10px;
+        font-size: 14px;
+        line-height: 1.5;
+        color: var(--ink);
+        font-weight: 600;
+      }
+      .zone.dragover {
+        border-color: var(--accent);
+        background: #eff6ff;
+      }
+      .droparea {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        min-height: 42px;
+        border-radius: 8px;
+        padding: 4px;
+        background: rgba(255, 255, 255, 0.6);
+        border: 1px solid rgba(226, 232, 240, 0.7);
+        align-items: center;
+      }
+      .pool {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        min-height: 48px;
+        background: #ffffff;
+        border: 1.5px solid #cbd5e1;
+        border-radius: 14px;
+        padding: 12px;
+        align-items: center;
+      }
+      .pill {
+        background: #eef2ff;
+        border: 1px solid #93c5fd;
+        color: #1e3a8a;
+        border-radius: 999px;
+        padding: 7px 14px;
+        display: inline-flex;
+        gap: 6px;
+        align-items: center;
+        font-weight: 600;
+        font-size: 13.5px;
+        user-select: none;
+        -webkit-user-select: none;
+        cursor: grab;
+        margin: 3px;
+        transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.18s, background 0.18s;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+      }
+      .pill:active {
+        cursor: grabbing;
+        transform: scale(0.96);
+      }
+      .pill.selected {
+        outline: 2.5px solid var(--accent);
+        outline-offset: 1px;
+        background: #dbeafe !important;
+        color: #1d4ed8 !important;
+        transform: scale(1.03);
+        box-shadow: 0 2px 10px rgba(37, 99, 235, 0.25);
+      }
+      .pill.placed {
+        animation: popPlaced 0.25s ease;
+      }
+      @keyframes popPlaced {
+        0% { transform: scale(0.9); }
+        50% { transform: scale(1.06); }
+        100% { transform: scale(1); }
+      }
+
+      /* Result Badges and Hint Containers */
+      .result {
+        margin-top: 14px;
+        font-weight: 700;
+        font-size: 14.5px;
+        animation: fadeIn 0.3s ease;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-4px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .r-good {
+        color: var(--good);
+      }
+      .r-bad {
+        color: var(--bad);
+      }
+      .result-hint {
+        margin-top: 8px;
+      }
+      .hint-box {
+        background: #f8fafc;
+        border: 1px solid #cbd5e1;
+        border-left: 4px solid #3b82f6;
+        border-radius: 10px;
+        padding: 12px 14px;
+        font-size: 13.5px;
+        color: #1e293b;
+        line-height: 1.6;
+        animation: fadeIn 0.25s ease;
+      }
+      .hint-box strong {
+        color: #0f172a;
+      }
+      .hint-box em {
+        font-style: normal;
+        color: #334155;
+      }
+
+      /* Lesson Navigation Footer */
+      .lesson-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-top: 24px;
+        margin-bottom: 40px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border);
+        flex-wrap: wrap;
+      }
+      .lesson-nav a {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 10px 16px;
+        background: #ffffff;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        color: var(--ink);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 13.5px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+        transition: all 0.2s ease;
+      }
+      .lesson-nav a:hover {
+        background: #f8fafc;
+        border-color: #94a3b8;
+        color: var(--accent);
+      }
+      .lesson-nav a.nav-primary {
+        background: var(--accent);
+        color: #ffffff;
+        border-color: var(--accent);
+      }
+      .lesson-nav a.nav-primary:hover {
+        background: var(--accent-hover);
+      }
+
+      /* Score Modal Dialog */
+      .score-modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.6);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        padding: 16px;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s ease, visibility 0.2s ease;
+      }
+      .score-modal-backdrop.visible {
+        opacity: 1;
+        visibility: visible;
+      }
+      .score-modal {
+        background: #ffffff;
+        border-radius: 20px;
+        max-width: 440px;
+        width: 100%;
+        padding: 26px 22px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+        text-align: center;
+        transform: translateY(12px) scale(0.97);
+        transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        border: 1px solid #e2e8f0;
+      }
+      .score-modal-backdrop.visible .score-modal {
+        transform: translateY(0) scale(1);
+      }
+      .score-badge {
+        font-size: 42px;
+        line-height: 1;
+        margin-bottom: 10px;
+      }
+      .score-title {
+        margin: 0 0 6px;
+        font-size: 20px;
+        font-weight: 800;
+        color: var(--ink);
+      }
+      .score-number {
+        font-size: 36px;
+        font-weight: 800;
+        color: var(--accent);
+        line-height: 1.2;
+        margin-top: 6px;
+      }
+      .score-pct {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--muted);
+        margin-bottom: 12px;
+      }
+      .score-msg {
+        margin: 0 0 20px;
+        font-size: 14px;
+        color: #475569;
+        line-height: 1.5;
+        padding: 0 8px;
+      }
+      .score-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .score-actions button {
+        width: 100%;
+        padding: 11px 16px;
+        font-size: 14px;
+        border-radius: 12px;
+      }
+      .score-actions .btn-primary {
+        background: var(--accent);
+        color: #ffffff;
+      }
+      .score-actions .btn-secondary {
+        background: #f1f5f9;
+        color: #334155;
+        border: 1px solid #cbd5e1;
+      }
+      .score-actions .btn-ghost {
+        background: transparent;
+        color: var(--muted);
+        border: none;
+        padding: 8px;
+        font-size: 13px;
+      }
+
+      /* Floating Back-To-Top Button */
+      .btn-scroll-top {
+        position: fixed;
+        bottom: 24px;
+        right: 20px;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: #1e293b;
+        color: #ffffff;
+        font-size: 20px;
+        font-weight: 700;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+        border: none;
+        cursor: pointer;
+        display: grid;
+        place-items: center;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(12px);
+        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 99;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+      }
+      .btn-scroll-top.visible {
+        opacity: 0.92;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .btn-scroll-top:hover {
+        opacity: 1;
+        background: #0f172a;
+        transform: translateY(-2px);
+      }
+      .btn-scroll-top:active {
+        transform: scale(0.92);
+      }
+
+      /* Responsive rules */
+      @media (max-width: 768px) {
+        .wrap {
+          padding: 10px 14px;
+        }
+        .brand-row {
+          margin-bottom: 8px;
+        }
+        .header-titles h1 {
+          font-size: 16px;
+          line-height: 1.35;
+        }
+        .meta {
+          font-size: 12px;
+          padding: 4px 10px;
+        }
+        .toolbar {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 6px;
+        }
+        button {
+          padding: 8px 6px;
+          font-size: 12.5px;
+          border-radius: 10px;
+          min-height: 38px;
+          white-space: nowrap;
+        }
+        button span {
+          display: none;
+        }
+        .cards {
+          padding: 12px 0 30px;
+          gap: 12px;
+        }
+        .card {
+          padding: 16px 14px;
+          border-radius: 14px;
+        }
+        .qhead {
+          gap: 10px;
+        }
+        .qidx {
+          width: 28px;
+          height: 28px;
+          font-size: 13px;
+          border-radius: 8px;
+        }
+        .qtitle {
+          font-size: 15px;
+          line-height: 1.45;
+        }
+        .dragzone {
+          grid-template-columns: 1fr;
+        }
+        .lesson-nav {
+          flex-direction: column;
+        }
+        .lesson-nav a {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header id="header">
+      <div class="progress-line"><div id="progressFill" class="progress-fill"></div></div>
+      <div class="wrap">
+        <div class="brand-row">
+          <div class="brand-title-wrap">
+            <a href="index.html" class="btn-home" title="Quay về trang chủ">← Trang chủ</a>
+            <div class="header-titles">
+              <h1>Bài 3: Dân chủ XHCN & Nhà nước XHCN</h1>
+              <span class="sub">Bản chất nền dân chủ, Nhà nước XHCN & xây dựng Nhà nước pháp quyền XHCN</span>
+            </div>
+          </div>
+          <div class="meta" id="meta">0/0 câu</div>
+        </div>
+        <div class="toolbar">
+          <button id="btnCheck"><span>✓</span> Xem kết quả</button>
+          <button class="secondary" id="btnReset"><span>↻</span> Làm lại</button>
+          <button class="ghost" id="btnToggleKey"><span>👁</span> Đáp án</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <div id="list" class="cards"></div>
+      <nav class="lesson-nav">
+        <a href="bai2.html" class="nav-btn">← Bài 2: CNXH & Thời kỳ quá độ</a>
+        <a href="index.html" class="nav-home-btn">📚 Mục lục 6 bài</a>
+        <a href="bai4.html" class="nav-btn nav-primary">Bài 4: Cơ cấu XH-Giai cấp & Liên minh →</a>
+      </nav>
+    </main>
+
+    <button id="btnScrollTop" class="btn-scroll-top" title="Lên đầu trang" aria-label="Lên đầu trang">↑</button>
+
+    <script>
+window.LESSON_ID = 3;
+
+const clone = (x) => JSON.parse(JSON.stringify(x));
+const shuffle = (arr) => {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+};
+const el = (tag, attrs = {}, html = "") => {
+  const e = document.createElement(tag);
+  Object.entries(attrs).forEach(([k, v]) => {
+    if (k === "class") e.className = v;
+    else if (k === "dataset") Object.assign(e.dataset, v);
+    else e.setAttribute(k, v);
+  });
+  if (html) e.innerHTML = html;
+  return e;
+};
+const safeId = (str) =>
+  "id_" +
+  str
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-zA-Z0-9]/g, "_");
+
+const BANK = [
+  {
+    "id": 1,
+    "type": "single",
+    "title": "Theo nguyên nghĩa tiếng Hy Lạp thì \"Dân chủ\" là gì?",
+    "options": [
+      "Là quyền tự do của mỗi người",
+      "Là quyền lực thuộc về nhân dân",
+      "Là quyền của con người",
+      "Là trật tự xã hội"
+    ],
+    "answer": [
+      "Là quyền lực thuộc về nhân dân"
+    ]
+  },
+  {
+    "id": 2,
+    "type": "single",
+    "title": "Bản chất kinh tế của nền dân chủ xã hội chủ nghĩa là:",
+    "options": [
+      "Thực hiện chế độ công hữu về tư liệu sản xuất chủ yếu và thực hiện chế độ phân phối lợi ích theo kết quả lao động là chủ yếu",
+      "Thực hiện chế độ phân phối \"Làm theo năng lực, hưởng theo nhu cầu\"",
+      "Thực hiện chế độ tư hữu về tư liệu sản xuất",
+      "Thực hiện chế độ tư hữu về công cụ sản xuất chủ yếu"
+    ],
+    "answer": [
+      "Thực hiện chế độ công hữu về tư liệu sản xuất chủ yếu và thực hiện chế độ phân phối lợi ích theo kết quả lao động là chủ yếu"
+    ]
+  },
+  {
+    "id": 3,
+    "type": "single",
+    "title": "Chọn ý không đúng về điểm khác biệt của nền dân chủ xã hội chủ nghĩa so với nền dân chủ tư sản:",
+    "options": [
+      "Mang tính nhất nguyên về chính trị",
+      "Dựa trên chế độ sở hữu xã hội về những tư liệu sản xuất chủ yếu của toàn xã hội",
+      "Trước hết và chủ yếu được thực hiện bằng Nhà nước pháp quyền xã hội chủ nghĩa",
+      "Không mang tính giai cấp"
+    ],
+    "answer": [
+      "Không mang tính giai cấp"
+    ]
+  },
+  {
+    "id": 4,
+    "type": "single",
+    "title": "Lịch sử loài người đã từng xuất hiện các nền dân chủ nào?",
+    "options": [
+      "Nền dân chủ chủ nô, nền dân chủ phong kiến, nền dân chủ tư sản.",
+      "Nền dân chủ nguyên thủy, nền dân chủ chủ nô, nền dân chủ phong kiến, nền dân chủ tư sản, nền dân chủ vô sản",
+      "Nền dân chủ chủ nô, nền dân chủ phong kiến, nền dân chủ tư sản, nền dân chủ vô sản",
+      "Nền dân chủ chủ nô, nền dân chủ tư sản, nền dân chủ xã hội chủ nghĩa"
+    ],
+    "answer": [
+      "Nền dân chủ chủ nô, nền dân chủ tư sản, nền dân chủ xã hội chủ nghĩa"
+    ]
+  },
+  {
+    "id": 5,
+    "type": "single",
+    "title": "So với các nền dân chủ trước đây, dân chủ xã hội chủ nghĩa có điểm khác biệt cơ bản nào?",
+    "options": [
+      "Là nền dân chủ phi lịch sử",
+      "Là nền dân chủ rộng rãi cho giai cấp công nhân và nhân dân lao động",
+      "Không còn mang tính giai cấp",
+      "Là nền dân chủ thuần túy"
+    ],
+    "answer": [
+      "Là nền dân chủ rộng rãi cho giai cấp công nhân và nhân dân lao động"
+    ]
+  },
+  {
+    "id": 6,
+    "type": "single",
+    "title": "Nhà nước pháp quyền XHCN quản lý mọi mặt của đời sống xã hội chủ yếu bằng gì?",
+    "options": [
+      "Tuyên truyền",
+      "Giáo dục",
+      "Đường lối, chính sách",
+      "Hiến pháp, pháp luật"
+    ],
+    "answer": [
+      "Hiến pháp, pháp luật"
+    ]
+  },
+  {
+    "id": 7,
+    "type": "single",
+    "title": "Kiểu nhà nước nào sau đây được V.I. Lênin gọi là nhà nước \"nửa nhà nước\"?",
+    "options": [
+      "Nhà nước chủ nô",
+      "Nhà nước phong kiến",
+      "Nhà nước tư sản",
+      "Nhà nước xã hội chủ nghĩa"
+    ],
+    "answer": [
+      "Nhà nước xã hội chủ nghĩa"
+    ]
+  },
+  {
+    "id": 8,
+    "type": "single",
+    "title": "Căn cứ vào phạm vi tác động của quyền lực nhà nước, chức năng của nhà nước được chia thành:",
+    "options": [
+      "Chức năng đối nội và chức năng đối ngoại",
+      "Chức năng chính trị, kinh tế, văn hóa, xã hội",
+      "Chức năng giai cấp, xã hội",
+      "Chức năng trấn áp và chức năng tổ chức, xây dựng"
+    ],
+    "answer": [
+      "Chức năng đối nội và chức năng đối ngoại"
+    ]
+  },
+  {
+    "id": 9,
+    "type": "single",
+    "title": "Chế độ dân chủ nhân dân ở Việt Nam được xác lập từ khi nào?",
+    "options": [
+      "Sau kháng chiến chống đế quốc Mỹ năm 1975",
+      "Sau khi Đảng Cộng sản ra đời",
+      "Sau kháng chiến chống thực dân Pháp năm 1954",
+      "Sau cách mạng tháng Tám năm 1945"
+    ],
+    "answer": [
+      "Sau cách mạng tháng Tám năm 1945"
+    ]
+  },
+  {
+    "id": 10,
+    "type": "single",
+    "title": "Nền dân chủ xã hội chủ nghĩa ở Việt Nam có điểm khác biệt cơ bản nào so với các nền dân chủ trước đây?",
+    "options": [
+      "Là nền dân chủ phi lịch sử",
+      "Là nền dân chủ rộng rãi cho giai cấp công nhân và nhân dân lao động",
+      "Là nền dân chủ thuần túy",
+      "Còn mang tính giai cấp"
+    ],
+    "answer": [
+      "Là nền dân chủ rộng rãi cho giai cấp công nhân và nhân dân lao động"
+    ]
+  },
+  {
+    "id": 11,
+    "type": "single",
+    "title": "Tại sao quyền lực nhà nước ở Việt Nam được tổ chức theo nguyên tắc thống nhất?",
+    "options": [
+      "Để tăng cường sự kiểm soát của nhà nước",
+      "Để đảm bảo sự phối hợp và kiểm soát giữa các cơ quan lập pháp, hành pháp và tư pháp",
+      "Để kiểm soát chặt chẽ các hoạt động kinh tế",
+      "Để giảm thiểu vai trò của các tổ chức phi chính phủ"
+    ],
+    "answer": [
+      "Để đảm bảo sự phối hợp và kiểm soát giữa các cơ quan lập pháp, hành pháp và tư pháp"
+    ]
+  },
+  {
+    "id": 12,
+    "type": "single",
+    "title": "Hãy xác định biện pháp để nâng cao hiệu quả hoạt động của Nhà nước pháp quyền xã hội chủ nghĩa ở Việt Nam.",
+    "options": [
+      "Giảm thiểu sự phát triển của khu vực tư nhân",
+      "Tăng cường sự kiểm soát của nhà nước",
+      "Xây dựng và từng bước hoàn thiện hệ thống giám sát, phản biện xã hội",
+      "Giảm thiểu sự can thiệp của các tổ chức xã hội"
+    ],
+    "answer": [
+      "Xây dựng và từng bước hoàn thiện hệ thống giám sát, phản biện xã hội"
+    ]
+  },
+  {
+    "id": 13,
+    "type": "single",
+    "title": "Nhà nước pháp quyền xã hội chủ nghĩa ở Việt Nam có đặc điểm như thế nào?",
+    "options": [
+      "Nhà nước đặt dưới sự lãnh đạo của Đảng cộng sản",
+      "Nhà nước hoạt động trên nền tảng của khối liên minh công – nông – trí thức",
+      "Nhà nước được tổ chức và hoạt động trên cơ sở Hiến pháp và pháp luật",
+      "Nhà nước hình thành là kết quả của cách mạng xã hội chủ nghĩa"
+    ],
+    "answer": [
+      "Nhà nước được tổ chức và hoạt động trên cơ sở Hiến pháp và pháp luật"
+    ]
+  },
+  {
+    "id": 14,
+    "type": "multi",
+    "title": "Dân chủ trong xã hội nguyên thủy được thể hiện như thế nào? (Chọn 2 đáp án đúng)",
+    "options": [
+      "Mọi người đều bình đẳng trong quyết định các vấn đề chung",
+      "Không có sự phân chia giai cấp và quyền lực",
+      "Quyền lực tập trung vào một số cá nhân",
+      "Hình thành tổ chức chính trị phức tạp"
+    ],
+    "answer": [
+      "Mọi người đều bình đẳng trong quyết định các vấn đề chung",
+      "Không có sự phân chia giai cấp và quyền lực"
+    ]
+  },
+  {
+    "id": 15,
+    "type": "multi",
+    "title": "Đặc điểm nổi bật của nền dân chủ xã hội chủ nghĩa là gì? (Chọn 2 đáp án đúng)",
+    "options": [
+      "Tôn trọng quyền sở hữu tư nhân tuyệt đối",
+      "Phân biệt rõ ràng giữa các tầng lớp xã hội",
+      "Thực hiện quyền làm chủ tập thể của nhân dân",
+      "Đặt quyền lợi của nhân dân lao động lên hàng đầu"
+    ],
+    "answer": [
+      "Thực hiện quyền làm chủ tập thể của nhân dân",
+      "Đặt quyền lợi của nhân dân lao động lên hàng đầu"
+    ]
+  },
+  {
+    "id": 16,
+    "type": "single",
+    "title": "Đâu là định nghĩa đúng và đầy đủ về dân chủ?",
+    "options": [
+      "Dân chủ là một giá trị phản ánh những quyền tối thiểu của con người, là một hình thức tổ chức nhà nước thừa nhận quyền làm chủ của nhân dân; là một giá trị xã hội phản ánh sự nghiệp đấu tranh của con người",
+      "Dân chủ là giá trị phản ánh quyền cơ bản của con người, là kết quả của sự nghiệp đấu tranh của con người vì lợi ích của con người",
+      "Dân chủ là một giá trị phản ánh những quyền cơ bản của con người, là một hình thức tổ chức nhà nước của giai cấp cầm quyền; có quá trình ra đời, phát triển cùng với lịch sử xã hội nhân loại",
+      "Dân chủ là một giá trị xã hội phản ánh sự nghiệp đấu tranh của con người vì sự phát triển tiến bộ xã hội"
+    ],
+    "answer": [
+      "Dân chủ là một giá trị phản ánh những quyền tối thiểu của con người, là một hình thức tổ chức nhà nước thừa nhận quyền làm chủ của nhân dân; là một giá trị xã hội phản ánh sự nghiệp đấu tranh của con người"
+    ]
+  },
+  {
+    "id": 17,
+    "type": "single",
+    "title": "Bản chất tư tưởng - văn hoá - xã hội của nền dân chủ xã hội chủ nghĩa được thể hiện ở nội dung nào?",
+    "options": [
+      "Lấy hệ tư tưởng của giai cấp nông dân làm chủ đạo",
+      "Lấy hệ tư tưởng của giai cấp tư sản làm chủ đạo",
+      "Lấy hệ tư tưởng của giai cấp tiểu tư sản làm chủ đạo",
+      "Lấy hệ tư tưởng Mác - Lênin - hệ tư tưởng của giai cấp công nhân làm chủ đạo"
+    ],
+    "answer": [
+      "Lấy hệ tư tưởng Mác - Lênin - hệ tư tưởng của giai cấp công nhân làm chủ đạo"
+    ]
+  },
+  {
+    "id": 18,
+    "type": "single",
+    "title": "Đặc điểm của nhà nước pháp quyền xã hội chủ nghĩa là gì?",
+    "options": [
+      "Quản lý xã hội bằng dư luận",
+      "Quản lý xã hội bằng mệnh lệnh hành chính",
+      "Quản lý xã hội bằng niềm tin",
+      "Quản lý xã hội bằng pháp luật"
+    ],
+    "answer": [
+      "Quản lý xã hội bằng pháp luật"
+    ]
+  },
+  {
+    "id": 19,
+    "type": "single",
+    "title": "So với các mô hình nhà nước khác trong lịch sử thì nhà nước pháp quyền xã hội chủ nghĩa ở Việt Nam có sự khác biệt về chất như thế nào?",
+    "options": [
+      "Vừa mang bản chất của giai cấp công nhân và nhân dân lao động",
+      "Mang bản chất của đa số nhân dân lao động",
+      "Mang bản chất của giai cấp công nhân, tính nhân dân rộng rãi và tính dân tộc sâu sắc",
+      "Mang bản chất của giai cấp công nhân"
+    ],
+    "answer": [
+      "Mang bản chất của giai cấp công nhân, tính nhân dân rộng rãi và tính dân tộc sâu sắc"
+    ]
+  },
+  {
+    "id": 20,
+    "type": "single",
+    "title": "Sự ra đời của nhà nước xã hội chủ nghĩa gắn với sự kiện nào?",
+    "options": [
+      "Giai cấp công nhân đấu tranh đòi tăng lương, giảm giờ làm, cải thiện điều kiện lao động",
+      "Giai cấp công nhân lật đổ nhà nước của giai cấp bóc lột, giành được chính quyền",
+      "Giai cấp công nhân xây dựng công nghiệp",
+      "Giai cấp công nhân đấu tranh phản đối tình trạng áp bức bóc lột của giai cấp tư sản"
+    ],
+    "answer": [
+      "Giai cấp công nhân lật đổ nhà nước của giai cấp bóc lột, giành được chính quyền"
+    ]
+  },
+  {
+    "id": 21,
+    "type": "single",
+    "title": "Dân chủ xã hội chủ nghĩa mang tính nhất nguyên về chính trị, được hiểu là:",
+    "options": [
+      "Nền dân chủ xã hội chủ nghĩa đại biểu cho trí tuệ, lợi ích của riêng giai cấp công nhân và nhân dân lao động",
+      "Nền dân chủ xã hội chủ nghĩa đại biểu cho trí tuệ, lợi ích của riêng giai cấp công nhân và tầng lớp trí thức",
+      "Nền dân chủ xã hội chủ nghĩa do Đảng Cộng sản lãnh đạo – đại biểu cho trí tuệ, lợi ích của giai cấp công nhân, nhân dân lao động và toàn dân tộc",
+      "Nền dân chủ xã hội chủ nghĩa đại biểu cho trí tuệ, lợi ích của riêng giai cấp công nhân và giai cấp nông dân"
+    ],
+    "answer": [
+      "Nền dân chủ xã hội chủ nghĩa do Đảng Cộng sản lãnh đạo – đại biểu cho trí tuệ, lợi ích của giai cấp công nhân, nhân dân lao động và toàn dân tộc"
+    ]
+  },
+  {
+    "id": 22,
+    "type": "single",
+    "title": "Hãy xác định mục tiêu chính của việc xây dựng Nhà nước pháp quyền xã hội chủ nghĩa ở Việt Nam.",
+    "options": [
+      "Phát triển kinh tế thị trường tự do",
+      "Phục vụ lợi ích của giai cấp công nhân và nhân dân lao động",
+      "Giảm thiểu sự can thiệp của nhà nước",
+      "Tăng cường sự kiểm soát của nhà nước"
+    ],
+    "answer": [
+      "Phục vụ lợi ích của giai cấp công nhân và nhân dân lao động"
+    ]
+  },
+  {
+    "id": 23,
+    "type": "multi",
+    "title": "Bản chất của nền dân chủ xã hội chủ nghĩa là: (Chọn 2 đáp án đúng)",
+    "options": [
+      "Nền dân chủ mang tính cá nhân",
+      "Nền dân chủ của số nhân dân lao động",
+      "Nền dân chủ của giai cấp tư sản",
+      "Nền dân chủ mang tính tập thể"
+    ],
+    "answer": [
+      "Nền dân chủ của số nhân dân lao động",
+      "Nền dân chủ mang tính tập thể"
+    ]
+  },
+  {
+    "id": 24,
+    "type": "multi",
+    "title": "Dân chủ xã hội chủ nghĩa ở Việt Nam là: (Chọn 2 đáp án đúng)",
+    "options": [
+      "Nền dân chủ gắn liền với sự lãnh đạo của Đảng Cộng sản Việt Nam",
+      "Chế độ dân chủ tư sản mở rộng",
+      "Chế độ dân chủ không phụ thuộc vào nhà nước",
+      "Nền dân chủ bảo đảm quyền lực thuộc về nhân dân"
+    ],
+    "answer": [
+      "Nền dân chủ gắn liền với sự lãnh đạo của Đảng Cộng sản Việt Nam",
+      "Nền dân chủ bảo đảm quyền lực thuộc về nhân dân"
+    ]
+  },
+  {
+    "id": 25,
+    "type": "single",
+    "title": "Bản chất chính trị của nền dân chủ xã hội chủ nghĩa thể hiện như thế nào?",
+    "options": [
+      "Nền dân chủ tập trung vào phát triển kinh tế tư nhân và bảo vệ lợi ích của tầng lớp giàu có.",
+      "Quyền lực thuộc về một cá nhân duy nhất, không có sự tham gia của quần chúng nhân dân.",
+      "Quyền lực và lợi ích thuộc về toàn thể nhân dân lao động, trong đó có giai cấp công nhân, dưới sự lãnh đạo của Đảng Cộng sản.",
+      "Nhà nước chủ yếu thực hiện các quyết định chính trị mà không cần sự đồng thuận hoặc tham gia của người dân."
+    ],
+    "answer": [
+      "Quyền lực và lợi ích thuộc về toàn thể nhân dân lao động, trong đó có giai cấp công nhân, dưới sự lãnh đạo của Đảng Cộng sản."
+    ]
+  },
+  {
+    "id": 26,
+    "type": "single",
+    "title": "Bản chất dân chủ xã hội chủ nghĩa ở Việt Nam được thực hiện thông qua:",
+    "options": [
+      "Các hình thức dân chủ tự nguyện.",
+      "Các hình thức dân chủ gián tiếp và trực tiếp.",
+      "Các hình thức dân chủ cơ bản và không cơ bản.",
+      "Các hình thức dân chủ không tự nguyện."
+    ],
+    "answer": [
+      "Các hình thức dân chủ gián tiếp và trực tiếp."
+    ]
+  },
+  {
+    "id": 27,
+    "type": "single",
+    "title": "Bằng hiểu biết của bản thân, hãy cho biết đâu là hình thức dân chủ gián tiếp?",
+    "options": [
+      "Người dân tự tổ chức các phong trào xã hội để yêu cầu các quyền lợi mà không thông qua bất kỳ đại diện nào.",
+      "Người dân tham gia trực tiếp vào các cuộc trưng cầu ý dân về các chính sách hoặc luật pháp cụ thể.",
+      "Người dân bầu ra đại diện của mình để thay mặt họ quyết định các vấn đề quan trọng trong quốc hội hoặc cơ quan lập pháp.",
+      "Người dân trực tiếp tham gia bỏ phiếu để quyết định các vấn đề quan trọng của đất nước."
+    ],
+    "answer": [
+      "Người dân bầu ra đại diện của mình để thay mặt họ quyết định các vấn đề quan trọng trong quốc hội hoặc cơ quan lập pháp."
+    ]
+  },
+  {
+    "id": 28,
+    "type": "multi",
+    "title": "Nhà nước pháp quyền xã hội chủ nghĩa Việt Nam được xây dựng dựa trên những nguyên tắc nào sau đây? (Chọn 2 đáp án đúng)",
+    "options": [
+      "Quyền lực nhà nước là tối cao, không cần kiểm soát.",
+      "Đảng lãnh đạo nhà nước theo phương thức mệnh lệnh.",
+      "Quyền lực nhà nước thống nhất, có phân công, phối hợp và kiểm soát.",
+      "Nhà nước quản lý xã hội bằng hiến pháp, pháp luật."
+    ],
+    "answer": [
+      "Quyền lực nhà nước thống nhất, có phân công, phối hợp và kiểm soát.",
+      "Nhà nước quản lý xã hội bằng hiến pháp, pháp luật."
+    ]
+  },
+  {
+    "id": 29,
+    "type": "single",
+    "title": "Căn cứ vào tính chất của quyền lực nhà nước, chức năng của nhà nước được chia thành:",
+    "options": [
+      "Chức năng chính trị, kinh tế, văn hóa, xã hội",
+      "Chức năng giai cấp (trấn áp) và chức năng xã hội (tổ chức và xây dựng)",
+      "Chức năng giai cấp và chức năng đối ngoại"
+    ],
+    "answer": [
+      "Chức năng giai cấp (trấn áp) và chức năng xã hội (tổ chức và xây dựng)"
+    ]
+  },
+  {
+    "id": 30,
+    "type": "multi",
+    "title": "Bản chất của dân chủ là gì? (Chọn 2 phương án đúng nhất)",
+    "options": [
+      "Tôn trọng và đảm bảo quyền con người",
+      "Quyền lực thuộc về toàn thể nhân dân",
+      "Quyền lực thuộc về một nhóm nhỏ trong xã hội",
+      "Phân biệt rõ ràng các tầng lớp xã hội"
+    ],
+    "answer": [
+      "Tôn trọng và đảm bảo quyền con người",
+      "Quyền lực thuộc về toàn thể nhân dân"
+    ]
+  },
+  {
+    "id": 31,
+    "type": "single",
+    "title": "Ở Việt Nam bản chất dân chủ xã hội chủ nghĩa là dựa vào:",
+    "options": [
+      "Nhà nước xã hội chủ nghĩa và sự ủng hộ, giúp đỡ của nhân dân",
+      "Sự quản lý của Nhà nước",
+      "Nhân dân",
+      "Giai cấp công nhân"
+    ],
+    "answer": [
+      "Nhà nước xã hội chủ nghĩa và sự ủng hộ, giúp đỡ của nhân dân"
+    ]
+  },
+  {
+    "id": 32,
+    "type": "single",
+    "title": "Vận dụng những kiến thức đã học hãy chọn phương án đúng về mối quan hệ giữa dân chủ xã hội chủ nghĩa và nhà nước xã hội chủ nghĩa?",
+    "options": [
+      "Dân chủ xã hội chủ nghĩa là mục tiêu cho việc xây dựng và hoạt động của nhà nước xã hội chủ nghĩa còn nhà nước xã hội chủ nghĩa là công cụ quan trọng cho việc thực thi quyền làm chủ của người dân",
+      "Dân chủ xã hội chủ nghĩa là cơ sở, nền tảng cho việc xây dựng và hoạt động của nhà nước xã hội chủ nghĩa còn nhà nước xã hội chủ nghĩa là công cụ quan trọng cho việc thực thi quyền làm chủ của người dân",
+      "Dân chủ xã hội chủ nghĩa là mục đích cho việc xây dựng và hoạt động của nhà nước xã hội chủ nghĩa còn nhà nước xã hội chủ nghĩa là diều kiện cho sự ra đời của dân chủ xã hội chủ nghĩa",
+      "Dân chủ xã hội chủ nghĩa là mục đích cho việc xây dựng và hoạt động của nhà nước xã hội chủ nghĩa còn nhà nước xã hội chủ nghĩa quyết định bản chất của dân chủ"
+    ],
+    "answer": [
+      "Dân chủ xã hội chủ nghĩa là cơ sở, nền tảng cho việc xây dựng và hoạt động của nhà nước xã hội chủ nghĩa còn nhà nước xã hội chủ nghĩa là công cụ quan trọng cho việc thực thi quyền làm chủ của người dân"
+    ]
+  },
+  {
+    "id": 33,
+    "type": "tfset",
+    "title": "Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
+    "statements": [
+      {
+        "text": "Bản chất dân chủ xã hội chủ nghĩa ở Việt Nam được thực hiện thông qua các thức dân chủ gián tiếp và dân chủ trực tiếp",
+        "answer": true
+      },
+      {
+        "text": "Đảng ta khẳng định một trong những đặc trưng của chủ nghĩa xã hội Việt Nam là do nhân dân làm chủ",
+        "answer": true
+      },
+      {
+        "text": "Quốc hội là cơ quan quyền lực nhà nước cao nhất hoạt động theo nhiệm kỳ 3 năm",
+        "answer": false
+      },
+      {
+        "text": "Trong hoạt động của nhà nước pháp quyền xã hội chủ nghĩa ở Việt Nam, các cơ quan của nhà nước không được phân quyền rõ ràng",
+        "answer": false
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "type": "tfset",
+    "title": "Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
+    "statements": [
+      {
+        "text": "Dân chủ tư sản là hình thức dân chủ gắn với quyền lực chính trị của giai cấp tư sản",
+        "answer": true
+      },
+      {
+        "text": "Với tư cách là một hình thái nhà nước, một chế độ chính trị thì trong lịch sử nhân loại, cho đến nay có năm nền (chế độ) dân chủ",
+        "answer": false
+      },
+      {
+        "text": "Nền dân chủ chủ nô, gắn với chế độ chiếm hữu nô lệ",
+        "answer": true
+      },
+      {
+        "text": "Dân chủ xã hội chủ nghĩa là công cụ để giai cấp công nhân thực hiện chuyên chính với các giai cấp khác",
+        "answer": false
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "type": "tfset",
+    "title": "Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
+    "statements": [
+      {
+        "text": "Dân chủ xã hội chủ nghĩa là nền dân chủ cao hơn về chất so với nền dân chủ tư sản",
+        "answer": true
+      },
+      {
+        "text": "Trong xã hội tư bản, dân chủ thực chất thuộc về giai cấp tư sản",
+        "answer": true
+      },
+      {
+        "text": "Dân chủ xã hội chủ nghĩa là sự phủ định sách tron những thành tựu dân chủ trước đó",
+        "answer": false
+      },
+      {
+        "text": "Dân chủ là một phạm trù mang tính lịch sử, gắn với sự xuất hiện và phát triển của nhà nước",
+        "answer": true
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "type": "drag_pairs",
+    "title": "Ghép các đáp án khớp với các phát biểu từ 1 - 4 vế trái dưới đây:",
+    "pairs": {
+      "___ là hình thức dân chủ ra đời từ cách mạng tư sản": "dân chủ tư sản",
+      "Mỗi kiểu dân chủ trong lịch sử đều mang ___ nhất định.": "bản chất giai cấp",
+      "Nền dân chủ chủ nô, gắn với chế độ ___": "chiếm hữu nô lệ",
+      "___ là nền dân chủ cao hơn về chất so với nền dân chủ có trong lịch sử nhân loại": "dân chủ xã hội chủ nghĩa"
+    }
+  },
+  {
+    "id": 37,
+    "type": "drag_pairs",
+    "title": "Kéo thả các đáp án khớp với các phát biểu từ 1 – 3 ở dưới đây:",
+    "pairs": {
+      "Nền dân chủ xã hội chủ nghĩa là nền dân chủ mang bản chất của ______": "giai cấp công nhân",
+      "Dân chủ xã hội chủ nghĩa là sự kết hợp giữa hình thức dân chủ đại diện và ______": "dân chủ trực tiếp",
+      "Dân chủ xã hội chủ nghĩa bảo đảm phát huy đầy đủ ______ của nhân dân trên tất cả các lĩnh vực": "quyền làm chủ"
+    }
+  },
+  {
+    "id": 38,
+    "type": "drag_pairs",
+    "title": "Kéo thả các đáp án khớp với các phát biểu từ 1 – 4 ở dưới đây:",
+    "pairs": {
+      "Dân chủ đại diện được thể hiện qua việc ______": "Bầu cử Quốc hội",
+      "Một nguyên tắc cốt lõi của nhà nước pháp quyền là ______": "Thượng tôn pháp luật",
+      "Nhân dân là ______ tối cao trong Nhà nước pháp quyền": "Chủ thể quyền lực",
+      "Hình thức dân chủ gián tiếp là hình thức ______": "Dân chủ đại diện"
+    }
+  },
+  {
+    "id": 39,
+    "type": "drag_pairs",
+    "title": "Kéo thả các đáp án khớp với các phát biểu từ 1 – 3 ở dưới đây:",
+    "pairs": {
+      "Hình thức ___ là hình thức dân chủ đại diện, được thực hiện do nhân dân “ủy quyền”, giao quyền lực của mình cho tổ chức mà nhân dân trực tiếp bầu ra.": "dân chủ gián tiếp",
+      "Hình thức ___ là hình thức thông qua đó, nhân dân bằng hành động trực tiếp của mình thực hiện quyền làm chủ nhà nước và xã hội.": "dân chủ trực tiếp",
+      "Chế độ ___ ở nước ta được xác lập sau Cách mạng Tháng Tám năm 1945.": "dân chủ nhân dân"
+    }
+  },
+  {
+    "id": 40,
+    "type": "tfset",
+    "title": "Chọn đáp án Đúng hoặc Sai với từng phát biểu sau:",
+    "statements": [
+      {
+        "text": "Phát triển dân chủ trực tiếp là hình thức dân chủ để đại diện, được thực hiện do nhân dân ủy quyền, trao quyền lực của mình cho nhà nước trực tiếp bầu ra.",
+        "answer": false
+      },
+      {
+        "text": "Cách mạng dân tộc dân chủ nhân dân ở nước ta được xác lập sau Cách mạng Tháng Tám năm 1945.",
+        "answer": true
+      },
+      {
+        "text": "Hình thức dân chủ gián tiếp là hình thức thông qua đó, nhân dân bằng hành động trực tiếp của mình thực hiện quyền làm chủ nhà nước và xã hội.",
+        "answer": false
+      },
+      {
+        "text": "Năm 1976, tên nước được đổi thành Cộng hòa xã hội chủ nghĩa Việt Nam.",
+        "answer": true
+      }
+    ]
+  }
+];
+
+let WORK = [];
+let keyVisible = false;
+let selectedPill = null;
+
+function triggerHaptic(duration = 10) {
+  if (typeof navigator !== "undefined" && navigator.vibrate) {
+    try { navigator.vibrate(duration); } catch (e) {}
+  }
+}
+
+function reset(shuffleAll = true) {
+  WORK = clone(BANK);
+  if (shuffleAll) WORK = shuffle(WORK);
+  WORK.forEach((q) => {
+    if (q.options) q.options = shuffle(q.options);
+    if (q.type === "drag_pairs") {
+      const entries = Object.entries(q.pairs);
+      q.__prompts = shuffle(entries.map(([k]) => k));
+      q.__options = shuffle(entries.map(([_, v]) => v));
+      q.__extras = q.extras ? shuffle(q.extras) : [];
+    }
+    if (q.type === "drag_groups") {
+      q.__items = shuffle(q.items);
+      q.__groupNames = Object.keys(q.groups);
+    }
+  });
+  keyVisible = false;
+  selectedPill = null;
+  const btnToggle = document.getElementById("btnToggleKey");
+  if (btnToggle) btnToggle.classList.remove("active");
+  const meta = document.getElementById("meta");
+  if (meta) delete meta.dataset.showScore;
+  render();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function render() {
+  const list = document.getElementById("list");
+  list.innerHTML = "";
+  document.getElementById("meta").textContent = "0/" + WORK.length + " câu";
+
+  WORK.forEach((q, qi) => {
+    const card = el("div", { class: "card", id: "q_" + qi });
+    const head = el("div", { class: "qhead" });
+    head.append(el("div", { class: "qidx" }, String(qi + 1)));
+    const title = el("div", { class: "qtitle" }, q.title);
+    if (q.type === "single")
+      title.append(el("div", { class: "hint" }, "(Chọn 1 đáp án đúng)"));
+    if (q.type === "multi")
+      title.append(el("div", { class: "hint" }, "(Chọn nhiều đáp án đúng)"));
+    if (q.type === "tfset")
+      title.append(el("div", { class: "hint" }, "(Đúng / Sai theo từng phát biểu)"));
+    if (q.type && q.type.includes("drag"))
+      title.append(el("div", { class: "hint" }, "(Kéo thả hoặc chạm vào thẻ từ rồi chạm vào ô tương ứng)"));
+    head.append(title);
+    card.append(head);
+
+    const body = el("div", { class: "answers" });
+
+    if (q.type === "single" || q.type === "multi") {
+      q.options.forEach((opt) => {
+        const id = "q" + qi + "_" + safeId(opt);
+        const lab = el("label");
+        const ipt = el("input", {
+          type: q.type === "single" ? "radio" : "checkbox",
+          name: "q" + qi,
+          value: opt,
+          id,
+        });
+        lab.append(ipt, el("span", {}, opt));
+        body.append(lab);
+      });
+    }
+
+    if (q.type === "tfset") {
+      q.statements.forEach((st, si) => {
+        const row = el("div", { class: "tf-item" });
+        row.append(el("div", { class: "tf-text" }, st.text));
+        const ch = el("div", { class: "tf-row" });
+        ["Đúng", "Sai"].forEach((v) => {
+          const lab = el("label");
+          const ipt = el("input", {
+            type: "radio",
+            name: "q" + qi + "_s" + si,
+            value: v,
+          });
+          lab.append(ipt, el("span", {}, v));
+          ch.append(lab);
+        });
+        row.append(ch);
+        body.append(row);
+      });
+    }
+
+    if (q.type === "drag_pairs") {
+      const wrap = el("div", { class: "dragwrap" });
+      const zones = el("div", { class: "dragzone" });
+      q.__prompts.forEach((promptText) => {
+        const z = el("div", { class: "zone", dataset: { prompt: promptText } });
+        z.append(el("h4", {}, promptText), el("div", { class: "droparea" }));
+        zones.append(z);
+      });
+      wrap.append(zones);
+      const pool = el("div", { class: "pool" });
+      [...q.__options, ...(q.__extras || [])].forEach((optText) => {
+        pool.append(
+          el(
+            "div",
+            { class: "pill", draggable: true, dataset: { txt: optText } },
+            optText,
+          ),
+        );
+      });
+      wrap.append(pool);
+      body.append(wrap);
+    }
+
+    if (q.type === "drag_groups") {
+      const wrap = el("div", { class: "dragwrap" });
+      const zones = el("div", { class: "dragzone" });
+      q.__groupNames.forEach((g) => {
+        const z = el("div", { class: "zone", dataset: { gname: g } });
+        z.append(el("h4", {}, g), el("div", { class: "droparea" }));
+        zones.append(z);
+      });
+      wrap.append(zones);
+      const pool = el("div", { class: "pool" });
+      q.__items.forEach((item) => {
+        pool.append(
+          el(
+            "div",
+            { class: "pill", draggable: true, dataset: { txt: item } },
+            item,
+          ),
+        );
+      });
+      wrap.append(pool);
+      body.append(wrap);
+    }
+
+    const res = el("div", { class: "result", id: "res_" + qi });
+    const hint = el("div", { class: "result-hint", id: "hint_" + qi });
+    card.append(body, res, hint);
+    list.append(card);
+  });
+
+  enableDragDrop();
+  updateProgress();
+}
+
+function bindPill(p) {
+  p.addEventListener("dragstart", (e) => {
+    const card = p.closest(".card");
+    const cardId = card ? card.id : "";
+    e.dataTransfer.setData(
+      "text/plain",
+      JSON.stringify({ cardId, txt: p.dataset.txt })
+    );
+  });
+
+  p.addEventListener("click", (e) => {
+    e.stopPropagation();
+    triggerHaptic(10);
+    const card = p.closest(".card");
+    if (!card) return;
+
+    if (selectedPill === p) {
+      p.classList.remove("selected");
+      selectedPill = null;
+    } else {
+      if (selectedPill) selectedPill.classList.remove("selected");
+      selectedPill = p;
+      p.classList.add("selected");
+    }
+  });
+}
+
+function placePillInArea(pill, area, card) {
+  if (!pill || !area || !card) return;
+
+  if (area.classList.contains("droparea")) {
+    const isPairZone = area.closest(".zone")?.dataset?.prompt !== undefined;
+    if (isPairZone) {
+      const existing = area.querySelector(".pill");
+      if (existing && existing !== pill) {
+        const pool = card.querySelector(".pool");
+        if (pool) pool.append(existing);
+      }
+    }
+  }
+
+  pill.classList.remove("selected");
+  pill.classList.add("placed");
+  setTimeout(() => pill.classList.remove("placed"), 300);
+  area.append(pill);
+  selectedPill = null;
+  updateProgress();
+  triggerHaptic(14);
+}
+
+function enableDragDrop() {
+  selectedPill = null;
+  document.querySelectorAll(".pill").forEach(bindPill);
+
+  document.querySelectorAll(".droparea, .pool").forEach((area) => {
+    const card = area.closest(".card");
+
+    area.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      area.closest(".zone")?.classList.add("dragover");
+    });
+
+    area.addEventListener("dragleave", (e) => {
+      area.closest(".zone")?.classList.remove("dragover");
+    });
+
+    area.addEventListener("drop", (e) => {
+      e.preventDefault();
+      area.closest(".zone")?.classList.remove("dragover");
+      let data;
+      try {
+        data = JSON.parse(e.dataTransfer.getData("text/plain"));
+      } catch (err) {
+        return;
+      }
+      if (!data || !data.cardId || data.cardId !== card?.id) return;
+
+      const pills = Array.from(card.querySelectorAll(".pill"));
+      const targetPill = pills.find(
+        (p) => p.dataset.txt === data.txt && (selectedPill === p || !area.contains(p))
+      );
+      if (targetPill) {
+        placePillInArea(targetPill, area, card);
+      }
+    });
+
+    area.addEventListener("click", (e) => {
+      if (!selectedPill) return;
+      if (card && card.contains(selectedPill)) {
+        placePillInArea(selectedPill, area, card);
+      }
+    });
+  });
+
+  document.addEventListener("click", (e) => {
+    if (selectedPill && !e.target.closest(".pill")) {
+      selectedPill.classList.remove("selected");
+      selectedPill = null;
+    }
+  });
+}
+
+function getUserAnswer(q, qi) {
+  if (q.type === "single" || q.type === "multi") {
+    return Array.from(
+      document.querySelectorAll("#q_" + qi + " input:checked"),
+    ).map((x) => x.value);
+  }
+  if (q.type === "tfset") {
+    return q.statements.map((st, si) => {
+      const inp = document.querySelector(
+        'input[name="q' + qi + '_s' + si + '"]:checked',
+      );
+      return inp ? inp.value === "Đúng" : null;
+    });
+  }
+  if (q.type === "drag_pairs") {
+    const ans = {};
+    document.querySelectorAll("#q_" + qi + " .zone").forEach((z) => {
+      const prompt = z.dataset.prompt;
+      const pill = z.querySelector(".pill");
+      if (pill) ans[prompt] = pill.dataset.txt;
+    });
+    return ans;
+  }
+  if (q.type === "drag_groups") {
+    const ans = {};
+    document.querySelectorAll("#q_" + qi + " .zone").forEach((z) => {
+      const gname = z.dataset.gname;
+      ans[gname] = Array.from(z.querySelectorAll(".pill")).map(
+        (p) => p.dataset.txt,
+      );
+    });
+    return ans;
+  }
+  return null;
+}
+
+function isCorrect(q, ans) {
+  if (!ans) return false;
+  if (q.type === "single" || q.type === "multi") {
+    return (
+      ans.length === q.answer.length &&
+      ans.every((a) => q.answer.includes(a))
+    );
+  }
+  if (q.type === "tfset") {
+    return ans.every((a, i) => a === q.statements[i].answer);
+  }
+  if (q.type === "drag_pairs") {
+    return Object.entries(q.pairs).every(
+      ([prompt, expected]) => ans[prompt] === expected
+    );
+  }
+  if (q.type === "drag_groups") {
+    return Object.entries(q.groups).every(
+      ([g, arr]) =>
+        ans[g] &&
+        arr.every((item) => ans[g].includes(item)) &&
+        ans[g].length === arr.length
+    );
+  }
+  return false;
+}
+
+function updateProgress() {
+  if (!WORK.length) return;
+  let answered = 0;
+  WORK.forEach((q, qi) => {
+    const user = getUserAnswer(q, qi);
+    let has = false;
+    if (q.type === "single" || q.type === "multi") {
+      has = user && user.length > 0;
+    } else if (q.type === "tfset") {
+      has = user && user.some((x) => x !== null);
+    } else if (q.type === "drag_pairs" || q.type === "drag_groups") {
+      has = user && Object.keys(user).length > 0;
+    }
+    if (has) answered++;
+  });
+  const pct = Math.round((answered / WORK.length) * 100);
+  const fill = document.getElementById("progressFill");
+  if (fill) fill.style.width = pct + "%";
+  const meta = document.getElementById("meta");
+  if (meta && !meta.dataset.showScore) {
+    meta.textContent = answered + "/" + WORK.length + " câu";
+  }
+}
+
+function showKey(q, qi) {
+  const hint = document.getElementById("hint_" + qi);
+  if (!hint) return;
+  hint.innerHTML = "";
+  if (q.type === "single" || q.type === "multi") {
+    hint.innerHTML = '<div class="hint-box"><strong>Đáp án:</strong> <b>' + q.answer.join(", ") + '</b></div>';
+  } else if (q.type === "tfset") {
+    hint.innerHTML = '<div class="hint-box"><strong>Đáp án:</strong> <b>' + q.statements
+      .map((s, idx) => "Phát biểu " + (idx + 1) + ": " + (s.answer ? "Đúng" : "Sai"))
+      .join(" · ") + "</b></div>";
+  } else if (q.type === "drag_pairs") {
+    hint.innerHTML = '<div class="hint-box"><strong>Đáp án đúng:</strong><br>' + Object.entries(q.pairs)
+      .map(([prompt, ans]) => "• <em>" + prompt + "</em> → <strong>" + ans + "</strong>")
+      .join("<br>") + "</div>";
+  } else if (q.type === "drag_groups") {
+    hint.innerHTML = '<div class="hint-box"><strong>Đáp án đúng:</strong><br>' + Object.entries(q.groups)
+      .map(([group, items]) => "• <strong>" + group + ":</strong> " + items.join("; "))
+      .join("<br>") + "</div>";
+  }
+}
+
+function checkAll() {
+  let correct = 0;
+  WORK.forEach((q, qi) => {
+    const card = document.getElementById("q_" + qi);
+    const res = document.getElementById("res_" + qi);
+    const user = getUserAnswer(q, qi);
+    if (card) card.classList.remove("card-correct", "card-wrong");
+    if (isCorrect(q, user)) {
+      correct++;
+      if (res) {
+        res.textContent = "✔ Đúng";
+        res.className = "result r-good";
+      }
+      if (card) card.classList.add("card-correct");
+    } else {
+      if (res) {
+        res.textContent = "✘ Sai";
+        res.className = "result r-bad";
+      }
+      if (card) card.classList.add("card-wrong");
+    }
+  });
+
+  const total = WORK.length;
+  const pct = Math.round((correct / total) * 100);
+  const meta = document.getElementById("meta");
+  if (meta) {
+    meta.textContent = correct + "/" + total + " đúng (" + pct + "%)";
+    meta.dataset.showScore = "1";
+  }
+
+  try {
+    const lessonId = window.LESSON_ID || 1;
+    localStorage.setItem(
+      "cnxh_score_bai_" + lessonId,
+      JSON.stringify({ score: correct, total, pct, time: Date.now() })
+    );
+  } catch (e) {}
+
+  triggerHaptic(25);
+  showScoreModal(correct, total, pct);
+}
+
+function showScoreModal(correct, total, pct) {
+  let modalBackdrop = document.getElementById("scoreModal");
+  if (!modalBackdrop) {
+    modalBackdrop = el("div", { class: "score-modal-backdrop", id: "scoreModal" });
+    document.body.append(modalBackdrop);
+  }
+
+  let gradeMsg = "Cần cố gắng thêm! Hãy xem lại các đáp án sai và luyện tập lại nhé.";
+  let gradeBadge = "🌱";
+  if (pct >= 90) {
+    gradeMsg = "Xuất sắc! Bạn đã nắm rất vững kiến thức và sẵn sàng thi đạt điểm cao.";
+    gradeBadge = "🏆";
+  } else if (pct >= 75) {
+    gradeMsg = "Rất tốt! Bạn đã nắm chắc hầu hết các nội dung trọng tâm.";
+    gradeBadge = "⭐";
+  } else if (pct >= 50) {
+    gradeMsg = "Đạt yêu cầu! Hãy ôn luyện lại một số phần để tự tin hơn khi làm bài.";
+    gradeBadge = "📈";
+  }
+
+  modalBackdrop.innerHTML =
+    '<div class="score-modal">' +
+    '<div class="score-badge">' + gradeBadge + '</div>' +
+    '<h2 class="score-title">Kết Quả Bài Làm</h2>' +
+    '<div class="score-number">' + correct + ' / ' + total + '</div>' +
+    '<div class="score-pct">' + pct + '% chính xác</div>' +
+    '<p class="score-msg">' + gradeMsg + '</p>' +
+    '<div class="score-actions">' +
+    '<button id="modalBtnKey" class="btn-primary">👁 Xem đáp án chi tiết</button>' +
+    '<button id="modalBtnRetry" class="btn-secondary">↻ Làm lại bài</button>' +
+    '<button id="modalBtnClose" class="btn-ghost">Đóng cửa sổ</button>' +
+    '</div>' +
+    '</div>';
+
+  modalBackdrop.classList.add("visible");
+
+  document.getElementById("modalBtnKey").addEventListener("click", () => {
+    modalBackdrop.classList.remove("visible");
+    if (!keyVisible) {
+      document.getElementById("btnToggleKey").click();
+    }
+  });
+
+  document.getElementById("modalBtnRetry").addEventListener("click", () => {
+    modalBackdrop.classList.remove("visible");
+    reset(true);
+  });
+
+  document.getElementById("modalBtnClose").addEventListener("click", () => {
+    modalBackdrop.classList.remove("visible");
+  });
+
+  modalBackdrop.addEventListener("click", (e) => {
+    if (e.target === modalBackdrop) modalBackdrop.classList.remove("visible");
+  });
+}
+
+document.getElementById("btnCheck").addEventListener("click", () => {
+  triggerHaptic(12);
+  checkAll();
+});
+
+document.getElementById("btnReset").addEventListener("click", () => {
+  triggerHaptic(12);
+  reset(true);
+});
+
+document.getElementById("btnToggleKey").addEventListener("click", () => {
+  triggerHaptic(12);
+  keyVisible = !keyVisible;
+  const btn = document.getElementById("btnToggleKey");
+  if (btn) btn.classList.toggle("active", keyVisible);
+  WORK.forEach((q, qi) => {
+    const hint = document.getElementById("hint_" + qi);
+    if (hint) {
+      if (keyVisible) showKey(q, qi);
+      else hint.innerHTML = "";
+    }
+  });
+});
+
+document.getElementById("list").addEventListener("change", (e) => {
+  if (e.target.matches("input[type=radio], input[type=checkbox]")) {
+    const label = e.target.closest("label");
+    if (label) {
+      if (e.target.type === "radio") {
+        const name = e.target.name;
+        document.querySelectorAll('input[name="' + name + '"]').forEach((r) => {
+          r.closest("label")?.classList.remove("checked");
+        });
+        label.classList.add("checked");
+      } else {
+        label.classList.toggle("checked", e.target.checked);
+      }
+    }
+    updateProgress();
+    triggerHaptic(8);
+  }
+});
+
+const headerEl = document.getElementById("header");
+const btnScrollTop = document.getElementById("btnScrollTop");
+
+window.addEventListener(
+  "scroll",
+  () => {
+    const y = window.scrollY || document.documentElement.scrollTop;
+    if (headerEl) {
+      if (y > 10) headerEl.classList.add("scrolled");
+      else headerEl.classList.remove("scrolled");
+    }
+    if (btnScrollTop) {
+      if (y > 320) btnScrollTop.classList.add("visible");
+      else btnScrollTop.classList.remove("visible");
+    }
+  },
+  { passive: true }
+);
+
+if (btnScrollTop) {
+  btnScrollTop.addEventListener("click", () => {
+    triggerHaptic(15);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+// Initial render in natural sequence
+reset(false);
+    </script>
+  </body>
+</html>

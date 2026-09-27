@@ -1,0 +1,1998 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chủ nghĩa Xã hội Khoa học - Bài 4: Cơ cấu xã hội - giai cấp & Liên minh giai cấp</title>
+    <style>
+      :root {
+        --bg1: #f0f4f8;
+        --bg2: #d9e2ec;
+        --card: #ffffff;
+        --ink: #1f2937;
+        --muted: #64748b;
+        --accent: #2563eb;
+        --accent-hover: #1d4ed8;
+        --good: #16a34a;
+        --bad: #dc2626;
+        --border: #e2e8f0;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        color: var(--ink);
+        background: linear-gradient(135deg, var(--bg1), var(--bg2));
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        transition: background 0.3s ease;
+        -webkit-font-smoothing: antialiased;
+      }
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+        transition: box-shadow 0.25s ease;
+      }
+      header.scrolled {
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      }
+      .progress-line {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3.5px;
+        background: rgba(0, 0, 0, 0.04);
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, #3b82f6, #10b981);
+        transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .wrap {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 16px 20px;
+        width: 100%;
+      }
+      .brand-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+      .brand-title-wrap {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .header-titles {
+        display: flex;
+        flex-direction: column;
+      }
+      .header-titles h1 {
+        margin: 0;
+        font-size: clamp(16px, 2.4vw, 22px);
+        font-weight: 800;
+        color: var(--ink);
+        letter-spacing: -0.01em;
+        line-height: 1.25;
+      }
+      .header-titles .sub {
+        font-size: 12px;
+        color: var(--muted);
+        font-weight: 500;
+        margin-top: 2px;
+      }
+      .btn-home {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        text-decoration: none;
+        color: #475569;
+        font-weight: 600;
+        font-size: 13px;
+        background: #ffffff;
+        padding: 6px 12px;
+        border-radius: 10px;
+        border: 1px solid #cbd5e1;
+        transition: all 0.15s ease;
+        white-space: nowrap;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .btn-home:hover {
+        background: #f1f5f9;
+        color: var(--accent);
+        border-color: #94a3b8;
+      }
+      .btn-home:active {
+        transform: scale(0.96);
+      }
+      .toolbar {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      button {
+        border: none;
+        padding: 9px 16px;
+        border-radius: 11px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 13.5px;
+        background: var(--accent);
+        color: #fff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s, opacity 0.15s, background 0.15s;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        user-select: none;
+      }
+      button:hover {
+        background: var(--accent-hover);
+      }
+      button:active {
+        transform: scale(0.96);
+      }
+      button.secondary {
+        background: #334155;
+      }
+      button.secondary:hover {
+        background: #1e293b;
+      }
+      button.ghost {
+        background: #ffffff;
+        color: #334155;
+        border: 1px solid #cbd5e1;
+      }
+      button.ghost:hover {
+        background: #f8fafc;
+        border-color: #94a3b8;
+      }
+      button.ghost.active {
+        background: #eff6ff;
+        color: #2563eb;
+        border-color: #93c5fd;
+      }
+      .meta {
+        font-weight: 600;
+        color: #475569;
+        font-size: 13px;
+        background: #ffffff;
+        padding: 5px 14px;
+        border-radius: 999px;
+        border: 1px solid #cbd5e1;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .cards {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 20px 0 30px;
+      }
+      .card {
+        background: var(--card);
+        border-radius: 18px;
+        padding: 22px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+        border: 1px solid rgba(226, 232, 240, 0.9);
+        transition: border-color 0.25s, box-shadow 0.25s;
+      }
+      .card.card-correct {
+        border-color: #86efac;
+        box-shadow: 0 4px 20px rgba(22, 163, 74, 0.1);
+      }
+      .card.card-wrong {
+        border-color: #fca5a5;
+        box-shadow: 0 4px 20px rgba(220, 38, 38, 0.1);
+      }
+      .qhead {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+      }
+      .qidx {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        display: grid;
+        place-items: center;
+        font-weight: 700;
+        font-size: 14px;
+        color: #fff;
+        background: #334155;
+        flex-shrink: 0;
+      }
+      .qtitle {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+      .hint {
+        font-size: 13px;
+        color: var(--muted);
+        margin-top: 4px;
+        font-weight: normal;
+      }
+      .answers {
+        margin-top: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+      }
+      .answers label {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        padding: 11px 14px;
+        border: 1.5px solid #e2e8f0;
+        border-radius: 12px;
+        cursor: pointer;
+        background: #ffffff;
+        transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        user-select: none;
+      }
+      .answers label:hover {
+        background: #f8fafc;
+        border-color: #cbd5e1;
+      }
+      .answers label:active {
+        transform: scale(0.99);
+      }
+      .answers label:has(input:checked),
+      .answers label.checked {
+        background: #f0f7ff;
+        border-color: #3b82f6;
+        color: #1e40af;
+        box-shadow: 0 2px 8px rgba(59, 130, 246, 0.12);
+        font-weight: 500;
+      }
+      .answers input {
+        width: 18px;
+        height: 18px;
+        accent-color: #2563eb;
+        flex-shrink: 0;
+        cursor: pointer;
+      }
+      .tf-item {
+        padding: 12px 14px;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        background: #fff;
+        margin-bottom: 8px;
+      }
+      .tf-text {
+        font-size: 14.5px;
+        line-height: 1.5;
+        color: var(--ink);
+        font-weight: 500;
+        margin-bottom: 6px;
+      }
+      .tf-row {
+        margin-top: 8px;
+        display: flex;
+        gap: 10px;
+      }
+      .tf-row label {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        cursor: pointer;
+        padding: 7px 14px;
+        border-radius: 9px;
+        background: #f8fafc;
+        border: 1.5px solid #e2e8f0;
+        font-size: 14px;
+        font-weight: 500;
+        transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        user-select: none;
+      }
+      .tf-row label:hover {
+        background: #f1f5f9;
+        border-color: #cbd5e1;
+      }
+      .tf-row label:active {
+        transform: scale(0.98);
+      }
+      .tf-row label:has(input:checked),
+      .tf-row label.checked {
+        background: #f0f7ff;
+        border-color: #3b82f6;
+        color: #1e40af;
+        font-weight: 600;
+        box-shadow: 0 2px 6px rgba(59, 130, 246, 0.1);
+      }
+      .tf-row input {
+        accent-color: #2563eb;
+      }
+
+      /* Drag and Drop Elements */
+      .dragwrap {
+        display: grid;
+        gap: 14px;
+      }
+      .dragzone {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 12px;
+      }
+      .zone {
+        min-height: 70px;
+        border: 2px dashed #94a3b8;
+        border-radius: 14px;
+        padding: 12px 14px;
+        background: #f8fafc;
+        transition: border-color 0.2s, background 0.2s;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .zone h4 {
+        margin: 0 0 10px;
+        font-size: 14px;
+        line-height: 1.5;
+        color: var(--ink);
+        font-weight: 600;
+      }
+      .zone.dragover {
+        border-color: var(--accent);
+        background: #eff6ff;
+      }
+      .droparea {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        min-height: 42px;
+        border-radius: 8px;
+        padding: 4px;
+        background: rgba(255, 255, 255, 0.6);
+        border: 1px solid rgba(226, 232, 240, 0.7);
+        align-items: center;
+      }
+      .pool {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        min-height: 48px;
+        background: #ffffff;
+        border: 1.5px solid #cbd5e1;
+        border-radius: 14px;
+        padding: 12px;
+        align-items: center;
+      }
+      .pill {
+        background: #eef2ff;
+        border: 1px solid #93c5fd;
+        color: #1e3a8a;
+        border-radius: 999px;
+        padding: 7px 14px;
+        display: inline-flex;
+        gap: 6px;
+        align-items: center;
+        font-weight: 600;
+        font-size: 13.5px;
+        user-select: none;
+        -webkit-user-select: none;
+        cursor: grab;
+        margin: 3px;
+        transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.18s, background 0.18s;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+      }
+      .pill:active {
+        cursor: grabbing;
+        transform: scale(0.96);
+      }
+      .pill.selected {
+        outline: 2.5px solid var(--accent);
+        outline-offset: 1px;
+        background: #dbeafe !important;
+        color: #1d4ed8 !important;
+        transform: scale(1.03);
+        box-shadow: 0 2px 10px rgba(37, 99, 235, 0.25);
+      }
+      .pill.placed {
+        animation: popPlaced 0.25s ease;
+      }
+      @keyframes popPlaced {
+        0% { transform: scale(0.9); }
+        50% { transform: scale(1.06); }
+        100% { transform: scale(1); }
+      }
+
+      /* Result Badges and Hint Containers */
+      .result {
+        margin-top: 14px;
+        font-weight: 700;
+        font-size: 14.5px;
+        animation: fadeIn 0.3s ease;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-4px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .r-good {
+        color: var(--good);
+      }
+      .r-bad {
+        color: var(--bad);
+      }
+      .result-hint {
+        margin-top: 8px;
+      }
+      .hint-box {
+        background: #f8fafc;
+        border: 1px solid #cbd5e1;
+        border-left: 4px solid #3b82f6;
+        border-radius: 10px;
+        padding: 12px 14px;
+        font-size: 13.5px;
+        color: #1e293b;
+        line-height: 1.6;
+        animation: fadeIn 0.25s ease;
+      }
+      .hint-box strong {
+        color: #0f172a;
+      }
+      .hint-box em {
+        font-style: normal;
+        color: #334155;
+      }
+
+      /* Lesson Navigation Footer */
+      .lesson-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-top: 24px;
+        margin-bottom: 40px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border);
+        flex-wrap: wrap;
+      }
+      .lesson-nav a {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 10px 16px;
+        background: #ffffff;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        color: var(--ink);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 13.5px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+        transition: all 0.2s ease;
+      }
+      .lesson-nav a:hover {
+        background: #f8fafc;
+        border-color: #94a3b8;
+        color: var(--accent);
+      }
+      .lesson-nav a.nav-primary {
+        background: var(--accent);
+        color: #ffffff;
+        border-color: var(--accent);
+      }
+      .lesson-nav a.nav-primary:hover {
+        background: var(--accent-hover);
+      }
+
+      /* Score Modal Dialog */
+      .score-modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.6);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        padding: 16px;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s ease, visibility 0.2s ease;
+      }
+      .score-modal-backdrop.visible {
+        opacity: 1;
+        visibility: visible;
+      }
+      .score-modal {
+        background: #ffffff;
+        border-radius: 20px;
+        max-width: 440px;
+        width: 100%;
+        padding: 26px 22px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+        text-align: center;
+        transform: translateY(12px) scale(0.97);
+        transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        border: 1px solid #e2e8f0;
+      }
+      .score-modal-backdrop.visible .score-modal {
+        transform: translateY(0) scale(1);
+      }
+      .score-badge {
+        font-size: 42px;
+        line-height: 1;
+        margin-bottom: 10px;
+      }
+      .score-title {
+        margin: 0 0 6px;
+        font-size: 20px;
+        font-weight: 800;
+        color: var(--ink);
+      }
+      .score-number {
+        font-size: 36px;
+        font-weight: 800;
+        color: var(--accent);
+        line-height: 1.2;
+        margin-top: 6px;
+      }
+      .score-pct {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--muted);
+        margin-bottom: 12px;
+      }
+      .score-msg {
+        margin: 0 0 20px;
+        font-size: 14px;
+        color: #475569;
+        line-height: 1.5;
+        padding: 0 8px;
+      }
+      .score-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .score-actions button {
+        width: 100%;
+        padding: 11px 16px;
+        font-size: 14px;
+        border-radius: 12px;
+      }
+      .score-actions .btn-primary {
+        background: var(--accent);
+        color: #ffffff;
+      }
+      .score-actions .btn-secondary {
+        background: #f1f5f9;
+        color: #334155;
+        border: 1px solid #cbd5e1;
+      }
+      .score-actions .btn-ghost {
+        background: transparent;
+        color: var(--muted);
+        border: none;
+        padding: 8px;
+        font-size: 13px;
+      }
+
+      /* Floating Back-To-Top Button */
+      .btn-scroll-top {
+        position: fixed;
+        bottom: 24px;
+        right: 20px;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: #1e293b;
+        color: #ffffff;
+        font-size: 20px;
+        font-weight: 700;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+        border: none;
+        cursor: pointer;
+        display: grid;
+        place-items: center;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(12px);
+        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 99;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+      }
+      .btn-scroll-top.visible {
+        opacity: 0.92;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .btn-scroll-top:hover {
+        opacity: 1;
+        background: #0f172a;
+        transform: translateY(-2px);
+      }
+      .btn-scroll-top:active {
+        transform: scale(0.92);
+      }
+
+      /* Responsive rules */
+      @media (max-width: 768px) {
+        .wrap {
+          padding: 10px 14px;
+        }
+        .brand-row {
+          margin-bottom: 8px;
+        }
+        .header-titles h1 {
+          font-size: 16px;
+          line-height: 1.35;
+        }
+        .meta {
+          font-size: 12px;
+          padding: 4px 10px;
+        }
+        .toolbar {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 6px;
+        }
+        button {
+          padding: 8px 6px;
+          font-size: 12.5px;
+          border-radius: 10px;
+          min-height: 38px;
+          white-space: nowrap;
+        }
+        button span {
+          display: none;
+        }
+        .cards {
+          padding: 12px 0 30px;
+          gap: 12px;
+        }
+        .card {
+          padding: 16px 14px;
+          border-radius: 14px;
+        }
+        .qhead {
+          gap: 10px;
+        }
+        .qidx {
+          width: 28px;
+          height: 28px;
+          font-size: 13px;
+          border-radius: 8px;
+        }
+        .qtitle {
+          font-size: 15px;
+          line-height: 1.45;
+        }
+        .dragzone {
+          grid-template-columns: 1fr;
+        }
+        .lesson-nav {
+          flex-direction: column;
+        }
+        .lesson-nav a {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header id="header">
+      <div class="progress-line"><div id="progressFill" class="progress-fill"></div></div>
+      <div class="wrap">
+        <div class="brand-row">
+          <div class="brand-title-wrap">
+            <a href="index.html" class="btn-home" title="Quay về trang chủ">← Trang chủ</a>
+            <div class="header-titles">
+              <h1>Bài 4: Cơ cấu xã hội - giai cấp & Liên minh</h1>
+              <span class="sub">Biến đổi cơ cấu xã hội - giai cấp & liên minh công - nông - trí thức tại Việt Nam</span>
+            </div>
+          </div>
+          <div class="meta" id="meta">0/0 câu</div>
+        </div>
+        <div class="toolbar">
+          <button id="btnCheck"><span>✓</span> Xem kết quả</button>
+          <button class="secondary" id="btnReset"><span>↻</span> Làm lại</button>
+          <button class="ghost" id="btnToggleKey"><span>👁</span> Đáp án</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <div id="list" class="cards"></div>
+      <nav class="lesson-nav">
+        <a href="bai3.html" class="nav-btn">← Bài 3: Dân chủ XHCN & Nhà nước</a>
+        <a href="index.html" class="nav-home-btn">📚 Mục lục 6 bài</a>
+        <a href="bai5.html" class="nav-btn nav-primary">Bài 5: Dân tộc & Tôn giáo →</a>
+      </nav>
+    </main>
+
+    <button id="btnScrollTop" class="btn-scroll-top" title="Lên đầu trang" aria-label="Lên đầu trang">↑</button>
+
+    <script>
+window.LESSON_ID = 4;
+
+const clone = (x) => JSON.parse(JSON.stringify(x));
+const shuffle = (arr) => {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+};
+const el = (tag, attrs = {}, html = "") => {
+  const e = document.createElement(tag);
+  Object.entries(attrs).forEach(([k, v]) => {
+    if (k === "class") e.className = v;
+    else if (k === "dataset") Object.assign(e.dataset, v);
+    else e.setAttribute(k, v);
+  });
+  if (html) e.innerHTML = html;
+  return e;
+};
+const safeId = (str) =>
+  "id_" +
+  str
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-zA-Z0-9]/g, "_");
+
+const BANK = [
+  {
+    "id": 1,
+    "type": "single",
+    "title": "Trong cơ cấu xã hội – giai cấp của thời kỳ quá độ lên chủ nghĩa xã hội, lực lượng tiêu biểu cho phương thức sản xuất mới gọi vai trò chủ đạo, tiên phong trong quá trình công nghiệp hóa, hiện đại hóa đất nước là:",
+    "options": [
+      "Giai cấp công nhân",
+      "Tầng lớp trí thức",
+      "Giai cấp nông dân",
+      "Đội ngũ doanh nhân"
+    ],
+    "answer": [
+      "Giai cấp công nhân"
+    ]
+  },
+  {
+    "id": 2,
+    "type": "single",
+    "title": "Xét về mặt kinh tế, trong thời kỳ quá độ lên chủ nghĩa xã hội, cơ cấu xã hội – giai cấp biến đổi phức tạp, đa dạng, làm xuất hiện các tầng lớp mới là do:",
+    "options": [
+      "Cơ cấu kinh tế đa dạng, phức tạp",
+      "Tồn tại nhiều giai cấp, tầng lớp",
+      "Các giai cấp có nhiều tư liệu sản xuất quyết định",
+      "Kinh tế chậm phát triển"
+    ],
+    "answer": [
+      "Cơ cấu kinh tế đa dạng, phức tạp"
+    ]
+  },
+  {
+    "id": 3,
+    "type": "multi",
+    "title": "Vì sao cơ cấu xã hội – giai cấp có vị trí quan trọng hàng đầu, chi phối các loại hình cơ cấu xã hội khác? (Chọn 2 đáp án)",
+    "options": [
+      "Vì cơ cấu xã hội – giai cấp liên quan đến các đảng phái chính trị và nhà nước; đến quyền sở hữu tư liệu sản xuất",
+      "Vì cơ cấu xã hội – giai cấp liên quan đến quan hệ đến quản lý tổ chức lao động, vấn đề phân phối thu nhập",
+      "Vì cơ cấu xã hội – giai cấp liên quan đến các tổ chức tà đạo, các băng nhóm xã hội đen lớn trong xã hội",
+      "Vì cơ cấu xã hội – giai cấp liên quan đến nhiều giai cấp giàu có trong xã hội"
+    ],
+    "answer": [
+      "Vì cơ cấu xã hội – giai cấp liên quan đến các đảng phái chính trị và nhà nước; đến quyền sở hữu tư liệu sản xuất",
+      "Vì cơ cấu xã hội – giai cấp liên quan đến quan hệ đến quản lý tổ chức lao động, vấn đề phân phối thu nhập"
+    ]
+  },
+  {
+    "id": 4,
+    "type": "single",
+    "title": "Yếu tố quyết định sự liên minh giữa giai cấp công nhân, giai cấp nông dân và tầng lớp trí thức là:",
+    "options": [
+      "Do có những lợi ích cơ bản thống nhất với nhau",
+      "Do giai cấp công nhân muốn trở thành giai cấp thống trị",
+      "Do có cùng một kẻ thù là giai cấp tư sản",
+      "Do giai cấp công nhân mong muốn"
+    ],
+    "answer": [
+      "Do có những lợi ích cơ bản thống nhất với nhau"
+    ]
+  },
+  {
+    "id": 5,
+    "type": "single",
+    "title": "Trong cách mạng xã hội chủ nghĩa, dưới sự lãnh đạo của Đảng Cộng sản, giai cấp công nhân phải liên minh với giai cấp, tầng lớp nào?",
+    "options": [
+      "Giai cấp nông dân và các tầng lớp nhân dân lao động",
+      "Giai cấp vô sản đại công nghiệp",
+      "Giai cấp vô sản",
+      "Giai cấp tư sản"
+    ],
+    "answer": [
+      "Giai cấp nông dân và các tầng lớp nhân dân lao động"
+    ]
+  },
+  {
+    "id": 6,
+    "type": "single",
+    "title": "Theo quan điểm của chủ nghĩa Mác – Lênin, trong thời kỳ quá độ lên chủ nghĩa xã hội, giai cấp công nhân, giai cấp nông dân và tầng lớp lao động khác được coi là:",
+    "options": [
+      "Lực lượng sản xuất cơ bản, lực lượng chính trị – xã hội to lớn",
+      "Lực lượng kém phát triển",
+      "Lực lượng vũ trang cơ bản",
+      "Lực lượng ngoại giao to lớn"
+    ],
+    "answer": [
+      "Lực lượng sản xuất cơ bản, lực lượng chính trị – xã hội to lớn"
+    ]
+  },
+  {
+    "id": 7,
+    "type": "single",
+    "title": "Chọn phương án trả lời đúng nhất để điền vào chỗ trống cho câu sau: “Trước sự liên minh của các đại biểu khoa học…, giới kỹ thuật không một thế lực đen tối nào đứng vững được”.",
+    "options": [
+      "Giai cấp nông dân",
+      "Giai cấp vô sản",
+      "Giai cấp tư sản",
+      "Giai cấp tiểu tư sản"
+    ],
+    "answer": [
+      "Giai cấp vô sản"
+    ]
+  },
+  {
+    "id": 8,
+    "type": "single",
+    "title": "Xét dưới góc độ chính trị, trong cuộc đấu tranh giai cấp của các giai cấp có lợi ích đối lập nhau đặt ra nhu cầu tất yếu khách quan mỗi giai cấp đứng ở vị trí trung tâm đều phải:",
+    "options": [
+      "Liên minh với các giai cấp, tầng lớp xã hội khác có những lợi ích đối lập với mình",
+      "Liên minh với các giai cấp, tầng lớp xã hội khác có tiềm lực kinh tế lớn hơn mình",
+      "Liên minh với các giai cấp, tầng lớp xã hội khác có những lợi ích phù hợp với mình",
+      "Liên minh với các giai cấp, tầng lớp xã hội khác mà giai cấp đứng ở vị trí trung tâm được lợi nhiều hơn"
+    ],
+    "answer": [
+      "Liên minh với các giai cấp, tầng lớp xã hội khác có những lợi ích phù hợp với mình"
+    ]
+  },
+  {
+    "id": 9,
+    "type": "multi",
+    "title": "Vì sao giai cấp công nhân, nông dân và đội ngũ trí thức cần liên minh với nhau trong thời kỳ quá độ lên chủ nghĩa xã hội? (Chọn 2 đáp án)",
+    "options": [
+      "Vì các giai cấp, tầng lớp muốn có đông lực lượng để tổ chức các hoạt động văn hóa, xã hội",
+      "Vì giai cấp công nhân bắt buộc các giai cấp nông dân, tầng lớp trí thức liên minh với mình",
+      "Vì giai cấp công nhân với giai cấp nông dân và đội ngũ trí thức có sự thống nhất chung về lợi ích",
+      "Vì xuất phát từ yêu cầu khách quan của quá trình đẩy mạnh công nghiệp hóa, hiện đại hóa và chuyển dịch cơ cấu kinh tế từ một nền sản xuất nhỏ, nông nghiệp là chủ yếu sang nền sản xuất hàng hóa lớn"
+    ],
+    "answer": [
+      "Vì giai cấp công nhân với giai cấp nông dân và đội ngũ trí thức có sự thống nhất chung về lợi ích",
+      "Vì xuất phát từ yêu cầu khách quan của quá trình đẩy mạnh công nghiệp hóa, hiện đại hóa và chuyển dịch cơ cấu kinh tế từ một nền sản xuất nhỏ, nông nghiệp là chủ yếu sang nền sản xuất hàng hóa lớn"
+    ]
+  },
+  {
+    "id": 10,
+    "type": "single",
+    "title": "Hiện nay ở Việt Nam, lực lượng xã hội đặc biệt được Đảng ta chú trọng xây dựng thành một đội ngũ vững mạnh là:",
+    "options": [
+      "Trí thức",
+      "Công nhân",
+      "Thanh niên",
+      "Doanh nhân"
+    ],
+    "answer": [
+      "Doanh nhân"
+    ]
+  },
+  {
+    "id": 11,
+    "type": "single",
+    "title": "Trong thời kỳ quá độ lên chủ nghĩa xã hội ở Việt Nam, sự biến đổi của cơ cấu xã hội – giai cấp bị chi phối bởi biến đổi của cơ cấu nào?",
+    "options": [
+      "Cơ cấu xã hội – dân tộc",
+      "Cơ cấu xã hội – dân cư",
+      "Cơ cấu xã hội – tôn giáo",
+      "Cơ cấu kinh tế"
+    ],
+    "answer": [
+      "Cơ cấu kinh tế"
+    ]
+  },
+  {
+    "id": 12,
+    "type": "single",
+    "title": "Lực lượng nào là lực lượng lao động sáng tạo đặc biệt quan trọng trong tiến trình đẩy mạnh công nghiệp hóa, hiện đại hóa đất nước và hội nhập quốc tế, xây dựng kinh tế tri thức, phát triển nền văn hóa Việt Nam tiên tiến, đậm đà bản sắc dân tộc?",
+    "options": [
+      "Nông dân",
+      "Trí thức",
+      "Thanh niên",
+      "Công nhân"
+    ],
+    "answer": [
+      "Trí thức"
+    ]
+  },
+  {
+    "id": 13,
+    "type": "single",
+    "title": "Nội dung chính trị của liên minh giai cấp, tầng lớp trong thời kỳ quá độ lên chủ nghĩa xã hội ở Việt Nam thể hiện việc giữ vững lập trường chính trị - tư tưởng của giai cấp, tầng lớp nào?",
+    "options": [
+      "Giai cấp tư sản",
+      "Giai cấp nông dân",
+      "Tầng lớp trí thức",
+      "Giai cấp công nhân"
+    ],
+    "answer": [
+      "Giai cấp công nhân"
+    ]
+  },
+  {
+    "id": 14,
+    "type": "single",
+    "title": "Nội dung kinh tế của liên minh giai cấp, tầng lớp trong thời kỳ quả độ lên chủ nghĩa xã hội ở Việt Nam là gì?",
+    "options": [
+      "Đẩy mạnh công nghiệp hóa, hiện đại hóa đất nước gắn với phát triển kinh tế tri thức, phát triển bền vững",
+      "Tăng cường phát triển kinh tế kết hợp với phát triển quân sự gắn với phát triển ngoại giao",
+      "Xây dựng nền văn hóa tiên tiến, đậm đà bán sắc dân tộc, đồng thời tiếp thu những tinh hoa, giá trị văn hóa của nhân loại và thời đại",
+      "Giữ vững lập trường tư tưởng của giai cấp công nhân, giữ vững vai trò lãnh đạo của Đáng"
+    ],
+    "answer": [
+      "Đẩy mạnh công nghiệp hóa, hiện đại hóa đất nước gắn với phát triển kinh tế tri thức, phát triển bền vững"
+    ]
+  },
+  {
+    "id": 15,
+    "type": "single",
+    "title": "Vận dụng kiến thức về vai trò của thể hệ trẻ, hãy xác định mục tiêu chính của việc giáo dục chính trị, tư tưởng cho thanh niên trong giai đoạn hiện nay ở Việt Nam là gi?",
+    "options": [
+      "Để kiểm soát các hoạt động kinh tế của thanh niện",
+      "Để tăng cường quyền lực của nhà nước",
+      "Để hình thành thế hệ thanh niên có phẩm chất tốt đẹp, có khí phách và quyết tâm hành động",
+      "Để giảm thiếu sự tham gia của thanh niên vào các hoạt động xã hội"
+    ],
+    "answer": [
+      "Để hình thành thế hệ thanh niên có phẩm chất tốt đẹp, có khí phách và quyết tâm hành động"
+    ]
+  },
+  {
+    "id": 16,
+    "type": "single",
+    "title": "Theo C.Mác và Ph.Ăngghen, nhiều cuộc đấu tranh của giai cấp công nhân ở châu Âu, nhất là ở nước Anh và Pháp từ giữa thế ký XIX thất bại là do:",
+    "options": [
+      "Không tổ chức liên minh với tầng lớp tiểu chủ",
+      "Không tổ chức liên minh với giai cấp nông dân",
+      "Không tổ chức liên minh với giai cấp tư sản",
+      "Không tổ chức liên minh với tầng lớp trí thức"
+    ],
+    "answer": [
+      "Không tổ chức liên minh với giai cấp nông dân"
+    ]
+  },
+  {
+    "id": 17,
+    "type": "single",
+    "title": "V.I. Lênin đã xem liên minh giữa giai cấp, tầng lớp nào là một hình thức \"liên minh đặc biệt” trong giai đoạn giành chính quyền và xây dựng chủ nghĩa xã hội?",
+    "options": [
+      "Giai cấp công nhân với giai cấp nông dân và các tầng lớp xã hội khác",
+      "Giai cấp công nhân với giai cấp nông dân và tăng lớp tiểu tư sản",
+      "Giai cấp công nhân với tầng lớp trí thức và doanh nhân",
+      "Giai cấp công nhân với giai cấp nông dân và tầng lớp trí thức"
+    ],
+    "answer": [
+      "Giai cấp công nhân với giai cấp nông dân và các tầng lớp xã hội khác"
+    ]
+  },
+  {
+    "id": 18,
+    "type": "single",
+    "title": "Cơ cấu xã hội - giai cấp ở Việt Nam thời kỳ quá độ lên chủ nghĩa xã hội bao gồm mấy giai cấp, tầng lớp?",
+    "options": [
+      "5",
+      "6",
+      "3",
+      "4"
+    ],
+    "answer": [
+      "5"
+    ]
+  },
+  {
+    "id": 19,
+    "type": "single",
+    "title": "Trong thời kỳ quả độ lên chủ nghĩa xã hội ở Việt Nam, giai cấp nào là lực lượng đi đầu thực hiện nhiệm vụ trung tâm phát triển kinh tế, tiến hành công nghiệp hóa, hiện đại hóa đất nước?",
+    "options": [
+      "Giai cấp công nhân",
+      "Đội ngũ trí thức",
+      "Giai cấp nông dân",
+      "Đội ngũ doanh nhân"
+    ],
+    "answer": [
+      "Giai cấp công nhân"
+    ]
+  },
+  {
+    "id": 20,
+    "type": "single",
+    "title": "Nội dung cơ bản quyết định nhất, là cơ sở vật chất - kỹ thuật của liên minh giai cấp, tầng lớp trong thời kỳ quá độ lên chủ nghĩa xã hội ở Việt Nam là nội dung nào?",
+    "options": [
+      "Nội dung chính trị của liên minh",
+      "Nội dung văn hóa của liên minh",
+      "Nội dung xã hội của liên minh",
+      "Nội dung kinh tế của liên mình"
+    ],
+    "answer": [
+      "Nội dung kinh tế của liên mình"
+    ]
+  },
+  {
+    "id": 21,
+    "type": "single",
+    "title": "Chọn cụm từ thích hợp điền vào chỗ trống của câu sau: \"Cơ cấu xã hội là những ..... cùng toàn bộ những mối quan hệ xã hội do sự tác động lẫn nhau của các cộng đồng ấy tạo nên\"",
+    "options": [
+      "Cộng đồng dân tộc",
+      "Cộng đồng dân cư",
+      "Cộng đồng nghề nghiệp",
+      "Cộng đồng người"
+    ],
+    "answer": [
+      "Cộng đồng người"
+    ]
+  },
+  {
+    "id": 22,
+    "type": "single",
+    "title": "Trong thời kỳ quá độ lên chủ nghĩa xã hội, cơ cấu xã hội - giai cấp thường xuyên biến đổi theo mấy quy luật cơ bản?",
+    "options": [
+      "3",
+      "5",
+      "4",
+      "2"
+    ],
+    "answer": [
+      "2"
+    ]
+  },
+  {
+    "id": 23,
+    "type": "single",
+    "title": "Theo C. Mác - Ph. Ăngnghen, “người bạn đồng minh tự nhiên\" của giai cấp công nhân là ai?",
+    "options": [
+      "Đội ngũ doanh nhân",
+      "Nhân dân lao động",
+      "Tầng lớp trí thức",
+      "Giai cấp nông dân"
+    ],
+    "answer": [
+      "Giai cấp nông dân"
+    ]
+  },
+  {
+    "id": 24,
+    "type": "single",
+    "title": "Trong thời kỳ quá độ lên chủ nghĩa xã hội, cơ cấu xã hội - giai cấp gồm mấy giai cấp, tầng lớp cơ bản?",
+    "options": [
+      "3",
+      "5",
+      "4",
+      "6"
+    ],
+    "answer": [
+      "5"
+    ]
+  },
+  {
+    "id": 25,
+    "type": "single",
+    "title": "Chọn ý sai về nội dung kinh tế của liên minh giữa giai cấp công nhân với giai cấp nông dân và các tầng lớp lao động khác trong trong cách mạng xã hội chủ nghĩa:",
+    "options": [
+      "Xây dựng hệ thống chính sách an sinh xã hội",
+      "Xây dựng hệ thống chính sách phát triển nông nghiệp, nông dân, nông thôn",
+      "Ứng dụng khoa học kỹ thuật vào sản xuất nông nghiệp",
+      "Thực hiện hợp đồng kinh tế giữa doanh nghiệp nhà nước và nông dân."
+    ],
+    "answer": [
+      "Xây dựng hệ thống chính sách an sinh xã hội"
+    ]
+  },
+  {
+    "id": 26,
+    "type": "single",
+    "title": "Theo V.I.Lênin, đâu là vấn đề mang tính nguyên tắc để đảm bảo cho thắng lợi của cuộc cách mạng xã hội chủ nghĩa tháng Mười Nga năm 1917?",
+    "options": [
+      "Liên minh giữa giai cấp công nhân, tầng lớp tiểu tư sản",
+      "Liên minh giữa giai cấp vô sản và nông dân",
+      "Liên minh công, nông và trí thức",
+      "Liên minh giữa giai cấp công nhân, tầng lớp tư sản tiến bộ"
+    ],
+    "answer": [
+      "Liên minh giữa giai cấp vô sản và nông dân"
+    ]
+  },
+  {
+    "id": 27,
+    "type": "single",
+    "title": "Chọn đáp án đúng điền vào chỗ trống cho câu sau: \"Cơ cấu xã hội - giai cấp là hệ thống các .. , ...tồn tại khách quan trong một chế độ xã hội nhất định,..'",
+    "options": [
+      "Giai cấp/ tầng lớp",
+      "Cá nhân / tập thể",
+      "Đội ngũ/ tầng lớp",
+      "Tập đoàn/ lực lượng sản xuất"
+    ],
+    "answer": [
+      "Giai cấp/ tầng lớp"
+    ]
+  },
+  {
+    "id": 28,
+    "type": "single",
+    "title": "Dưới góc độ chính trị - xã hội, môn Chủ nghĩa xã hội khoa học tập trung nghiên cứu cơ cấu xã hội nào?",
+    "options": [
+      "Cơ cấu xã hội - dân tộc",
+      "Cơ cấu xã hội - nghề nghiệp",
+      "Cơ cấu xã hội - dân cư",
+      "Cơ cấu xã hội - giai cấp"
+    ],
+    "answer": [
+      "Cơ cấu xã hội - giai cấp"
+    ]
+  },
+  {
+    "id": 29,
+    "type": "single",
+    "title": "Trong cơ cấu xã hội của thời kỳ quá độ lên chủ nghĩa xã hội, cơ cấu xã hội nào giữ vị trí quan trọng hàng đầu, chi phối các loại hình cơ cấu xã hội khác?",
+    "options": [
+      "Cơ cấu xã hội - giai cấp",
+      "Cơ cấu xã hội - dân tộc",
+      "Cơ cấu xã hội - nghề nghiệp",
+      "Cơ cấu xã hội - tôn giáo"
+    ],
+    "answer": [
+      "Cơ cấu xã hội - giai cấp"
+    ]
+  },
+  {
+    "id": 30,
+    "type": "multi",
+    "title": "Những tầng lớp nào sau đây tham gia cơ cấu xã hội - giai cấp ở Việt Nam? (Chọn 2 đáp án đúng nhất)",
+    "options": [
+      "Phụ nữ",
+      "Thanh niên",
+      "Tín đồ tôn giáo",
+      "Nhóm học sinh"
+    ],
+    "answer": [
+      "Phụ nữ",
+      "Thanh niên"
+    ]
+  },
+  {
+    "id": 31,
+    "type": "single",
+    "title": "Trong thời kỳ quá độ lên chủ nghĩa xã hội, cơ cấu xã hội - giai cấp biến đổi trong mối quan hệ nào?",
+    "options": [
+      "Vừa đấu tranh, vừa bài xích lẫn nhau",
+      "Vừa đấu tranh, vừa liên minh, từng bước xóa bỏ bất bình đẳng xã hội dẫn đến sự xích lại gần nhau",
+      "Vừa thống nhất, vừa bình đẳng với nhau",
+      "Vừa liên minh, cấu kết các giai cấp, tầng lớp quy mô để đàn áp các lớn giai cấp, tầng lớp quy mô nhỏ"
+    ],
+    "answer": [
+      "Vừa đấu tranh, vừa liên minh, từng bước xóa bỏ bất bình đẳng xã hội dẫn đến sự xích lại gần nhau"
+    ]
+  },
+  {
+    "id": 32,
+    "type": "multi",
+    "title": "Những phương hướng nào sau đây nhằm phát triển cơ cấu xã hội – giai cấp ở Việt Nam trong thời kỳ quá độ lên chủ nghĩa xã hội? (Chọn 2 đáp án đúng)",
+    "options": [
+      "Tăng dân số ở khu công nghiệp",
+      "Xây dựng và hoàn thiện chính sách xã hội tổng thể",
+      "Giảm giáo dục ở những vùng không có điều kiện kinh tế",
+      "Đẩy mạnh công nghiệp hóa, hiện đại hóa"
+    ],
+    "answer": [
+      "Xây dựng và hoàn thiện chính sách xã hội tổng thể",
+      "Đẩy mạnh công nghiệp hóa, hiện đại hóa"
+    ]
+  },
+  {
+    "id": 33,
+    "type": "multi",
+    "title": "Những nội dung nào sau đây là nội dung cơ bản của liên minh giai cấp, tầng lớp ở Việt Nam trong thời kỳ quá độ lên chủ nghĩa xã hội? (Chọn 2 đáp án đúng)",
+    "options": [
+      "Nội dung giáo dục",
+      "Nội dung tôn giáo",
+      "Nội dung kinh tế",
+      "Nội dung chính trị"
+    ],
+    "answer": [
+      "Nội dung kinh tế",
+      "Nội dung chính trị"
+    ]
+  },
+  {
+    "id": 34,
+    "type": "multi",
+    "title": "Những phương hướng nào sau đây củng cố liên minh giai cấp, tầng lớp ở Việt Nam trong thời kỳ quá độ lên chủ nghĩa xã hội? (Chọn 2 đáp án đúng)",
+    "options": [
+      "Giảm vai trò kinh tế trong xã hội",
+      "Tạo sự đồng thuận giữa các lực lượng",
+      "Tăng vai trò tôn giáo đối với các giai cấp, tầng lớp",
+      "Phát huy tinh thần đoàn kết"
+    ],
+    "answer": [
+      "Tạo sự đồng thuận giữa các lực lượng",
+      "Phát huy tinh thần đoàn kết"
+    ]
+  },
+  {
+    "id": 35,
+    "type": "multi",
+    "title": "Những chính sách nào sau đây hỗ trợ xây dựng cơ cấu xã hội - giai cấp ở Việt Nam? (Chọn 2 đáp án đúng)",
+    "options": [
+      "Phát huy sự thống nhất trong các giai cấp, tầng lớp, tạo sự đồng thuận xã hội",
+      "Ưu tiên phát triển những giai cấp lớn trong xã hội",
+      "Thúc đẩy phát triển các tổ chức tín ngưỡng, tôn giáo",
+      "Giải quyết tốt các mâu thuẫn, các khác biệt trong cácgiai cấp, tầng lớp"
+    ],
+    "answer": [
+      "Phát huy sự thống nhất trong các giai cấp, tầng lớp, tạo sự đồng thuận xã hội",
+      "Giải quyết tốt các mâu thuẫn, các khác biệt trong cácgiai cấp, tầng lớp"
+    ]
+  },
+  {
+    "id": 36,
+    "type": "multi",
+    "title": "Những lực lượng nào sau đây là trung tâm trong cơ cấu xã hội - giai cấp ở Việt Nam trong thời kỳ quá độ lên chủ nghĩa xã hội? (Chọn 2 đáp án đúng nhất)",
+    "options": [
+      "Nhóm tín đồ tôn giáo",
+      "Giai cấp công nhân",
+      "Giai cấp nông dân",
+      "Nhóm người cao tuổi"
+    ],
+    "answer": [
+      "Giai cấp công nhân",
+      "Giai cấp nông dân"
+    ]
+  },
+  {
+    "id": 37,
+    "type": "tfset",
+    "title": "Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
+    "statements": [
+      {
+        "text": "Đội ngũ trí thức đóng vai trò quan trọng trong cơ cấu xã hội – giai cấp.",
+        "answer": true
+      },
+      {
+        "text": "Tầng lớp phụ nữ không tham gia cơ cấu xã hội – giai cấp.",
+        "answer": false
+      },
+      {
+        "text": "Chính sách tôn giáo là chính sách chính hỗ trợ cơ cấu xã hội – giai cấp.",
+        "answer": false
+      },
+      {
+        "text": "Giai cấp công nhân là trung tâm trong cơ cấu xã hội – giai cấp ở Việt Nam.",
+        "answer": true
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "type": "tfset",
+    "title": "Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
+    "statements": [
+      {
+        "text": "Nội dung tôn giáo là nội dung chính của liên minh giai cấp, tầng lớp.",
+        "answer": false
+      },
+      {
+        "text": "Đội ngũ doanh nhân không tham gia liên minh giai cấp, tầng lớp.",
+        "answer": false
+      },
+      {
+        "text": "Xây dựng Nhà nước pháp quyền xã hội chủ nghĩa của nhân dân, do nhân dân, vì nhân dân là nội dung vận hành của liên minh giai cấp, tầng lớp ở Việt Nam.",
+        "answer": true
+      },
+      {
+        "text": "Đồng thuận xã hội là mục tiêu của liên minh giai cấp, tầng lớp ở Việt Nam.",
+        "answer": true
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "type": "tfset",
+    "title": "Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
+    "statements": [
+      {
+        "text": "Đổi mới hoạt động của Đảng, nhà nước, mặt trận Tổ quốc Việt Nam nhằm tăng cường khối liên minh giai cấp, tầng lớp ở Việt Nam",
+        "answer": true
+      },
+      {
+        "text": "Tạo sức mạnh tổng hợp là mục tiêu của liên minh giai cấp, tầng lớp ở Việt Nam",
+        "answer": true
+      },
+      {
+        "text": "Nội dung văn hóa không liên quan đến nội dung của liên minh giai cấp, tầng lớp",
+        "answer": false
+      },
+      {
+        "text": "Nội dung kinh tế là nội dung cơ bản quyết định nhất, là cơ sở vật chất kỹ thuật của liên minh",
+        "answer": true
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "type": "tfset",
+    "title": "Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
+    "statements": [
+      {
+        "text": "Đội ngũ doanh nhân là tầng lớp mới trong cơ cấu xã hội - giai cấp",
+        "answer": true
+      },
+      {
+        "text": "Nâng cao dân trí là chính sách hỗ trợ cơ cấu xã hội - giai cấp",
+        "answer": true
+      },
+      {
+        "text": "Chính sách việc làm không hỗ trợ cơ cấu xã hội - giai cấp",
+        "answer": false
+      },
+      {
+        "text": "Cơ cấu xã hội - giai cấp ở Việt Nam không biến đổi",
+        "answer": false
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "type": "drag_groups",
+    "title": "Kéo thả các yếu tố liên quan đến liên minh giai cấp, tầng lớp ở Việt Nam trong thời kỳ quá độ lên chủ nghĩa xã hội vào các cột tương ứng:",
+    "items": [
+      "Giai cấp công nhân",
+      "Giai cấp nông dân",
+      "Tầng lớp phụ nữ",
+      "Đảng Cộng sản",
+      "Nội dung kinh tế",
+      "Nội dung chính trị",
+      "Xóa đói giảm nghèo",
+      "Tăng cường liên minh"
+    ],
+    "groups": {
+      "Thành phần/yếu tố của liên minh": [
+        "Giai cấp công nhân",
+        "Giai cấp nông dân",
+        "Tầng lớp phụ nữ",
+        "Đảng Cộng sản"
+      ],
+      "Nội dung/phương hướng của liên minh": [
+        "Nội dung kinh tế",
+        "Nội dung chính trị",
+        "Xóa đói giảm nghèo",
+        "Tăng cường liên minh"
+      ]
+    }
+  },
+  {
+    "id": 42,
+    "type": "drag_pairs",
+    "title": "Kéo thả các khái niệm khớp với các phát biểu về cơ cấu xã hội - giai cấp ở Việt Nam trong thời kỳ quá độ lên chủ nghĩa xã hội dưới đây:",
+    "pairs": {
+      "Giai cấp trung tâm trong cơ cấu xã hội – giai cấp": "Giai cấp công nhân",
+      "Chính sách hỗ trợ cơ cấu xã hội - giai cấp": "Chính sách an sinh xã hội",
+      "Lực lượng quan trọng trong cơ cấu xã hội - giai cấp": "Đội ngũ trí thức",
+      "Lực lượng mới trong cơ cấu xã hội – giai cấp": "Đội ngũ doanh nhân"
+    }
+  },
+  {
+    "id": 43,
+    "type": "drag_pairs",
+    "title": "Kéo thả các đáp án đúng ứng với từng phát biểu sau đây về vị trí, vai trò của các giai cấp, tầng lớp trong cơ cấu xã hội – giai cấp ở Việt Nam trong thời kỳ quá độ lên chủ nghĩa xã hội:",
+    "pairs": {
+      "Giai cấp nông dân cùng với nông nghiệp, nông thôn có vị trí ______": "chiến lược quan trọng",
+      "Đội ngũ doanh nhân được Đảng ta chủ trương xây dựng thành một ______": "đội ngũ vững mạnh",
+      "Giai cấp công nhân Việt Nam có vai trò ______": "đặc biệt quan trọng",
+      "Đội ngũ trí thức là lực lượng ______": "sáng tạo đặc biệt"
+    }
+  },
+  {
+    "id": 44,
+    "type": "drag_groups",
+    "title": "Kéo thả các yếu tố liên quan đến cơ cấu xã hội - giai cấp ở Việt Nam trong thời kỳ quá độ lên chủ nghĩa xã hội vào các cột tương ứng:",
+    "items": [
+      "Giai cấp nông dân",
+      "Giai cấp công nhân",
+      "Đội ngũ trí thức",
+      "Phát triển nông thôn mới",
+      "Chính sách an sinh xã hội",
+      "Nâng cao dân trí",
+      "Bảo vệ quyền lợi"
+    ],
+    "groups": {
+      "Giai cấp/tầng lớp trong cơ cấu xã hội": [
+        "Giai cấp nông dân",
+        "Giai cấp công nhân",
+        "Đội ngũ trí thức"
+      ],
+      "Chính sách hỗ trợ": [
+        "Phát triển nông thôn mới",
+        "Chính sách an sinh xã hội",
+        "Nâng cao dân trí",
+        "Bảo vệ quyền lợi"
+      ]
+    }
+  },
+  {
+    "id": 45,
+    "type": "drag_pairs",
+    "title": "Kéo thả các đáp án khớp với các phát biểu:",
+    "pairs": {
+      "Phương hướng cơ bản để xây dựng liên minh giai cấp, tầng lớp": "Hoàn thiện thể chế kinh tế thị trường định hướng xã hội chủ nghĩa",
+      "Nội dung cơ bản quyết định của liên minh": "Nội dung kinh tế",
+      "Tầng lớp tham gia liên minh": "Tầng lớp phụ nữ",
+      "Yếu tố cốt lõi của liên minh giai cấp": "Liên minh công - nông"
+    }
+  }
+];
+
+let WORK = [];
+let keyVisible = false;
+let selectedPill = null;
+
+function triggerHaptic(duration = 10) {
+  if (typeof navigator !== "undefined" && navigator.vibrate) {
+    try { navigator.vibrate(duration); } catch (e) {}
+  }
+}
+
+function reset(shuffleAll = true) {
+  WORK = clone(BANK);
+  if (shuffleAll) WORK = shuffle(WORK);
+  WORK.forEach((q) => {
+    if (q.options) q.options = shuffle(q.options);
+    if (q.type === "drag_pairs") {
+      const entries = Object.entries(q.pairs);
+      q.__prompts = shuffle(entries.map(([k]) => k));
+      q.__options = shuffle(entries.map(([_, v]) => v));
+      q.__extras = q.extras ? shuffle(q.extras) : [];
+    }
+    if (q.type === "drag_groups") {
+      q.__items = shuffle(q.items);
+      q.__groupNames = Object.keys(q.groups);
+    }
+  });
+  keyVisible = false;
+  selectedPill = null;
+  const btnToggle = document.getElementById("btnToggleKey");
+  if (btnToggle) btnToggle.classList.remove("active");
+  const meta = document.getElementById("meta");
+  if (meta) delete meta.dataset.showScore;
+  render();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function render() {
+  const list = document.getElementById("list");
+  list.innerHTML = "";
+  document.getElementById("meta").textContent = "0/" + WORK.length + " câu";
+
+  WORK.forEach((q, qi) => {
+    const card = el("div", { class: "card", id: "q_" + qi });
+    const head = el("div", { class: "qhead" });
+    head.append(el("div", { class: "qidx" }, String(qi + 1)));
+    const title = el("div", { class: "qtitle" }, q.title);
+    if (q.type === "single")
+      title.append(el("div", { class: "hint" }, "(Chọn 1 đáp án đúng)"));
+    if (q.type === "multi")
+      title.append(el("div", { class: "hint" }, "(Chọn nhiều đáp án đúng)"));
+    if (q.type === "tfset")
+      title.append(el("div", { class: "hint" }, "(Đúng / Sai theo từng phát biểu)"));
+    if (q.type && q.type.includes("drag"))
+      title.append(el("div", { class: "hint" }, "(Kéo thả hoặc chạm vào thẻ từ rồi chạm vào ô tương ứng)"));
+    head.append(title);
+    card.append(head);
+
+    const body = el("div", { class: "answers" });
+
+    if (q.type === "single" || q.type === "multi") {
+      q.options.forEach((opt) => {
+        const id = "q" + qi + "_" + safeId(opt);
+        const lab = el("label");
+        const ipt = el("input", {
+          type: q.type === "single" ? "radio" : "checkbox",
+          name: "q" + qi,
+          value: opt,
+          id,
+        });
+        lab.append(ipt, el("span", {}, opt));
+        body.append(lab);
+      });
+    }
+
+    if (q.type === "tfset") {
+      q.statements.forEach((st, si) => {
+        const row = el("div", { class: "tf-item" });
+        row.append(el("div", { class: "tf-text" }, st.text));
+        const ch = el("div", { class: "tf-row" });
+        ["Đúng", "Sai"].forEach((v) => {
+          const lab = el("label");
+          const ipt = el("input", {
+            type: "radio",
+            name: "q" + qi + "_s" + si,
+            value: v,
+          });
+          lab.append(ipt, el("span", {}, v));
+          ch.append(lab);
+        });
+        row.append(ch);
+        body.append(row);
+      });
+    }
+
+    if (q.type === "drag_pairs") {
+      const wrap = el("div", { class: "dragwrap" });
+      const zones = el("div", { class: "dragzone" });
+      q.__prompts.forEach((promptText) => {
+        const z = el("div", { class: "zone", dataset: { prompt: promptText } });
+        z.append(el("h4", {}, promptText), el("div", { class: "droparea" }));
+        zones.append(z);
+      });
+      wrap.append(zones);
+      const pool = el("div", { class: "pool" });
+      [...q.__options, ...(q.__extras || [])].forEach((optText) => {
+        pool.append(
+          el(
+            "div",
+            { class: "pill", draggable: true, dataset: { txt: optText } },
+            optText,
+          ),
+        );
+      });
+      wrap.append(pool);
+      body.append(wrap);
+    }
+
+    if (q.type === "drag_groups") {
+      const wrap = el("div", { class: "dragwrap" });
+      const zones = el("div", { class: "dragzone" });
+      q.__groupNames.forEach((g) => {
+        const z = el("div", { class: "zone", dataset: { gname: g } });
+        z.append(el("h4", {}, g), el("div", { class: "droparea" }));
+        zones.append(z);
+      });
+      wrap.append(zones);
+      const pool = el("div", { class: "pool" });
+      q.__items.forEach((item) => {
+        pool.append(
+          el(
+            "div",
+            { class: "pill", draggable: true, dataset: { txt: item } },
+            item,
+          ),
+        );
+      });
+      wrap.append(pool);
+      body.append(wrap);
+    }
+
+    const res = el("div", { class: "result", id: "res_" + qi });
+    const hint = el("div", { class: "result-hint", id: "hint_" + qi });
+    card.append(body, res, hint);
+    list.append(card);
+  });
+
+  enableDragDrop();
+  updateProgress();
+}
+
+function bindPill(p) {
+  p.addEventListener("dragstart", (e) => {
+    const card = p.closest(".card");
+    const cardId = card ? card.id : "";
+    e.dataTransfer.setData(
+      "text/plain",
+      JSON.stringify({ cardId, txt: p.dataset.txt })
+    );
+  });
+
+  p.addEventListener("click", (e) => {
+    e.stopPropagation();
+    triggerHaptic(10);
+    const card = p.closest(".card");
+    if (!card) return;
+
+    if (selectedPill === p) {
+      p.classList.remove("selected");
+      selectedPill = null;
+    } else {
+      if (selectedPill) selectedPill.classList.remove("selected");
+      selectedPill = p;
+      p.classList.add("selected");
+    }
+  });
+}
+
+function placePillInArea(pill, area, card) {
+  if (!pill || !area || !card) return;
+
+  if (area.classList.contains("droparea")) {
+    const isPairZone = area.closest(".zone")?.dataset?.prompt !== undefined;
+    if (isPairZone) {
+      const existing = area.querySelector(".pill");
+      if (existing && existing !== pill) {
+        const pool = card.querySelector(".pool");
+        if (pool) pool.append(existing);
+      }
+    }
+  }
+
+  pill.classList.remove("selected");
+  pill.classList.add("placed");
+  setTimeout(() => pill.classList.remove("placed"), 300);
+  area.append(pill);
+  selectedPill = null;
+  updateProgress();
+  triggerHaptic(14);
+}
+
+function enableDragDrop() {
+  selectedPill = null;
+  document.querySelectorAll(".pill").forEach(bindPill);
+
+  document.querySelectorAll(".droparea, .pool").forEach((area) => {
+    const card = area.closest(".card");
+
+    area.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      area.closest(".zone")?.classList.add("dragover");
+    });
+
+    area.addEventListener("dragleave", (e) => {
+      area.closest(".zone")?.classList.remove("dragover");
+    });
+
+    area.addEventListener("drop", (e) => {
+      e.preventDefault();
+      area.closest(".zone")?.classList.remove("dragover");
+      let data;
+      try {
+        data = JSON.parse(e.dataTransfer.getData("text/plain"));
+      } catch (err) {
+        return;
+      }
+      if (!data || !data.cardId || data.cardId !== card?.id) return;
+
+      const pills = Array.from(card.querySelectorAll(".pill"));
+      const targetPill = pills.find(
+        (p) => p.dataset.txt === data.txt && (selectedPill === p || !area.contains(p))
+      );
+      if (targetPill) {
+        placePillInArea(targetPill, area, card);
+      }
+    });
+
+    area.addEventListener("click", (e) => {
+      if (!selectedPill) return;
+      if (card && card.contains(selectedPill)) {
+        placePillInArea(selectedPill, area, card);
+      }
+    });
+  });
+
+  document.addEventListener("click", (e) => {
+    if (selectedPill && !e.target.closest(".pill")) {
+      selectedPill.classList.remove("selected");
+      selectedPill = null;
+    }
+  });
+}
+
+function getUserAnswer(q, qi) {
+  if (q.type === "single" || q.type === "multi") {
+    return Array.from(
+      document.querySelectorAll("#q_" + qi + " input:checked"),
+    ).map((x) => x.value);
+  }
+  if (q.type === "tfset") {
+    return q.statements.map((st, si) => {
+      const inp = document.querySelector(
+        'input[name="q' + qi + '_s' + si + '"]:checked',
+      );
+      return inp ? inp.value === "Đúng" : null;
+    });
+  }
+  if (q.type === "drag_pairs") {
+    const ans = {};
+    document.querySelectorAll("#q_" + qi + " .zone").forEach((z) => {
+      const prompt = z.dataset.prompt;
+      const pill = z.querySelector(".pill");
+      if (pill) ans[prompt] = pill.dataset.txt;
+    });
+    return ans;
+  }
+  if (q.type === "drag_groups") {
+    const ans = {};
+    document.querySelectorAll("#q_" + qi + " .zone").forEach((z) => {
+      const gname = z.dataset.gname;
+      ans[gname] = Array.from(z.querySelectorAll(".pill")).map(
+        (p) => p.dataset.txt,
+      );
+    });
+    return ans;
+  }
+  return null;
+}
+
+function isCorrect(q, ans) {
+  if (!ans) return false;
+  if (q.type === "single" || q.type === "multi") {
+    return (
+      ans.length === q.answer.length &&
+      ans.every((a) => q.answer.includes(a))
+    );
+  }
+  if (q.type === "tfset") {
+    return ans.every((a, i) => a === q.statements[i].answer);
+  }
+  if (q.type === "drag_pairs") {
+    return Object.entries(q.pairs).every(
+      ([prompt, expected]) => ans[prompt] === expected
+    );
+  }
+  if (q.type === "drag_groups") {
+    return Object.entries(q.groups).every(
+      ([g, arr]) =>
+        ans[g] &&
+        arr.every((item) => ans[g].includes(item)) &&
+        ans[g].length === arr.length
+    );
+  }
+  return false;
+}
+
+function updateProgress() {
+  if (!WORK.length) return;
+  let answered = 0;
+  WORK.forEach((q, qi) => {
+    const user = getUserAnswer(q, qi);
+    let has = false;
+    if (q.type === "single" || q.type === "multi") {
+      has = user && user.length > 0;
+    } else if (q.type === "tfset") {
+      has = user && user.some((x) => x !== null);
+    } else if (q.type === "drag_pairs" || q.type === "drag_groups") {
+      has = user && Object.keys(user).length > 0;
+    }
+    if (has) answered++;
+  });
+  const pct = Math.round((answered / WORK.length) * 100);
+  const fill = document.getElementById("progressFill");
+  if (fill) fill.style.width = pct + "%";
+  const meta = document.getElementById("meta");
+  if (meta && !meta.dataset.showScore) {
+    meta.textContent = answered + "/" + WORK.length + " câu";
+  }
+}
+
+function showKey(q, qi) {
+  const hint = document.getElementById("hint_" + qi);
+  if (!hint) return;
+  hint.innerHTML = "";
+  if (q.type === "single" || q.type === "multi") {
+    hint.innerHTML = '<div class="hint-box"><strong>Đáp án:</strong> <b>' + q.answer.join(", ") + '</b></div>';
+  } else if (q.type === "tfset") {
+    hint.innerHTML = '<div class="hint-box"><strong>Đáp án:</strong> <b>' + q.statements
+      .map((s, idx) => "Phát biểu " + (idx + 1) + ": " + (s.answer ? "Đúng" : "Sai"))
+      .join(" · ") + "</b></div>";
+  } else if (q.type === "drag_pairs") {
+    hint.innerHTML = '<div class="hint-box"><strong>Đáp án đúng:</strong><br>' + Object.entries(q.pairs)
+      .map(([prompt, ans]) => "• <em>" + prompt + "</em> → <strong>" + ans + "</strong>")
+      .join("<br>") + "</div>";
+  } else if (q.type === "drag_groups") {
+    hint.innerHTML = '<div class="hint-box"><strong>Đáp án đúng:</strong><br>' + Object.entries(q.groups)
+      .map(([group, items]) => "• <strong>" + group + ":</strong> " + items.join("; "))
+      .join("<br>") + "</div>";
+  }
+}
+
+function checkAll() {
+  let correct = 0;
+  WORK.forEach((q, qi) => {
+    const card = document.getElementById("q_" + qi);
+    const res = document.getElementById("res_" + qi);
+    const user = getUserAnswer(q, qi);
+    if (card) card.classList.remove("card-correct", "card-wrong");
+    if (isCorrect(q, user)) {
+      correct++;
+      if (res) {
+        res.textContent = "✔ Đúng";
+        res.className = "result r-good";
+      }
+      if (card) card.classList.add("card-correct");
+    } else {
+      if (res) {
+        res.textContent = "✘ Sai";
+        res.className = "result r-bad";
+      }
+      if (card) card.classList.add("card-wrong");
+    }
+  });
+
+  const total = WORK.length;
+  const pct = Math.round((correct / total) * 100);
+  const meta = document.getElementById("meta");
+  if (meta) {
+    meta.textContent = correct + "/" + total + " đúng (" + pct + "%)";
+    meta.dataset.showScore = "1";
+  }
+
+  try {
+    const lessonId = window.LESSON_ID || 1;
+    localStorage.setItem(
+      "cnxh_score_bai_" + lessonId,
+      JSON.stringify({ score: correct, total, pct, time: Date.now() })
+    );
+  } catch (e) {}
+
+  triggerHaptic(25);
+  showScoreModal(correct, total, pct);
+}
+
+function showScoreModal(correct, total, pct) {
+  let modalBackdrop = document.getElementById("scoreModal");
+  if (!modalBackdrop) {
+    modalBackdrop = el("div", { class: "score-modal-backdrop", id: "scoreModal" });
+    document.body.append(modalBackdrop);
+  }
+
+  let gradeMsg = "Cần cố gắng thêm! Hãy xem lại các đáp án sai và luyện tập lại nhé.";
+  let gradeBadge = "🌱";
+  if (pct >= 90) {
+    gradeMsg = "Xuất sắc! Bạn đã nắm rất vững kiến thức và sẵn sàng thi đạt điểm cao.";
+    gradeBadge = "🏆";
+  } else if (pct >= 75) {
+    gradeMsg = "Rất tốt! Bạn đã nắm chắc hầu hết các nội dung trọng tâm.";
+    gradeBadge = "⭐";
+  } else if (pct >= 50) {
+    gradeMsg = "Đạt yêu cầu! Hãy ôn luyện lại một số phần để tự tin hơn khi làm bài.";
+    gradeBadge = "📈";
+  }
+
+  modalBackdrop.innerHTML =
+    '<div class="score-modal">' +
+    '<div class="score-badge">' + gradeBadge + '</div>' +
+    '<h2 class="score-title">Kết Quả Bài Làm</h2>' +
+    '<div class="score-number">' + correct + ' / ' + total + '</div>' +
+    '<div class="score-pct">' + pct + '% chính xác</div>' +
+    '<p class="score-msg">' + gradeMsg + '</p>' +
+    '<div class="score-actions">' +
+    '<button id="modalBtnKey" class="btn-primary">👁 Xem đáp án chi tiết</button>' +
+    '<button id="modalBtnRetry" class="btn-secondary">↻ Làm lại bài</button>' +
+    '<button id="modalBtnClose" class="btn-ghost">Đóng cửa sổ</button>' +
+    '</div>' +
+    '</div>';
+
+  modalBackdrop.classList.add("visible");
+
+  document.getElementById("modalBtnKey").addEventListener("click", () => {
+    modalBackdrop.classList.remove("visible");
+    if (!keyVisible) {
+      document.getElementById("btnToggleKey").click();
+    }
+  });
+
+  document.getElementById("modalBtnRetry").addEventListener("click", () => {
+    modalBackdrop.classList.remove("visible");
+    reset(true);
+  });
+
+  document.getElementById("modalBtnClose").addEventListener("click", () => {
+    modalBackdrop.classList.remove("visible");
+  });
+
+  modalBackdrop.addEventListener("click", (e) => {
+    if (e.target === modalBackdrop) modalBackdrop.classList.remove("visible");
+  });
+}
+
+document.getElementById("btnCheck").addEventListener("click", () => {
+  triggerHaptic(12);
+  checkAll();
+});
+
+document.getElementById("btnReset").addEventListener("click", () => {
+  triggerHaptic(12);
+  reset(true);
+});
+
+document.getElementById("btnToggleKey").addEventListener("click", () => {
+  triggerHaptic(12);
+  keyVisible = !keyVisible;
+  const btn = document.getElementById("btnToggleKey");
+  if (btn) btn.classList.toggle("active", keyVisible);
+  WORK.forEach((q, qi) => {
+    const hint = document.getElementById("hint_" + qi);
+    if (hint) {
+      if (keyVisible) showKey(q, qi);
+      else hint.innerHTML = "";
+    }
+  });
+});
+
+document.getElementById("list").addEventListener("change", (e) => {
+  if (e.target.matches("input[type=radio], input[type=checkbox]")) {
+    const label = e.target.closest("label");
+    if (label) {
+      if (e.target.type === "radio") {
+        const name = e.target.name;
+        document.querySelectorAll('input[name="' + name + '"]').forEach((r) => {
+          r.closest("label")?.classList.remove("checked");
+        });
+        label.classList.add("checked");
+      } else {
+        label.classList.toggle("checked", e.target.checked);
+      }
+    }
+    updateProgress();
+    triggerHaptic(8);
+  }
+});
+
+const headerEl = document.getElementById("header");
+const btnScrollTop = document.getElementById("btnScrollTop");
+
+window.addEventListener(
+  "scroll",
+  () => {
+    const y = window.scrollY || document.documentElement.scrollTop;
+    if (headerEl) {
+      if (y > 10) headerEl.classList.add("scrolled");
+      else headerEl.classList.remove("scrolled");
+    }
+    if (btnScrollTop) {
+      if (y > 320) btnScrollTop.classList.add("visible");
+      else btnScrollTop.classList.remove("visible");
+    }
+  },
+  { passive: true }
+);
+
+if (btnScrollTop) {
+  btnScrollTop.addEventListener("click", () => {
+    triggerHaptic(15);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+// Initial render in natural sequence
+reset(false);
+    </script>
+  </body>
+</html>

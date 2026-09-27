@@ -1,0 +1,1714 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chủ nghĩa Xã hội Khoa học - Bài 6: Xây dựng gia đình trong thời kỳ quá độ lên CNXH</title>
+    <style>
+      :root {
+        --bg1: #f0f4f8;
+        --bg2: #d9e2ec;
+        --card: #ffffff;
+        --ink: #1f2937;
+        --muted: #64748b;
+        --accent: #2563eb;
+        --accent-hover: #1d4ed8;
+        --good: #16a34a;
+        --bad: #dc2626;
+        --border: #e2e8f0;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        color: var(--ink);
+        background: linear-gradient(135deg, var(--bg1), var(--bg2));
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        transition: background 0.3s ease;
+        -webkit-font-smoothing: antialiased;
+      }
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+        transition: box-shadow 0.25s ease;
+      }
+      header.scrolled {
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      }
+      .progress-line {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3.5px;
+        background: rgba(0, 0, 0, 0.04);
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, #3b82f6, #10b981);
+        transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .wrap {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 16px 20px;
+        width: 100%;
+      }
+      .brand-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+      .brand-title-wrap {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .header-titles {
+        display: flex;
+        flex-direction: column;
+      }
+      .header-titles h1 {
+        margin: 0;
+        font-size: clamp(16px, 2.4vw, 22px);
+        font-weight: 800;
+        color: var(--ink);
+        letter-spacing: -0.01em;
+        line-height: 1.25;
+      }
+      .header-titles .sub {
+        font-size: 12px;
+        color: var(--muted);
+        font-weight: 500;
+        margin-top: 2px;
+      }
+      .btn-home {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        text-decoration: none;
+        color: #475569;
+        font-weight: 600;
+        font-size: 13px;
+        background: #ffffff;
+        padding: 6px 12px;
+        border-radius: 10px;
+        border: 1px solid #cbd5e1;
+        transition: all 0.15s ease;
+        white-space: nowrap;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .btn-home:hover {
+        background: #f1f5f9;
+        color: var(--accent);
+        border-color: #94a3b8;
+      }
+      .btn-home:active {
+        transform: scale(0.96);
+      }
+      .toolbar {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      button {
+        border: none;
+        padding: 9px 16px;
+        border-radius: 11px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 13.5px;
+        background: var(--accent);
+        color: #fff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s, opacity 0.15s, background 0.15s;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        user-select: none;
+      }
+      button:hover {
+        background: var(--accent-hover);
+      }
+      button:active {
+        transform: scale(0.96);
+      }
+      button.secondary {
+        background: #334155;
+      }
+      button.secondary:hover {
+        background: #1e293b;
+      }
+      button.ghost {
+        background: #ffffff;
+        color: #334155;
+        border: 1px solid #cbd5e1;
+      }
+      button.ghost:hover {
+        background: #f8fafc;
+        border-color: #94a3b8;
+      }
+      button.ghost.active {
+        background: #eff6ff;
+        color: #2563eb;
+        border-color: #93c5fd;
+      }
+      .meta {
+        font-weight: 600;
+        color: #475569;
+        font-size: 13px;
+        background: #ffffff;
+        padding: 5px 14px;
+        border-radius: 999px;
+        border: 1px solid #cbd5e1;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .cards {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 20px 0 30px;
+      }
+      .card {
+        background: var(--card);
+        border-radius: 18px;
+        padding: 22px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+        border: 1px solid rgba(226, 232, 240, 0.9);
+        transition: border-color 0.25s, box-shadow 0.25s;
+      }
+      .card.card-correct {
+        border-color: #86efac;
+        box-shadow: 0 4px 20px rgba(22, 163, 74, 0.1);
+      }
+      .card.card-wrong {
+        border-color: #fca5a5;
+        box-shadow: 0 4px 20px rgba(220, 38, 38, 0.1);
+      }
+      .qhead {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+      }
+      .qidx {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        display: grid;
+        place-items: center;
+        font-weight: 700;
+        font-size: 14px;
+        color: #fff;
+        background: #334155;
+        flex-shrink: 0;
+      }
+      .qtitle {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+      .hint {
+        font-size: 13px;
+        color: var(--muted);
+        margin-top: 4px;
+        font-weight: normal;
+      }
+      .answers {
+        margin-top: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+      }
+      .answers label {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        padding: 11px 14px;
+        border: 1.5px solid #e2e8f0;
+        border-radius: 12px;
+        cursor: pointer;
+        background: #ffffff;
+        transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        user-select: none;
+      }
+      .answers label:hover {
+        background: #f8fafc;
+        border-color: #cbd5e1;
+      }
+      .answers label:active {
+        transform: scale(0.99);
+      }
+      .answers label:has(input:checked),
+      .answers label.checked {
+        background: #f0f7ff;
+        border-color: #3b82f6;
+        color: #1e40af;
+        box-shadow: 0 2px 8px rgba(59, 130, 246, 0.12);
+        font-weight: 500;
+      }
+      .answers input {
+        width: 18px;
+        height: 18px;
+        accent-color: #2563eb;
+        flex-shrink: 0;
+        cursor: pointer;
+      }
+      .tf-item {
+        padding: 12px 14px;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        background: #fff;
+        margin-bottom: 8px;
+      }
+      .tf-text {
+        font-size: 14.5px;
+        line-height: 1.5;
+        color: var(--ink);
+        font-weight: 500;
+        margin-bottom: 6px;
+      }
+      .tf-row {
+        margin-top: 8px;
+        display: flex;
+        gap: 10px;
+      }
+      .tf-row label {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        cursor: pointer;
+        padding: 7px 14px;
+        border-radius: 9px;
+        background: #f8fafc;
+        border: 1.5px solid #e2e8f0;
+        font-size: 14px;
+        font-weight: 500;
+        transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        user-select: none;
+      }
+      .tf-row label:hover {
+        background: #f1f5f9;
+        border-color: #cbd5e1;
+      }
+      .tf-row label:active {
+        transform: scale(0.98);
+      }
+      .tf-row label:has(input:checked),
+      .tf-row label.checked {
+        background: #f0f7ff;
+        border-color: #3b82f6;
+        color: #1e40af;
+        font-weight: 600;
+        box-shadow: 0 2px 6px rgba(59, 130, 246, 0.1);
+      }
+      .tf-row input {
+        accent-color: #2563eb;
+      }
+
+      /* Drag and Drop Elements */
+      .dragwrap {
+        display: grid;
+        gap: 14px;
+      }
+      .dragzone {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 12px;
+      }
+      .zone {
+        min-height: 70px;
+        border: 2px dashed #94a3b8;
+        border-radius: 14px;
+        padding: 12px 14px;
+        background: #f8fafc;
+        transition: border-color 0.2s, background 0.2s;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .zone h4 {
+        margin: 0 0 10px;
+        font-size: 14px;
+        line-height: 1.5;
+        color: var(--ink);
+        font-weight: 600;
+      }
+      .zone.dragover {
+        border-color: var(--accent);
+        background: #eff6ff;
+      }
+      .droparea {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        min-height: 42px;
+        border-radius: 8px;
+        padding: 4px;
+        background: rgba(255, 255, 255, 0.6);
+        border: 1px solid rgba(226, 232, 240, 0.7);
+        align-items: center;
+      }
+      .pool {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        min-height: 48px;
+        background: #ffffff;
+        border: 1.5px solid #cbd5e1;
+        border-radius: 14px;
+        padding: 12px;
+        align-items: center;
+      }
+      .pill {
+        background: #eef2ff;
+        border: 1px solid #93c5fd;
+        color: #1e3a8a;
+        border-radius: 999px;
+        padding: 7px 14px;
+        display: inline-flex;
+        gap: 6px;
+        align-items: center;
+        font-weight: 600;
+        font-size: 13.5px;
+        user-select: none;
+        -webkit-user-select: none;
+        cursor: grab;
+        margin: 3px;
+        transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.18s, background 0.18s;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+      }
+      .pill:active {
+        cursor: grabbing;
+        transform: scale(0.96);
+      }
+      .pill.selected {
+        outline: 2.5px solid var(--accent);
+        outline-offset: 1px;
+        background: #dbeafe !important;
+        color: #1d4ed8 !important;
+        transform: scale(1.03);
+        box-shadow: 0 2px 10px rgba(37, 99, 235, 0.25);
+      }
+      .pill.placed {
+        animation: popPlaced 0.25s ease;
+      }
+      @keyframes popPlaced {
+        0% { transform: scale(0.9); }
+        50% { transform: scale(1.06); }
+        100% { transform: scale(1); }
+      }
+
+      /* Result Badges and Hint Containers */
+      .result {
+        margin-top: 14px;
+        font-weight: 700;
+        font-size: 14.5px;
+        animation: fadeIn 0.3s ease;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-4px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .r-good {
+        color: var(--good);
+      }
+      .r-bad {
+        color: var(--bad);
+      }
+      .result-hint {
+        margin-top: 8px;
+      }
+      .hint-box {
+        background: #f8fafc;
+        border: 1px solid #cbd5e1;
+        border-left: 4px solid #3b82f6;
+        border-radius: 10px;
+        padding: 12px 14px;
+        font-size: 13.5px;
+        color: #1e293b;
+        line-height: 1.6;
+        animation: fadeIn 0.25s ease;
+      }
+      .hint-box strong {
+        color: #0f172a;
+      }
+      .hint-box em {
+        font-style: normal;
+        color: #334155;
+      }
+
+      /* Lesson Navigation Footer */
+      .lesson-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-top: 24px;
+        margin-bottom: 40px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border);
+        flex-wrap: wrap;
+      }
+      .lesson-nav a {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 10px 16px;
+        background: #ffffff;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        color: var(--ink);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 13.5px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+        transition: all 0.2s ease;
+      }
+      .lesson-nav a:hover {
+        background: #f8fafc;
+        border-color: #94a3b8;
+        color: var(--accent);
+      }
+      .lesson-nav a.nav-primary {
+        background: var(--accent);
+        color: #ffffff;
+        border-color: var(--accent);
+      }
+      .lesson-nav a.nav-primary:hover {
+        background: var(--accent-hover);
+      }
+
+      /* Score Modal Dialog */
+      .score-modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.6);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        padding: 16px;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s ease, visibility 0.2s ease;
+      }
+      .score-modal-backdrop.visible {
+        opacity: 1;
+        visibility: visible;
+      }
+      .score-modal {
+        background: #ffffff;
+        border-radius: 20px;
+        max-width: 440px;
+        width: 100%;
+        padding: 26px 22px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+        text-align: center;
+        transform: translateY(12px) scale(0.97);
+        transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        border: 1px solid #e2e8f0;
+      }
+      .score-modal-backdrop.visible .score-modal {
+        transform: translateY(0) scale(1);
+      }
+      .score-badge {
+        font-size: 42px;
+        line-height: 1;
+        margin-bottom: 10px;
+      }
+      .score-title {
+        margin: 0 0 6px;
+        font-size: 20px;
+        font-weight: 800;
+        color: var(--ink);
+      }
+      .score-number {
+        font-size: 36px;
+        font-weight: 800;
+        color: var(--accent);
+        line-height: 1.2;
+        margin-top: 6px;
+      }
+      .score-pct {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--muted);
+        margin-bottom: 12px;
+      }
+      .score-msg {
+        margin: 0 0 20px;
+        font-size: 14px;
+        color: #475569;
+        line-height: 1.5;
+        padding: 0 8px;
+      }
+      .score-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .score-actions button {
+        width: 100%;
+        padding: 11px 16px;
+        font-size: 14px;
+        border-radius: 12px;
+      }
+      .score-actions .btn-primary {
+        background: var(--accent);
+        color: #ffffff;
+      }
+      .score-actions .btn-secondary {
+        background: #f1f5f9;
+        color: #334155;
+        border: 1px solid #cbd5e1;
+      }
+      .score-actions .btn-ghost {
+        background: transparent;
+        color: var(--muted);
+        border: none;
+        padding: 8px;
+        font-size: 13px;
+      }
+
+      /* Floating Back-To-Top Button */
+      .btn-scroll-top {
+        position: fixed;
+        bottom: 24px;
+        right: 20px;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: #1e293b;
+        color: #ffffff;
+        font-size: 20px;
+        font-weight: 700;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+        border: none;
+        cursor: pointer;
+        display: grid;
+        place-items: center;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(12px);
+        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 99;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+      }
+      .btn-scroll-top.visible {
+        opacity: 0.92;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .btn-scroll-top:hover {
+        opacity: 1;
+        background: #0f172a;
+        transform: translateY(-2px);
+      }
+      .btn-scroll-top:active {
+        transform: scale(0.92);
+      }
+
+      /* Responsive rules */
+      @media (max-width: 768px) {
+        .wrap {
+          padding: 10px 14px;
+        }
+        .brand-row {
+          margin-bottom: 8px;
+        }
+        .header-titles h1 {
+          font-size: 16px;
+          line-height: 1.35;
+        }
+        .meta {
+          font-size: 12px;
+          padding: 4px 10px;
+        }
+        .toolbar {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 6px;
+        }
+        button {
+          padding: 8px 6px;
+          font-size: 12.5px;
+          border-radius: 10px;
+          min-height: 38px;
+          white-space: nowrap;
+        }
+        button span {
+          display: none;
+        }
+        .cards {
+          padding: 12px 0 30px;
+          gap: 12px;
+        }
+        .card {
+          padding: 16px 14px;
+          border-radius: 14px;
+        }
+        .qhead {
+          gap: 10px;
+        }
+        .qidx {
+          width: 28px;
+          height: 28px;
+          font-size: 13px;
+          border-radius: 8px;
+        }
+        .qtitle {
+          font-size: 15px;
+          line-height: 1.45;
+        }
+        .dragzone {
+          grid-template-columns: 1fr;
+        }
+        .lesson-nav {
+          flex-direction: column;
+        }
+        .lesson-nav a {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header id="header">
+      <div class="progress-line"><div id="progressFill" class="progress-fill"></div></div>
+      <div class="wrap">
+        <div class="brand-row">
+          <div class="brand-title-wrap">
+            <a href="index.html" class="btn-home" title="Quay về trang chủ">← Trang chủ</a>
+            <div class="header-titles">
+              <h1>Bài 6: Xây dựng gia đình trong thời kỳ quá độ</h1>
+              <span class="sub">Vị trí, chức năng của gia đình & phương hướng xây dựng gia đình Việt Nam hiện nay</span>
+            </div>
+          </div>
+          <div class="meta" id="meta">0/0 câu</div>
+        </div>
+        <div class="toolbar">
+          <button id="btnCheck"><span>✓</span> Xem kết quả</button>
+          <button class="secondary" id="btnReset"><span>↻</span> Làm lại</button>
+          <button class="ghost" id="btnToggleKey"><span>👁</span> Đáp án</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <div id="list" class="cards"></div>
+      <nav class="lesson-nav">
+        <a href="bai5.html" class="nav-btn">← Bài 5: Dân tộc & Tôn giáo</a>
+        <a href="index.html" class="nav-home-btn">📚 Mục lục 6 bài</a>
+        <a href="index.html" class="nav-btn nav-primary">🎉 Hoàn thành ôn tập →</a>
+      </nav>
+    </main>
+
+    <button id="btnScrollTop" class="btn-scroll-top" title="Lên đầu trang" aria-label="Lên đầu trang">↑</button>
+
+    <script>
+window.LESSON_ID = 6;
+
+const clone = (x) => JSON.parse(JSON.stringify(x));
+const shuffle = (arr) => {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+};
+const el = (tag, attrs = {}, html = "") => {
+  const e = document.createElement(tag);
+  Object.entries(attrs).forEach(([k, v]) => {
+    if (k === "class") e.className = v;
+    else if (k === "dataset") Object.assign(e.dataset, v);
+    else e.setAttribute(k, v);
+  });
+  if (html) e.innerHTML = html;
+  return e;
+};
+const safeId = (str) =>
+  "id_" +
+  str
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-zA-Z0-9]/g, "_");
+
+const BANK = [
+  {
+    "id": 1,
+    "type": "multi",
+    "title": "Hai mối quan hệ cơ bản hình thành gia đình là: (chọn nhiều đáp án)",
+    "options": [
+      "Quan hệ hôn nhân",
+      "Quan hệ kinh tế",
+      "Quan hệ huyết thống",
+      "Quan hệ quần tụ trong một không gian sinh tồn"
+    ],
+    "answer": [
+      "Quan hệ hôn nhân",
+      "Quan hệ huyết thống"
+    ]
+  },
+  {
+    "id": 2,
+    "type": "single",
+    "title": "Vị trí của gia đình trong xã hội là:",
+    "options": [
+      "Mạch máu",
+      "Bộ não",
+      "Xương sống",
+      "Tế bào"
+    ],
+    "answer": [
+      "Tế bào"
+    ]
+  },
+  {
+    "id": 3,
+    "type": "single",
+    "title": "Tình yêu giữa nam và nữ trở thành quan hệ hôn nhân được thể hiện bằng:",
+    "options": [
+      "Lời hứa giữa nam và nữ",
+      "Thủ tục pháp lý",
+      "Lễ cưới",
+      "Lễ đính hôn"
+    ],
+    "answer": [
+      "Thủ tục pháp lý"
+    ]
+  },
+  {
+    "id": 4,
+    "type": "single",
+    "title": "Chọn đáp án đúng điền vào chỗ trống trong luận điểm sau: \"Hằng ngày tái tạo ra đời sống của bản thân mình, con người bắt đầu tạo ra những người khác, sinh sôi nẩy nở - đó là quan hệ giữa chồng và vợ, cha mẹ và con cái, đó là....\"",
+    "options": [
+      "Gia đình",
+      "Làng xóm",
+      "Tập thể",
+      "Xã hội"
+    ],
+    "answer": [
+      "Gia đình"
+    ]
+  },
+  {
+    "id": 5,
+    "type": "single",
+    "title": "Quan hệ nào được coi là cơ sở, nền tảng hình thành nên các mối quan hệ khác trong gia đình?",
+    "options": [
+      "Quan hệ quần tụ trong một không gian sinh tồn",
+      "Quan hệ hôn nhân",
+      "Quan hệ nuôi dưỡng",
+      "Quan hệ hôn nhân và huyết thống"
+    ],
+    "answer": [
+      "Quan hệ hôn nhân"
+    ]
+  },
+  {
+    "id": 6,
+    "type": "single",
+    "title": "Gia đình phải thực hiện chức năng nào để đảm bảo nguồn sinh sống, đáp ứng nhu cầu vật chất, tinh thần của các thành viên trong gia đình?",
+    "options": [
+      "Chức năng kinh tế, tổ chức tiêu dùng",
+      "Chức năng tái sản xuất ra con người",
+      "Chức năng thoả mãn các nhu cầu tâm sinh lý, duy trì tình cảm",
+      "Chức năng nuôi dưỡng, giáo dục"
+    ],
+    "answer": [
+      "Chức năng kinh tế, tổ chức tiêu dùng"
+    ]
+  },
+  {
+    "id": 7,
+    "type": "single",
+    "title": "Chỉ ra chức năng đảm bảo tái sản xuất nguồn lao động và sức lao động cho xã hội của gia đình:",
+    "options": [
+      "Chức năng tái sản xuất ra con người",
+      "Chức năng kinh tế",
+      "Chức năng thoả mãn các nhu cầu tâm sinh lý, duy trì tình cảm",
+      "Chức năng nuôi dưỡng, giáo dục"
+    ],
+    "answer": [
+      "Chức năng tái sản xuất ra con người"
+    ]
+  },
+  {
+    "id": 8,
+    "type": "single",
+    "title": "Thực hiện chức năng nào của gia đình nhằm góp phần to lớn vào việc đào tạo thế hệ trẻ, thế hệ tương lai của xã hội?",
+    "options": [
+      "Chức năng tái sản xuất ra con người",
+      "Chức năng nuôi dưỡng, giáo dục",
+      "Chức năng thỏa mãn nhu cầu tâm sinh lý, duy trì tình cảm gia đình",
+      "Chắc năng kinh tế và tổ chức tiêu dùng"
+    ],
+    "answer": [
+      "Chức năng nuôi dưỡng, giáo dục"
+    ]
+  },
+  {
+    "id": 9,
+    "type": "single",
+    "title": "Với chức năng chính trị, gia đình là:",
+    "options": [
+      "Có trách nhiệm nuôi dưỡng, dạy dỗ con cái trở thành người có ích cho gia đình, cộng đồng và xã hội",
+      "Là nơi đáp ứng nhu cầu tâm, sinh lý tự nhiên của con người, đáp ứng nhu cầu duy trì nòi giống",
+      "Là cầu nối của mối quan hệ giữa nhà nước với công dân",
+      "Nơi lưu giữ truyền thống văn hoá của dân tộc cũng như tộc người"
+    ],
+    "answer": [
+      "Là cầu nối của mối quan hệ giữa nhà nước với công dân"
+    ]
+  },
+  {
+    "id": 10,
+    "type": "single",
+    "title": "Gia đình Việt Nam ngày nay có thể được coi là:",
+    "options": [
+      "Gia đình lạc hậu",
+      "Gia đình hiện đại",
+      "Gia đình truyền thống",
+      "Gia đình quá độ"
+    ],
+    "answer": [
+      "Gia đình quá độ"
+    ]
+  },
+  {
+    "id": 11,
+    "type": "multi",
+    "title": "Sự thay đổi quy mô của gia đình hiện nay ở Việt Nam có tác động như thế nào đối với xã hội? (Chọn nhiều đáp án)",
+    "options": [
+      "Làm cho xã hội trở nên thích nghi và phù hợp hơn với tình hình mới, thời đại mới",
+      "Sự bình đẳng nam nữ được đề cao hơn, cuộc sống riêng tư của con người được tôn trọng hơn",
+      "Làm cho kinh tế của đất nước chậm phát triển",
+      "Không có tác động gì đối với sự phát triển của xã hội"
+    ],
+    "answer": [
+      "Làm cho xã hội trở nên thích nghi và phù hợp hơn với tình hình mới, thời đại mới",
+      "Sự bình đẳng nam nữ được đề cao hơn, cuộc sống riêng tư của con người được tôn trọng hơn"
+    ]
+  },
+  {
+    "id": 12,
+    "type": "single",
+    "title": "Quan điểm sau đây của ai: \"Nhiều gia đình cộng lại mới thành xã hội, xã hội tốt thì gia đình càng tốt, gia đình tốt thì xã hội mới tốt. Hạt nhân của xã hội chính là gia đình\"?",
+    "options": [
+      "C. Mác",
+      "V.I. Lênin",
+      "Ph. Ăngghen",
+      "Hồ Chí Minh"
+    ],
+    "answer": [
+      "Hồ Chí Minh"
+    ]
+  },
+  {
+    "id": 13,
+    "type": "single",
+    "title": "Chức năng của gia đình là:",
+    "options": [
+      "Chức năng lãnh đạo cách mạng",
+      "Chức năng kinh tế và tổ chức tiêu dùng",
+      "Chức năng làm các hoạt động từ thiện",
+      "Chức năng tổ chức các sự kiện"
+    ],
+    "answer": [
+      "Chức năng kinh tế và tổ chức tiêu dùng"
+    ]
+  },
+  {
+    "id": 14,
+    "type": "single",
+    "title": "So với các chế độ xã hội trước thì quan hệ gia đình trong thời kỳ quá độ lên chủ nghĩa xã hội có đặc điểm khác biệt gì về chất?",
+    "options": [
+      "Quan hệ bình đẳng trong gia đình, giải phóng phụ nữ",
+      "Phụ nữ chỉ lo việc nội trợ",
+      "Đàn ông là người quyết định mọi việc trong gia đình",
+      "Duy trì quan hệ gia trưởng, độc đoán"
+    ],
+    "answer": [
+      "Quan hệ bình đẳng trong gia đình, giải phóng phụ nữ"
+    ]
+  },
+  {
+    "id": 15,
+    "type": "single",
+    "title": "Chọn đáp án sai về mô hình gia đình Việt Nam hiện đại ngày nay?",
+    "options": [
+      "Ông bà là người làm chủ gia đình",
+      "Người phụ nữ - người vợ làm chủ gia đình",
+      "Cả hai vợ chồng cùng làm chủ gia đình",
+      "Người đàn ông - người chồng làm chủ gia đình"
+    ],
+    "answer": [
+      "Người đàn ông - người chồng làm chủ gia đình"
+    ]
+  },
+  {
+    "id": 16,
+    "type": "multi",
+    "title": "Chức năng tái sản xuất của gia đình Việt Nam trong thời kỳ quá độ lên chủ nghĩa xã hội có những biến đổi như thế nào? (Chọn 2 đáp án đúng)",
+    "options": [
+      "Tăng nhu cầu có con trai",
+      "Tăng sản xuất hàng hóa",
+      "Chủ động trong việc sinh con",
+      "Giảm số con mong muốn"
+    ],
+    "answer": [
+      "Chủ động trong việc sinh con",
+      "Giảm số con mong muốn"
+    ]
+  },
+  {
+    "id": 17,
+    "type": "single",
+    "title": "Gia đình là:",
+    "options": [
+      "Tập đoàn xã hội ổn định",
+      "Một tộc người",
+      "Hình thức cộng đồng xã hội đặc biệt",
+      "Một nhóm người"
+    ],
+    "answer": [
+      "Hình thức cộng đồng xã hội đặc biệt"
+    ]
+  },
+  {
+    "id": 18,
+    "type": "single",
+    "title": "Trong gia đình Việt Nam hiện đại ngày nay, nhu cầu về con cái đã có những thay đổi căn bản như thế nào?",
+    "options": [
+      "Phải có con, càng đông con càng tốt và nhất thiết phải có con trai nối dõi",
+      "Tỷ lệ sinh thấp, nhu cầu phải có con trai tăng",
+      "Các gia đình không muốn có con để không bị gánh nặng kinh tế",
+      "Giảm mức sinh của phụ nữ, giảm số con mong muốn và giảm nhu cầu nhất thiết phải có con trai của các cặp vợ chồng"
+    ],
+    "answer": [
+      "Giảm mức sinh của phụ nữ, giảm số con mong muốn và giảm nhu cầu nhất thiết phải có con trai của các cặp vợ chồng"
+    ]
+  },
+  {
+    "id": 19,
+    "type": "single",
+    "title": "Sự biến đổi quan hệ giữa các thế hệ, các giá trị, chuẩn mực văn hóa của gia đình hạt nhân ngày nay có tác động tiêu cực như thế nào đối với người cao tuổi?",
+    "options": [
+      "Người cao tuổi được đáp ứng đầy đủ nhu cầu về tâm lý, tình cảm",
+      "Người cao tuổi được sống trong gia đình có nhiều thế hệ",
+      "Người cao tuổi phải đối mặt với sự cô đơn thiếu thốn về tình cảm",
+      "Người cao tuổi được con cái dành nhiều thời gian quan tâm, chăm sóc"
+    ],
+    "answer": [
+      "Người cao tuổi phải đối mặt với sự cô đơn thiếu thốn về tình cảm"
+    ]
+  },
+  {
+    "id": 20,
+    "type": "single",
+    "title": "Sự biến đổi trong việc thực hiện chức năng giáo dục của gia đình Việt Nam hiện nay là gì?",
+    "options": [
+      "Sự đầu tư tài chính của gia đình cho giáo dục con cái tăng lên",
+      "Chi giáo dục đạo đức mà không hướng tới giáo dục kiến thức khoa học hiện đại",
+      "Không hướng tới giáo dục đạo đức, lối sống.",
+      "Giảm chi tiêu cho giáo dục"
+    ],
+    "answer": [
+      "Sự đầu tư tài chính của gia đình cho giáo dục con cái tăng lên"
+    ]
+  },
+  {
+    "id": 21,
+    "type": "multi",
+    "title": "Quy mô của gia đình Việt Nam trong thời kỳ quá độ lên chủ nghĩa xã hội có những biến đổi như thế nào? (Chọn 2 đáp án đúng)",
+    "options": [
+      "Ngày càng thu nhỏ",
+      "Kinh tế tự cấp",
+      "Quy mô lớn",
+      "Gia đình hạt nhân tăng lên"
+    ],
+    "answer": [
+      "Ngày càng thu nhỏ",
+      "Gia đình hạt nhân tăng lên"
+    ]
+  },
+  {
+    "id": 22,
+    "type": "single",
+    "title": "Xu hướng phát triển của quy mô gia đình Việt Nam ngày nay như thế nào?",
+    "options": [
+      "Có xu hướng vừa tăng lên vừa thu nhỏ lại",
+      "Có xu hướng ổn định không thay đổi so với trước đây",
+      "Ngày càng được thu nhỏ lại",
+      "Ngày càng được mở rộng ra"
+    ],
+    "answer": [
+      "Ngày càng được thu nhỏ lại"
+    ]
+  },
+  {
+    "id": 23,
+    "type": "multi",
+    "title": "Những vấn đề xã hội nào có dấu hiệu gia tăng đối với gia đình Việt Nam trong thời kỳ quá độ lên chủ nghĩa xã hội? (Chọn 2 đáp án đúng)",
+    "options": [
+      "Sản xuất hàng hóa",
+      "Ly hôn",
+      "Giáo dục đạo đức",
+      "Bạo lực gia đình"
+    ],
+    "answer": [
+      "Ly hôn",
+      "Bạo lực gia đình"
+    ]
+  },
+  {
+    "id": 24,
+    "type": "tfset",
+    "title": "Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
+    "statements": [
+      {
+        "text": "Tăng số con mong muốn và tăng nhu cầu nhất thiết phải có con trai của các cặp vợ chồng",
+        "answer": false
+      },
+      {
+        "text": "Trong gia đình hiện đại, sự bền vững của hôn nhân không phụ thuộc vào các yếu tố tâm lý, tình cảm, kinh tế",
+        "answer": false
+      },
+      {
+        "text": "Gia đình từ đơn vị kinh tế tự cung tự cấp sang đơn vị kinh tế hàng hoá",
+        "answer": true
+      },
+      {
+        "text": "Hiện nay việc sinh đẻ được các gia đình tiến hành một cách chủ động, tự giác",
+        "answer": true
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "type": "tfset",
+    "title": "Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
+    "statements": [
+      {
+        "text": "Nội dung giáo dục trong gia đình hiện nay chỉ tập trung giáo dục đạo đức",
+        "answer": false
+      },
+      {
+        "text": "Hiện nay, độ bền vững của gia đình không bị chi phối bởi các mối quan hệ hòa hợp tình cảm giữa chồng và vợ, cha mẹ và con cái",
+        "answer": false
+      },
+      {
+        "text": "Giáo dục gia đình tiếp tục nhấn mạnh sự hy sinh của cá nhân cho cộng đồng",
+        "answer": false
+      },
+      {
+        "text": "Hiện nay, kinh tế gia đình đang trở thành một bộ phận quan trọng trong nền kinh tế quốc dân",
+        "answer": true
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "type": "drag_groups",
+    "title": "Kéo thả các yếu tố liên quan đến biến đổi gia đình Việt Nam trong thời kỳ quá độ lên chủ nghĩa xã hội vào các cột tương ứng:",
+    "items": [
+      "Đầu tư tài chính của gia đình cho giáo dục con cái tăng lên",
+      "Hướng đến giáo dục kiến thức khoa học hiện đại",
+      "Vai trò giáo dục của các chủ thể trong gia đình có xu hướng giảm",
+      "Xu hướng thu nhỏ",
+      "Gia đình hạt nhân",
+      "Gia đình đơn thân"
+    ],
+    "groups": {
+      "Biến đổi về chức năng gia đình": [
+        "Đầu tư tài chính của gia đình cho giáo dục con cái tăng lên",
+        "Hướng đến giáo dục kiến thức khoa học hiện đại",
+        "Vai trò giáo dục của các chủ thể trong gia đình có xu hướng giảm"
+      ],
+      "Biến đổi về quy mô gia đình": [
+        "Xu hướng thu nhỏ",
+        "Gia đình hạt nhân",
+        "Gia đình đơn thân"
+      ]
+    }
+  },
+  {
+    "id": 27,
+    "type": "drag_pairs",
+    "title": "Kéo thả các khái niệm khớp với các phát biểu về biến đổi gia đình Việt Nam trong thời kỳ quá độ lên chủ nghĩa xã hội dưới đây:",
+    "pairs": {
+      "Biến đổi về quy mô gia đình": "Gia đình hạt nhân",
+      "Biến đổi về chức năng tái sản xuất": "Giảm số con",
+      "Biến đổi về quan hệ gia đình": "Mâu thuẫn giữa các thế hệ",
+      "Biến đổi về chức năng kinh tế": "Kinh tế hàng hóa"
+    }
+  }
+];
+
+let WORK = [];
+let keyVisible = false;
+let selectedPill = null;
+
+function triggerHaptic(duration = 10) {
+  if (typeof navigator !== "undefined" && navigator.vibrate) {
+    try { navigator.vibrate(duration); } catch (e) {}
+  }
+}
+
+function reset(shuffleAll = true) {
+  WORK = clone(BANK);
+  if (shuffleAll) WORK = shuffle(WORK);
+  WORK.forEach((q) => {
+    if (q.options) q.options = shuffle(q.options);
+    if (q.type === "drag_pairs") {
+      const entries = Object.entries(q.pairs);
+      q.__prompts = shuffle(entries.map(([k]) => k));
+      q.__options = shuffle(entries.map(([_, v]) => v));
+      q.__extras = q.extras ? shuffle(q.extras) : [];
+    }
+    if (q.type === "drag_groups") {
+      q.__items = shuffle(q.items);
+      q.__groupNames = Object.keys(q.groups);
+    }
+  });
+  keyVisible = false;
+  selectedPill = null;
+  const btnToggle = document.getElementById("btnToggleKey");
+  if (btnToggle) btnToggle.classList.remove("active");
+  const meta = document.getElementById("meta");
+  if (meta) delete meta.dataset.showScore;
+  render();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function render() {
+  const list = document.getElementById("list");
+  list.innerHTML = "";
+  document.getElementById("meta").textContent = "0/" + WORK.length + " câu";
+
+  WORK.forEach((q, qi) => {
+    const card = el("div", { class: "card", id: "q_" + qi });
+    const head = el("div", { class: "qhead" });
+    head.append(el("div", { class: "qidx" }, String(qi + 1)));
+    const title = el("div", { class: "qtitle" }, q.title);
+    if (q.type === "single")
+      title.append(el("div", { class: "hint" }, "(Chọn 1 đáp án đúng)"));
+    if (q.type === "multi")
+      title.append(el("div", { class: "hint" }, "(Chọn nhiều đáp án đúng)"));
+    if (q.type === "tfset")
+      title.append(el("div", { class: "hint" }, "(Đúng / Sai theo từng phát biểu)"));
+    if (q.type && q.type.includes("drag"))
+      title.append(el("div", { class: "hint" }, "(Kéo thả hoặc chạm vào thẻ từ rồi chạm vào ô tương ứng)"));
+    head.append(title);
+    card.append(head);
+
+    const body = el("div", { class: "answers" });
+
+    if (q.type === "single" || q.type === "multi") {
+      q.options.forEach((opt) => {
+        const id = "q" + qi + "_" + safeId(opt);
+        const lab = el("label");
+        const ipt = el("input", {
+          type: q.type === "single" ? "radio" : "checkbox",
+          name: "q" + qi,
+          value: opt,
+          id,
+        });
+        lab.append(ipt, el("span", {}, opt));
+        body.append(lab);
+      });
+    }
+
+    if (q.type === "tfset") {
+      q.statements.forEach((st, si) => {
+        const row = el("div", { class: "tf-item" });
+        row.append(el("div", { class: "tf-text" }, st.text));
+        const ch = el("div", { class: "tf-row" });
+        ["Đúng", "Sai"].forEach((v) => {
+          const lab = el("label");
+          const ipt = el("input", {
+            type: "radio",
+            name: "q" + qi + "_s" + si,
+            value: v,
+          });
+          lab.append(ipt, el("span", {}, v));
+          ch.append(lab);
+        });
+        row.append(ch);
+        body.append(row);
+      });
+    }
+
+    if (q.type === "drag_pairs") {
+      const wrap = el("div", { class: "dragwrap" });
+      const zones = el("div", { class: "dragzone" });
+      q.__prompts.forEach((promptText) => {
+        const z = el("div", { class: "zone", dataset: { prompt: promptText } });
+        z.append(el("h4", {}, promptText), el("div", { class: "droparea" }));
+        zones.append(z);
+      });
+      wrap.append(zones);
+      const pool = el("div", { class: "pool" });
+      [...q.__options, ...(q.__extras || [])].forEach((optText) => {
+        pool.append(
+          el(
+            "div",
+            { class: "pill", draggable: true, dataset: { txt: optText } },
+            optText,
+          ),
+        );
+      });
+      wrap.append(pool);
+      body.append(wrap);
+    }
+
+    if (q.type === "drag_groups") {
+      const wrap = el("div", { class: "dragwrap" });
+      const zones = el("div", { class: "dragzone" });
+      q.__groupNames.forEach((g) => {
+        const z = el("div", { class: "zone", dataset: { gname: g } });
+        z.append(el("h4", {}, g), el("div", { class: "droparea" }));
+        zones.append(z);
+      });
+      wrap.append(zones);
+      const pool = el("div", { class: "pool" });
+      q.__items.forEach((item) => {
+        pool.append(
+          el(
+            "div",
+            { class: "pill", draggable: true, dataset: { txt: item } },
+            item,
+          ),
+        );
+      });
+      wrap.append(pool);
+      body.append(wrap);
+    }
+
+    const res = el("div", { class: "result", id: "res_" + qi });
+    const hint = el("div", { class: "result-hint", id: "hint_" + qi });
+    card.append(body, res, hint);
+    list.append(card);
+  });
+
+  enableDragDrop();
+  updateProgress();
+}
+
+function bindPill(p) {
+  p.addEventListener("dragstart", (e) => {
+    const card = p.closest(".card");
+    const cardId = card ? card.id : "";
+    e.dataTransfer.setData(
+      "text/plain",
+      JSON.stringify({ cardId, txt: p.dataset.txt })
+    );
+  });
+
+  p.addEventListener("click", (e) => {
+    e.stopPropagation();
+    triggerHaptic(10);
+    const card = p.closest(".card");
+    if (!card) return;
+
+    if (selectedPill === p) {
+      p.classList.remove("selected");
+      selectedPill = null;
+    } else {
+      if (selectedPill) selectedPill.classList.remove("selected");
+      selectedPill = p;
+      p.classList.add("selected");
+    }
+  });
+}
+
+function placePillInArea(pill, area, card) {
+  if (!pill || !area || !card) return;
+
+  if (area.classList.contains("droparea")) {
+    const isPairZone = area.closest(".zone")?.dataset?.prompt !== undefined;
+    if (isPairZone) {
+      const existing = area.querySelector(".pill");
+      if (existing && existing !== pill) {
+        const pool = card.querySelector(".pool");
+        if (pool) pool.append(existing);
+      }
+    }
+  }
+
+  pill.classList.remove("selected");
+  pill.classList.add("placed");
+  setTimeout(() => pill.classList.remove("placed"), 300);
+  area.append(pill);
+  selectedPill = null;
+  updateProgress();
+  triggerHaptic(14);
+}
+
+function enableDragDrop() {
+  selectedPill = null;
+  document.querySelectorAll(".pill").forEach(bindPill);
+
+  document.querySelectorAll(".droparea, .pool").forEach((area) => {
+    const card = area.closest(".card");
+
+    area.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      area.closest(".zone")?.classList.add("dragover");
+    });
+
+    area.addEventListener("dragleave", (e) => {
+      area.closest(".zone")?.classList.remove("dragover");
+    });
+
+    area.addEventListener("drop", (e) => {
+      e.preventDefault();
+      area.closest(".zone")?.classList.remove("dragover");
+      let data;
+      try {
+        data = JSON.parse(e.dataTransfer.getData("text/plain"));
+      } catch (err) {
+        return;
+      }
+      if (!data || !data.cardId || data.cardId !== card?.id) return;
+
+      const pills = Array.from(card.querySelectorAll(".pill"));
+      const targetPill = pills.find(
+        (p) => p.dataset.txt === data.txt && (selectedPill === p || !area.contains(p))
+      );
+      if (targetPill) {
+        placePillInArea(targetPill, area, card);
+      }
+    });
+
+    area.addEventListener("click", (e) => {
+      if (!selectedPill) return;
+      if (card && card.contains(selectedPill)) {
+        placePillInArea(selectedPill, area, card);
+      }
+    });
+  });
+
+  document.addEventListener("click", (e) => {
+    if (selectedPill && !e.target.closest(".pill")) {
+      selectedPill.classList.remove("selected");
+      selectedPill = null;
+    }
+  });
+}
+
+function getUserAnswer(q, qi) {
+  if (q.type === "single" || q.type === "multi") {
+    return Array.from(
+      document.querySelectorAll("#q_" + qi + " input:checked"),
+    ).map((x) => x.value);
+  }
+  if (q.type === "tfset") {
+    return q.statements.map((st, si) => {
+      const inp = document.querySelector(
+        'input[name="q' + qi + '_s' + si + '"]:checked',
+      );
+      return inp ? inp.value === "Đúng" : null;
+    });
+  }
+  if (q.type === "drag_pairs") {
+    const ans = {};
+    document.querySelectorAll("#q_" + qi + " .zone").forEach((z) => {
+      const prompt = z.dataset.prompt;
+      const pill = z.querySelector(".pill");
+      if (pill) ans[prompt] = pill.dataset.txt;
+    });
+    return ans;
+  }
+  if (q.type === "drag_groups") {
+    const ans = {};
+    document.querySelectorAll("#q_" + qi + " .zone").forEach((z) => {
+      const gname = z.dataset.gname;
+      ans[gname] = Array.from(z.querySelectorAll(".pill")).map(
+        (p) => p.dataset.txt,
+      );
+    });
+    return ans;
+  }
+  return null;
+}
+
+function isCorrect(q, ans) {
+  if (!ans) return false;
+  if (q.type === "single" || q.type === "multi") {
+    return (
+      ans.length === q.answer.length &&
+      ans.every((a) => q.answer.includes(a))
+    );
+  }
+  if (q.type === "tfset") {
+    return ans.every((a, i) => a === q.statements[i].answer);
+  }
+  if (q.type === "drag_pairs") {
+    return Object.entries(q.pairs).every(
+      ([prompt, expected]) => ans[prompt] === expected
+    );
+  }
+  if (q.type === "drag_groups") {
+    return Object.entries(q.groups).every(
+      ([g, arr]) =>
+        ans[g] &&
+        arr.every((item) => ans[g].includes(item)) &&
+        ans[g].length === arr.length
+    );
+  }
+  return false;
+}
+
+function updateProgress() {
+  if (!WORK.length) return;
+  let answered = 0;
+  WORK.forEach((q, qi) => {
+    const user = getUserAnswer(q, qi);
+    let has = false;
+    if (q.type === "single" || q.type === "multi") {
+      has = user && user.length > 0;
+    } else if (q.type === "tfset") {
+      has = user && user.some((x) => x !== null);
+    } else if (q.type === "drag_pairs" || q.type === "drag_groups") {
+      has = user && Object.keys(user).length > 0;
+    }
+    if (has) answered++;
+  });
+  const pct = Math.round((answered / WORK.length) * 100);
+  const fill = document.getElementById("progressFill");
+  if (fill) fill.style.width = pct + "%";
+  const meta = document.getElementById("meta");
+  if (meta && !meta.dataset.showScore) {
+    meta.textContent = answered + "/" + WORK.length + " câu";
+  }
+}
+
+function showKey(q, qi) {
+  const hint = document.getElementById("hint_" + qi);
+  if (!hint) return;
+  hint.innerHTML = "";
+  if (q.type === "single" || q.type === "multi") {
+    hint.innerHTML = '<div class="hint-box"><strong>Đáp án:</strong> <b>' + q.answer.join(", ") + '</b></div>';
+  } else if (q.type === "tfset") {
+    hint.innerHTML = '<div class="hint-box"><strong>Đáp án:</strong> <b>' + q.statements
+      .map((s, idx) => "Phát biểu " + (idx + 1) + ": " + (s.answer ? "Đúng" : "Sai"))
+      .join(" · ") + "</b></div>";
+  } else if (q.type === "drag_pairs") {
+    hint.innerHTML = '<div class="hint-box"><strong>Đáp án đúng:</strong><br>' + Object.entries(q.pairs)
+      .map(([prompt, ans]) => "• <em>" + prompt + "</em> → <strong>" + ans + "</strong>")
+      .join("<br>") + "</div>";
+  } else if (q.type === "drag_groups") {
+    hint.innerHTML = '<div class="hint-box"><strong>Đáp án đúng:</strong><br>' + Object.entries(q.groups)
+      .map(([group, items]) => "• <strong>" + group + ":</strong> " + items.join("; "))
+      .join("<br>") + "</div>";
+  }
+}
+
+function checkAll() {
+  let correct = 0;
+  WORK.forEach((q, qi) => {
+    const card = document.getElementById("q_" + qi);
+    const res = document.getElementById("res_" + qi);
+    const user = getUserAnswer(q, qi);
+    if (card) card.classList.remove("card-correct", "card-wrong");
+    if (isCorrect(q, user)) {
+      correct++;
+      if (res) {
+        res.textContent = "✔ Đúng";
+        res.className = "result r-good";
+      }
+      if (card) card.classList.add("card-correct");
+    } else {
+      if (res) {
+        res.textContent = "✘ Sai";
+        res.className = "result r-bad";
+      }
+      if (card) card.classList.add("card-wrong");
+    }
+  });
+
+  const total = WORK.length;
+  const pct = Math.round((correct / total) * 100);
+  const meta = document.getElementById("meta");
+  if (meta) {
+    meta.textContent = correct + "/" + total + " đúng (" + pct + "%)";
+    meta.dataset.showScore = "1";
+  }
+
+  try {
+    const lessonId = window.LESSON_ID || 1;
+    localStorage.setItem(
+      "cnxh_score_bai_" + lessonId,
+      JSON.stringify({ score: correct, total, pct, time: Date.now() })
+    );
+  } catch (e) {}
+
+  triggerHaptic(25);
+  showScoreModal(correct, total, pct);
+}
+
+function showScoreModal(correct, total, pct) {
+  let modalBackdrop = document.getElementById("scoreModal");
+  if (!modalBackdrop) {
+    modalBackdrop = el("div", { class: "score-modal-backdrop", id: "scoreModal" });
+    document.body.append(modalBackdrop);
+  }
+
+  let gradeMsg = "Cần cố gắng thêm! Hãy xem lại các đáp án sai và luyện tập lại nhé.";
+  let gradeBadge = "🌱";
+  if (pct >= 90) {
+    gradeMsg = "Xuất sắc! Bạn đã nắm rất vững kiến thức và sẵn sàng thi đạt điểm cao.";
+    gradeBadge = "🏆";
+  } else if (pct >= 75) {
+    gradeMsg = "Rất tốt! Bạn đã nắm chắc hầu hết các nội dung trọng tâm.";
+    gradeBadge = "⭐";
+  } else if (pct >= 50) {
+    gradeMsg = "Đạt yêu cầu! Hãy ôn luyện lại một số phần để tự tin hơn khi làm bài.";
+    gradeBadge = "📈";
+  }
+
+  modalBackdrop.innerHTML =
+    '<div class="score-modal">' +
+    '<div class="score-badge">' + gradeBadge + '</div>' +
+    '<h2 class="score-title">Kết Quả Bài Làm</h2>' +
+    '<div class="score-number">' + correct + ' / ' + total + '</div>' +
+    '<div class="score-pct">' + pct + '% chính xác</div>' +
+    '<p class="score-msg">' + gradeMsg + '</p>' +
+    '<div class="score-actions">' +
+    '<button id="modalBtnKey" class="btn-primary">👁 Xem đáp án chi tiết</button>' +
+    '<button id="modalBtnRetry" class="btn-secondary">↻ Làm lại bài</button>' +
+    '<button id="modalBtnClose" class="btn-ghost">Đóng cửa sổ</button>' +
+    '</div>' +
+    '</div>';
+
+  modalBackdrop.classList.add("visible");
+
+  document.getElementById("modalBtnKey").addEventListener("click", () => {
+    modalBackdrop.classList.remove("visible");
+    if (!keyVisible) {
+      document.getElementById("btnToggleKey").click();
+    }
+  });
+
+  document.getElementById("modalBtnRetry").addEventListener("click", () => {
+    modalBackdrop.classList.remove("visible");
+    reset(true);
+  });
+
+  document.getElementById("modalBtnClose").addEventListener("click", () => {
+    modalBackdrop.classList.remove("visible");
+  });
+
+  modalBackdrop.addEventListener("click", (e) => {
+    if (e.target === modalBackdrop) modalBackdrop.classList.remove("visible");
+  });
+}
+
+document.getElementById("btnCheck").addEventListener("click", () => {
+  triggerHaptic(12);
+  checkAll();
+});
+
+document.getElementById("btnReset").addEventListener("click", () => {
+  triggerHaptic(12);
+  reset(true);
+});
+
+document.getElementById("btnToggleKey").addEventListener("click", () => {
+  triggerHaptic(12);
+  keyVisible = !keyVisible;
+  const btn = document.getElementById("btnToggleKey");
+  if (btn) btn.classList.toggle("active", keyVisible);
+  WORK.forEach((q, qi) => {
+    const hint = document.getElementById("hint_" + qi);
+    if (hint) {
+      if (keyVisible) showKey(q, qi);
+      else hint.innerHTML = "";
+    }
+  });
+});
+
+document.getElementById("list").addEventListener("change", (e) => {
+  if (e.target.matches("input[type=radio], input[type=checkbox]")) {
+    const label = e.target.closest("label");
+    if (label) {
+      if (e.target.type === "radio") {
+        const name = e.target.name;
+        document.querySelectorAll('input[name="' + name + '"]').forEach((r) => {
+          r.closest("label")?.classList.remove("checked");
+        });
+        label.classList.add("checked");
+      } else {
+        label.classList.toggle("checked", e.target.checked);
+      }
+    }
+    updateProgress();
+    triggerHaptic(8);
+  }
+});
+
+const headerEl = document.getElementById("header");
+const btnScrollTop = document.getElementById("btnScrollTop");
+
+window.addEventListener(
+  "scroll",
+  () => {
+    const y = window.scrollY || document.documentElement.scrollTop;
+    if (headerEl) {
+      if (y > 10) headerEl.classList.add("scrolled");
+      else headerEl.classList.remove("scrolled");
+    }
+    if (btnScrollTop) {
+      if (y > 320) btnScrollTop.classList.add("visible");
+      else btnScrollTop.classList.remove("visible");
+    }
+  },
+  { passive: true }
+);
+
+if (btnScrollTop) {
+  btnScrollTop.addEventListener("click", () => {
+    triggerHaptic(15);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+// Initial render in natural sequence
+reset(false);
+    </script>
+  </body>
+</html>

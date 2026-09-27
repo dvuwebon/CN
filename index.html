@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ôn Thi KTHP - Chủ Nghĩa Xã Hội Khoa Học</title>
+    <style>
+      :root {
+        --bg1: #f0f4f8;
+        --bg2: #d9e2ec;
+        --card: #ffffff;
+        --ink: #1e293b;
+        --muted: #64748b;
+        --accent: #2563eb;
+        --accent-hover: #1d4ed8;
+        --good: #16a34a;
+        --bad: #dc2626;
+        --border: #e2e8f0;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        color: var(--ink);
+        background: linear-gradient(135deg, var(--bg1), var(--bg2));
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        -webkit-font-smoothing: antialiased;
+      }
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+        transition: box-shadow 0.25s ease;
+      }
+      header.scrolled {
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      }
+      .wrap {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 16px 20px;
+        width: 100%;
+      }
+      .nav-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        color: var(--ink);
+      }
+      .logo-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        background: #334155;
+        color: #ffffff;
+        display: grid;
+        place-items: center;
+        font-weight: 800;
+        font-size: 17px;
+        box-shadow: 0 2px 8px rgba(51, 65, 85, 0.2);
+      }
+      .logo-text {
+        display: flex;
+        flex-direction: column;
+      }
+      .logo-title {
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 1.25;
+      }
+      .logo-sub {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .header-badge {
+        font-weight: 600;
+        color: #3b82f6;
+        font-size: 13px;
+        background: #eff6ff;
+        padding: 6px 14px;
+        border-radius: 999px;
+        border: 1px solid #bfdbfe;
+        white-space: nowrap;
+      }
+
+      /* Hero Section */
+      .hero {
+        padding: 36px 0 24px;
+        text-align: center;
+      }
+      .hero-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: #ffffff;
+        color: var(--muted);
+        border: 1px solid var(--border);
+        padding: 6px 14px;
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 14px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+      }
+      .hero h1 {
+        margin: 0 0 12px;
+        font-size: clamp(24px, 4vw, 36px);
+        font-weight: 800;
+        color: var(--ink);
+        letter-spacing: -0.02em;
+        line-height: 1.25;
+      }
+      .hero p {
+        margin: 0 auto 20px;
+        max-width: 660px;
+        font-size: clamp(14px, 2vw, 16px);
+        color: var(--muted);
+        line-height: 1.6;
+      }
+      .hero-stats {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .stat-pill {
+        background: #ffffff;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 8px 16px;
+        font-size: 13.5px;
+        font-weight: 600;
+        color: var(--ink);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+      }
+      .stat-pill span {
+        color: var(--accent);
+      }
+
+      /* Grid of 6 Lessons */
+      .section-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 16px;
+      }
+      .section-title {
+        font-size: 19px;
+        font-weight: 700;
+        margin: 0;
+      }
+      .section-desc {
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .lesson-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 16px;
+        margin-bottom: 40px;
+      }
+      .lesson-card {
+        background: var(--card);
+        border-radius: 18px;
+        padding: 22px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+        border: 1px solid rgba(226, 232, 240, 0.9);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-decoration: none;
+        color: inherit;
+        position: relative;
+        transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s, border-color 0.2s;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .lesson-card:hover {
+        transform: translateY(-4px);
+        border-color: #93c5fd;
+        box-shadow: 0 12px 28px rgba(37, 99, 235, 0.09);
+      }
+      .lesson-card:active {
+        transform: scale(0.98);
+      }
+      .card-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 14px;
+      }
+      .lesson-num {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        background: #334155;
+        color: #ffffff;
+        font-weight: 700;
+        font-size: 14px;
+        display: grid;
+        place-items: center;
+        transition: background 0.2s ease;
+      }
+      .lesson-card:hover .lesson-num {
+        background: var(--accent);
+      }
+      .status-tags {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+      .status-tag {
+        font-size: 11.5px;
+        font-weight: 700;
+        padding: 4px 10px;
+        border-radius: 999px;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+      }
+      .status-ready {
+        background: #dcfce7;
+        color: #15803d;
+        border: 1px solid #bbf7d0;
+      }
+      .status-done {
+        background: #eff6ff;
+        color: #1d4ed8;
+        border: 1px solid #bfdbfe;
+        font-size: 11px;
+      }
+      .lesson-title {
+        font-size: 16px;
+        font-weight: 700;
+        margin: 0 0 8px;
+        line-height: 1.4;
+        color: var(--ink);
+      }
+      .lesson-desc {
+        font-size: 13.5px;
+        color: var(--muted);
+        line-height: 1.5;
+        margin: 0 0 18px;
+        flex-grow: 1;
+      }
+      .card-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 14px;
+        border-top: 1px solid #f1f5f9;
+      }
+      .card-meta {
+        font-size: 12.5px;
+        color: var(--muted);
+        font-weight: 500;
+      }
+      .card-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--accent);
+        transition: transform 0.15s ease;
+      }
+      .lesson-card:hover .card-btn {
+        transform: translateX(3px);
+      }
+
+      /* Study Guide Section */
+      .guide-box {
+        background: #ffffff;
+        border-radius: 18px;
+        padding: 22px;
+        border: 1px solid var(--border);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        margin-bottom: 40px;
+      }
+      .guide-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+        margin-top: 16px;
+      }
+      .guide-item {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 14px;
+      }
+      .guide-item h3 {
+        margin: 0 0 6px;
+        font-size: 14.5px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .guide-item p {
+        margin: 0;
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      /* Footer */
+      footer {
+        margin-top: auto;
+        border-top: 1px solid rgba(0, 0, 0, 0.07);
+        background: rgba(255, 255, 255, 0.6);
+        padding: 20px 0;
+        text-align: center;
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      /* Responsive rules */
+      @media (max-width: 768px) {
+        .wrap {
+          padding: 12px 14px;
+        }
+        .hero {
+          padding: 24px 0 18px;
+        }
+        .hero h1 {
+          font-size: 22px;
+        }
+        .lesson-grid {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+        .lesson-card {
+          padding: 18px 16px;
+          border-radius: 16px;
+        }
+        .guide-box {
+          padding: 18px 16px;
+        }
+        .guide-grid {
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+        .header-badge {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header id="header">
+      <div class="wrap">
+        <div class="nav-bar">
+          <a href="index.html" class="logo">
+            <div class="logo-icon">KH</div>
+            <div class="logo-text">
+              <span class="logo-title">CNXH - KH</span>
+              <span class="logo-sub">Chủ Nghĩa Xã Hội Khoa Học</span>
+            </div>
+          </a>
+          <div class="header-badge">🎓 Ôn Thi KTHP 2026</div>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <!-- Hero Banner -->
+      <section class="hero">
+        <div class="hero-tag">✨ Hệ Thống Ôn Tập Trực Tuyến 2026</div>
+        <h1>Ngân Hàng Câu Hỏi & Đề Ôn Thi KTHP</h1>
+        <p>
+          Hệ thống câu hỏi trắc nghiệm, đúng/sai và bài tập kéo thả bám sát chương trình chuẩn. Hỗ trợ chấm điểm tức thì, xem đáp án chi tiết và tương thích đa thiết bị.
+        </p>
+        <div class="hero-stats">
+          <div class="stat-pill"><span>📚</span> 6 Bài học trọng tâm</div>
+          <div class="stat-pill"><span>📝</span> 235 Câu hỏi ôn tập</div>
+          <div class="stat-pill"><span>⚡</span> Chấm điểm tức thì</div>
+          <div class="stat-pill"><span>📱</span> Tối ưu di động</div>
+        </div>
+      </section>
+
+      <!-- Lessons Grid -->
+      <section>
+        <div class="section-head">
+          <div>
+            <h2 class="section-title">Danh Sách Các Bài Ôn Tập</h2>
+            <div class="section-desc">Chọn bài học để bắt đầu luyện tập trắc nghiệm và kéo thả</div>
+          </div>
+        </div>
+
+        <div class="lesson-grid">
+          <!-- Bài 1 -->
+          <a href="bai1.html" class="lesson-card" id="card_bai1">
+            <div>
+              <div class="card-top">
+                <div class="lesson-num">01</div>
+                <div class="status-tags">
+                  <span class="status-tag status-ready">✓ Sẵn sàng</span>
+                </div>
+              </div>
+              <h3 class="lesson-title">Bài 1: Nhập môn CNXH-KH & Sứ mệnh của GCCN</h3>
+              <p class="lesson-desc">
+                Sự ra đời, phát triển của CNXH-KH; nội dung, đặc điểm sứ mệnh lịch sử của giai cấp công nhân Việt Nam.
+              </p>
+            </div>
+            <div class="card-bottom">
+              <span class="card-meta">41 câu hỏi • Trắc nghiệm & Kéo thả</span>
+              <span class="card-btn">Làm bài ngay →</span>
+            </div>
+          </a>
+
+          <!-- Bài 2 -->
+          <a href="bai2.html" class="lesson-card" id="card_bai2">
+            <div>
+              <div class="card-top">
+                <div class="lesson-num">02</div>
+                <div class="status-tags">
+                  <span class="status-tag status-ready">✓ Sẵn sàng</span>
+                </div>
+              </div>
+              <h3 class="lesson-title">Bài 2: Chủ nghĩa xã hội & Thời kỳ quá độ lên CNXH</h3>
+              <p class="lesson-desc">
+                Bản chất, đặc trưng của CNXH; tính tất yếu của thời kỳ quá độ và con đường bỏ qua chế độ TBCN ở Việt Nam.
+              </p>
+            </div>
+            <div class="card-bottom">
+              <span class="card-meta">40 câu hỏi • Trắc nghiệm & Kéo thả</span>
+              <span class="card-btn">Làm bài ngay →</span>
+            </div>
+          </a>
+
+          <!-- Bài 3 -->
+          <a href="bai3.html" class="lesson-card" id="card_bai3">
+            <div>
+              <div class="card-top">
+                <div class="lesson-num">03</div>
+                <div class="status-tags">
+                  <span class="status-tag status-ready">✓ Sẵn sàng</span>
+                </div>
+              </div>
+              <h3 class="lesson-title">Bài 3: Dân chủ XHCN & Nhà nước XHCN</h3>
+              <p class="lesson-desc">
+                Bản chất nền dân chủ XHCN; chức năng của Nhà nước XHCN và xây dựng Nhà nước pháp quyền XHCN tại Việt Nam.
+              </p>
+            </div>
+            <div class="card-bottom">
+              <span class="card-meta">40 câu hỏi • Trắc nghiệm & Kéo thả</span>
+              <span class="card-btn">Làm bài ngay →</span>
+            </div>
+          </a>
+
+          <!-- Bài 4 -->
+          <a href="bai4.html" class="lesson-card" id="card_bai4">
+            <div>
+              <div class="card-top">
+                <div class="lesson-num">04</div>
+                <div class="status-tags">
+                  <span class="status-tag status-ready">✓ Sẵn sàng</span>
+                </div>
+              </div>
+              <h3 class="lesson-title">Bài 4: Cơ cấu xã hội - giai cấp & Liên minh giai cấp</h3>
+              <p class="lesson-desc">
+                Sự biến đổi cơ cấu xã hội - giai cấp trong thời kỳ quá độ; nội dung và phương hướng xây dựng khối liên minh.
+              </p>
+            </div>
+            <div class="card-bottom">
+              <span class="card-meta">45 câu hỏi • Trắc nghiệm & Kéo thả</span>
+              <span class="card-btn">Làm bài ngay →</span>
+            </div>
+          </a>
+
+          <!-- Bài 5 -->
+          <a href="bai5.html" class="lesson-card" id="card_bai5">
+            <div>
+              <div class="card-top">
+                <div class="lesson-num">05</div>
+                <div class="status-tags">
+                  <span class="status-tag status-ready">✓ Sẵn sàng</span>
+                </div>
+              </div>
+              <h3 class="lesson-title">Bài 5: Vấn đề Dân tộc và Tôn giáo trong thời kỳ quá độ</h3>
+              <p class="lesson-desc">
+                Cương lĩnh dân tộc của V.I.Lênin; bản chất tôn giáo, chính sách dân tộc và tôn giáo của Đảng và Nhà nước Việt Nam.
+              </p>
+            </div>
+            <div class="card-bottom">
+              <span class="card-meta">42 câu hỏi • Trắc nghiệm & Kéo thả</span>
+              <span class="card-btn">Làm bài ngay →</span>
+            </div>
+          </a>
+
+          <!-- Bài 6 -->
+          <a href="bai6.html" class="lesson-card" id="card_bai6">
+            <div>
+              <div class="card-top">
+                <div class="lesson-num">06</div>
+                <div class="status-tags">
+                  <span class="status-tag status-ready">✓ Sẵn sàng</span>
+                </div>
+              </div>
+              <h3 class="lesson-title">Bài 6: Xây dựng gia đình trong thời kỳ quá độ lên CNXH</h3>
+              <p class="lesson-desc">
+                Khái niệm, vị trí, chức năng của gia đình; các mối quan hệ cơ bản và xu hướng biến đổi gia đình Việt Nam hiện nay.
+              </p>
+            </div>
+            <div class="card-bottom">
+              <span class="card-meta">27 câu hỏi • Trắc nghiệm & Kéo thả</span>
+              <span class="card-btn">Làm bài ngay →</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- Study Tips / Guide -->
+      <section class="guide-box">
+        <h2 style="margin: 0; font-size: 17px; font-weight: 700;">💡 Mẹo Ôn Thi Hiệu Quả</h2>
+        <div class="guide-grid">
+          <div class="guide-item">
+            <h3><span>🎯</span> Luyện tập chủ động</h3>
+            <p>Làm bài thử trước khi xem đáp án. Nhấn "Làm lại" để xáo trộn câu hỏi và rèn phản xạ nhận diện kiến thức.</p>
+          </div>
+          <div class="guide-item">
+            <h3><span>📱</span> Ôn tập trên điện thoại</h3>
+            <p>Đối với dạng bài kéo thả hoặc ghép cặp, bạn chỉ cần chạm vào thẻ từ rồi chạm vào ô tương ứng để đặt đáp án.</p>
+          </div>
+          <div class="guide-item">
+            <h3><span>📊</span> Theo dõi tiến độ tức thì</h3>
+            <p>Hệ thống tự động lưu kết quả làm bài của từng bài học trên thiết bị để bạn dễ dàng theo dõi sự tiến bộ.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <div>Hệ Thống Ôn Thi Trắc Nghiệm KTHP - Chủ Nghĩa Xã Hội Khoa Học</div>
+        <div style="margin-top: 4px; font-size: 12px; opacity: 0.8;">
+          Thiết kế giao diện Xanh Xám dịu mắt & tương thích hoàn hảo trên máy tính lẫn di động
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Header shadow on scroll
+      const headerEl = document.getElementById("header");
+      window.addEventListener("scroll", () => {
+        const y = window.scrollY || document.documentElement.scrollTop;
+        if (headerEl) {
+          if (y > 10) headerEl.classList.add("scrolled");
+          else headerEl.classList.remove("scrolled");
+        }
+      }, { passive: true });
+
+      // Load saved scores from localStorage
+      window.addEventListener("DOMContentLoaded", () => {
+        for (let i = 1; i <= 6; i++) {
+          try {
+            const raw = localStorage.getItem("cnxh_score_bai_" + i);
+            if (raw) {
+              const data = JSON.parse(raw);
+              if (data && typeof data.score === "number") {
+                const card = document.getElementById("card_bai" + i);
+                if (card) {
+                  const tagWrap = card.querySelector(".status-tags");
+                  if (tagWrap) {
+                    const doneTag = document.createElement("span");
+                    doneTag.className = "status-tag status-done";
+                    doneTag.textContent = `✓ Đã làm: ${data.score}/${data.total} (${data.pct}%)`;
+                    tagWrap.prepend(doneTag);
+                  }
+                }
+              }
+            }
+          } catch (e) {}
+        }
+      });
+    </script>
+  </body>
+</html>
