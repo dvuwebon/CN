@@ -1,600 +1,2583 @@
 <!doctype html>
 <html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ôn Thi KTHP - Chủ Nghĩa Xã Hội Khoa Học</title>
-    <style>
-      :root {
-        --bg1: #f0f4f8;
-        --bg2: #d9e2ec;
-        --card: #ffffff;
-        --ink: #1e293b;
-        --muted: #64748b;
-        --accent: #2563eb;
-        --accent-hover: #1d4ed8;
-        --good: #16a34a;
-        --bad: #dc2626;
-        --border: #e2e8f0;
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ôn Thi KTHP - Chủ Nghĩa Xã Hội Khoa Học 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      /* Palette - Premium Marble White, Ice Blue & Deep Indigo */
+      --bg-main: #f5f8fc;
+      --bg-surface: #ffffff;
+      --bg-glass: rgba(255, 255, 255, 0.76);
+      --bg-glass-strong: rgba(255, 255, 255, 0.9);
+      --bg-glass-card: rgba(255, 255, 255, 0.82);
+
+      --border-glass: rgba(255, 255, 255, 0.95);
+      --border-subtle: rgba(226, 232, 240, 0.85);
+      --border-glow: rgba(99, 102, 241, 0.28);
+
+      --ink-primary: #0f172a;
+      --ink-secondary: #334155;
+      --ink-muted: #64748b;
+      --ink-light: #94a3b8;
+
+      --accent-primary: #4f46e5;
+      --accent-hover: #4338ca;
+      --accent-purple: #7c3aed;
+      --accent-cyan: #0284c7;
+      --accent-emerald: #059669;
+      --accent-amber: #d97706;
+      --accent-rose: #e11d48;
+
+      /* Neomorphic & Glassmorphic Shadows */
+      --shadow-neo-flat: 10px 10px 24px rgba(166, 180, 200, 0.22), -10px -10px 24px rgba(255, 255, 255, 0.95);
+      --shadow-neo-pressed: inset 3px 3px 7px rgba(166, 180, 200, 0.3), inset -3px -3px 7px rgba(255, 255, 255, 0.9);
+      --shadow-neo-card: 14px 14px 32px rgba(166, 180, 200, 0.2), -10px -10px 28px rgba(255, 255, 255, 0.98), 0 4px 16px rgba(15, 23, 42, 0.03);
+      --shadow-neo-hover: 18px 22px 42px rgba(99, 102, 241, 0.16), -12px -12px 30px rgba(255, 255, 255, 1), 0 8px 24px rgba(79, 70, 229, 0.12);
+      --shadow-purple-glow: 0 0 25px rgba(124, 58, 237, 0.35);
+
+      --radius-sm: 12px;
+      --radius-md: 18px;
+      --radius-lg: 26px;
+      --radius-pill: 9999px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 85px;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      color: var(--ink-secondary);
+      background-color: var(--bg-main);
+      background-image:
+        radial-gradient(circle at 15% 10%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 20%, rgba(124, 58, 237, 0.07) 0%, transparent 45%),
+        radial-gradient(circle at 50% 65%, rgba(14, 165, 233, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 20% 90%, rgba(16, 185, 129, 0.06) 0%, transparent 40%),
+        radial-gradient(#94a3b8 0.75px, transparent 0.75px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 28px 28px;
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Base Layout Container */
+    .layout-container {
+      max-width: 1260px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+    }
+
+    /* TOP NAVIGATION */
+    .nav-wrapper {
+      position: sticky;
+      top: 14px;
+      z-index: 100;
+      margin-bottom: 28px;
+    }
+
+    .nav-glass-bar {
+      background: var(--bg-glass);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--border-glass);
+      box-shadow: 0 10px 30px -5px rgba(20, 30, 60, 0.06), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+      border-radius: var(--radius-lg);
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .nav-glass-bar.scrolled {
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 12px 36px rgba(15, 23, 42, 0.09);
+      top: 8px;
+    }
+
+    .logo-link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--ink-primary);
+      transition: transform 0.25s ease;
+    }
+
+    .logo-link:hover {
+      transform: translateY(-1px);
+    }
+
+    .logo-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      color: #ffffff;
+      display: grid;
+      place-items: center;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 17px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-icon-box::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.2) 50%, transparent 60%);
+      transform: rotate(25deg);
+      pointer-events: none;
+    }
+
+    .logo-text-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-main-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 17.5px;
+      color: var(--ink-primary);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .logo-sub-title {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--ink-muted);
+      letter-spacing: 0.01em;
+    }
+
+    /* Center Nav Links - Sliding Magnetic Pill Tabs */
+    .nav-links-pill {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: rgba(241, 245, 249, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(226, 232, 240, 0.95);
+      border-radius: var(--radius-pill);
+      padding: 4px;
+      gap: 2px;
+      isolation: isolate;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    /* Sliding White Active Indicator Block */
+    .nav-tab-indicator {
+      position: absolute;
+      top: 4px;
+      bottom: 4px;
+      left: 0;
+      border-radius: var(--radius-pill);
+      background: #ffffff;
+      box-shadow: 0 4px 16px rgba(79, 70, 229, 0.12), 0 2px 4px rgba(15, 23, 42, 0.04);
+      pointer-events: none;
+      z-index: 1;
+      transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+                  width 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform, width;
+      opacity: 0;
+    }
+
+    .nav-tab-indicator.ready {
+      opacity: 1;
+    }
+
+    .nav-item {
+      position: relative;
+      z-index: 2;
+      text-decoration: none;
+      color: var(--ink-secondary);
+      font-size: 13.5px;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: var(--radius-pill);
+      transition: color 0.25s ease, background-color 0.2s ease;
+      white-space: nowrap;
+      user-select: none;
+      cursor: pointer;
+    }
+
+    .nav-item:not(.active):hover {
+      color: var(--ink-primary);
+      background-color: rgba(255, 255, 255, 0.55);
+    }
+
+    .nav-item.active {
+      color: var(--accent-primary);
+      font-weight: 600; /* Identical weight prevents layout shifting and twitching */
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+
+    /* Nav Right Actions */
+    .nav-right-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-purple-glow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 9px 18px;
+      border-radius: var(--radius-pill);
+      font-size: 13.5px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 4px 16px rgba(124, 58, 237, 0.32), inset 0 1px 1px rgba(255, 255, 255, 0.35);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      white-space: nowrap;
+    }
+
+    .btn-purple-glow:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(124, 58, 237, 0.45);
+      filter: brightness(1.05);
+    }
+
+    .nav-user-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-pill);
+      padding: 6px 14px 6px 8px;
+      text-decoration: none;
+      color: var(--ink-secondary);
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: var(--shadow-neo-flat);
+      transition: all 0.2s ease;
+    }
+
+    .nav-user-chip:hover {
+      border-color: #c7d2fe;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(79, 70, 229, 0.1);
+    }
+
+    .user-avatar-mini {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      color: #ffffff;
+      display: grid;
+      place-items: center;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent-emerald);
+      box-shadow: 0 0 8px var(--accent-emerald);
+      display: inline-block;
+    }
+
+    /* HERO SECTION */
+    .hero-wrap {
+      padding: 28px 0 36px;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-ambient-glow {
+      position: absolute;
+      top: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 580px;
+      height: 280px;
+      background: radial-gradient(ellipse at center, rgba(124, 58, 237, 0.14) 0%, rgba(79, 70, 229, 0.08) 50%, transparent 80%);
+      filter: blur(40px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .hero-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      padding: 7px 18px;
+      border-radius: var(--radius-pill);
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--accent-primary);
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.08), 0 1px 3px rgba(0, 0, 0, 0.03);
+      margin-bottom: 20px;
+      transition: all 0.25s ease;
+    }
+
+    .hero-badge-pill:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(79, 70, 229, 0.15);
+      border-color: #c7d2fe;
+    }
+
+    .hero-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(32px, 5.2vw, 48px);
+      font-weight: 900;
+      line-height: 1.18;
+      letter-spacing: -0.03em;
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, #0f172a 15%, #1e3a8a 55%, #4f46e5 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 20px rgba(79, 70, 229, 0.1);
+    }
+
+    .hero-desc {
+      font-size: clamp(15px, 1.8vw, 17.5px);
+      line-height: 1.68;
+      color: var(--ink-muted);
+      max-width: 720px;
+      margin: 0 auto 30px;
+      font-weight: 450;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .btn-hero-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      color: #ffffff;
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      padding: 15px 34px;
+      border-radius: var(--radius-pill);
+      box-shadow: 0 10px 28px rgba(79, 70, 229, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-hero-primary:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 16px 36px rgba(79, 70, 229, 0.45);
+      filter: brightness(1.08);
+    }
+
+    .btn-hero-primary:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    .btn-hero-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-surface);
+      color: var(--ink-primary);
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: var(--radius-pill);
+      box-shadow: var(--shadow-neo-flat);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      transition: all 0.25s ease;
+    }
+
+    .btn-hero-secondary:hover {
+      transform: translateY(-2px);
+      border-color: #cbd5e1;
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
+    }
+
+    /* 4 CONNECTED GLASS FEATURE CARDS */
+    .features-flow-wrap {
+      margin: 10px 0 54px;
+      position: relative;
+    }
+
+    .features-rail-bg {
+      position: absolute;
+      top: 50%;
+      left: 5%;
+      right: 5%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.3), rgba(124, 58, 237, 0.35), rgba(14, 165, 233, 0.3), transparent);
+      z-index: 0;
+      transform: translateY(-50%);
+    }
+
+    .features-grid-asym {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .feature-glass-node {
+      background: var(--bg-glass-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-md);
+      padding: 18px 18px;
+      box-shadow: var(--shadow-neo-flat);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Slight staggered visual elevation */
+    .feature-glass-node:nth-child(1) {
+      transform: translateY(-4px);
+    }
+
+    .feature-glass-node:nth-child(2) {
+      transform: translateY(4px);
+    }
+
+    .feature-glass-node:nth-child(3) {
+      transform: translateY(-3px);
+    }
+
+    .feature-glass-node:nth-child(4) {
+      transform: translateY(5px);
+    }
+
+    .feature-glass-node:hover {
+      transform: translateY(-8px) scale(1.02) !important;
+      border-color: #c7d2fe;
+      box-shadow: var(--shadow-neo-hover);
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    .feature-icon-bubble {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 19px;
+      background: linear-gradient(135deg, #f8fafc 0%, #eef2f6 100%);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: inset 2px 2px 5px rgba(255, 255, 255, 1), 3px 3px 8px rgba(166, 180, 200, 0.25);
+      transition: transform 0.25s ease;
+    }
+
+    .feature-glass-node:hover .feature-icon-bubble {
+      transform: scale(1.1) rotate(-4deg);
+    }
+
+    .feature-node-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 15.5px;
+      font-weight: 700;
+      color: var(--ink-primary);
+      line-height: 1.3;
+    }
+
+    .feature-node-sub {
+      font-size: 12.5px;
+      color: var(--ink-muted);
+      line-height: 1.45;
+    }
+
+    /* SECTION HEADERS */
+    .section-header-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .sec-badge-kicker {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-primary);
+      margin-bottom: 6px;
+    }
+
+    .sec-main-heading {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(24px, 3.2vw, 32px);
+      font-weight: 800;
+      color: var(--ink-primary);
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+    }
+
+    .sec-desc-lead {
+      font-size: 14.5px;
+      color: var(--ink-muted);
+      margin-top: 4px;
+    }
+
+    /* MAIN JOURNEY: "Lộ trình học tập cá nhân" (FLUID NON-GRID ASYMMETRICAL PATH) */
+    .roadmap-section-wrap {
+      margin-bottom: 64px;
+      position: relative;
+    }
+
+    .roadmap-fluid-container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    /* Fluid organic connector path behind cards (desktop) */
+    .roadmap-svg-trail {
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      height: calc(100% - 80px);
+      pointer-events: none;
+      z-index: 0;
+      overflow: visible;
+    }
+
+    .roadmap-trail-line {
+      fill: none;
+      stroke: url(#trailGradient);
+      stroke-width: 3;
+      stroke-dasharray: 8 6;
+      stroke-linecap: round;
+      opacity: 0.65;
+      animation: pulseTrail 12s linear infinite;
+    }
+
+    @keyframes pulseTrail {
+      to {
+        stroke-dashoffset: -140;
       }
-      * {
-        box-sizing: border-box;
+    }
+
+    /* Non-grid Asymmetric Card Wrappers */
+    .journey-step-row {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+
+    .journey-step-row.align-left {
+      justify-content: flex-start;
+      padding-right: 12%;
+    }
+
+    .journey-step-row.align-right {
+      justify-content: flex-end;
+      padding-left: 12%;
+    }
+
+    .journey-step-row.align-center {
+      justify-content: center;
+      padding: 0 6%;
+    }
+
+    /* Neomorphic & Glassmorphic sculpted Lesson Card */
+    .lesson-journey-card {
+      background: var(--bg-glass-card);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--border-glass);
+      box-shadow: var(--shadow-neo-card);
+      border-radius: var(--radius-lg);
+      padding: 26px 30px;
+      width: 100%;
+      max-width: 680px;
+      display: grid;
+      grid-template-columns: 88px 1fr auto;
+      gap: 22px;
+      align-items: center;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow: hidden;
+    }
+
+    .lesson-journey-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--card-accent, #4f46e5), #93c5fd);
+      opacity: 0.8;
+      transition: width 0.25s ease;
+    }
+
+    .lesson-journey-card:hover {
+      transform: translateY(-6px) scale(1.015);
+      border-color: #bfdbfe;
+      box-shadow: var(--shadow-neo-hover);
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    .lesson-journey-card:hover::before {
+      width: 8px;
+    }
+
+    .lesson-journey-card.completed {
+      border-color: rgba(5, 150, 105, 0.35);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 253, 244, 0.85) 100%);
+      box-shadow: 0 10px 28px -6px rgba(5, 150, 105, 0.12), var(--shadow-neo-card);
+    }
+
+    .lesson-journey-card.completed::before {
+      background: linear-gradient(180deg, #059669, #34d399);
+    }
+
+    /* Card Art / Motif Column */
+    .card-visual-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-motif-box {
+      width: 74px;
+      height: 74px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: var(--shadow-neo-flat);
+      display: grid;
+      place-items: center;
+      position: relative;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .lesson-journey-card:hover .card-motif-box {
+      transform: scale(1.08) rotate(-3deg);
+      box-shadow: 0 8px 20px rgba(79, 70, 229, 0.18);
+    }
+
+    .card-motif-box svg {
+      width: 44px;
+      height: 44px;
+      transition: transform 0.25s ease;
+    }
+
+    .card-order-badge {
+      font-family: 'Outfit', sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      color: #ffffff;
+      background: #334155;
+      padding: 2px 8px;
+      border-radius: var(--radius-pill);
+      letter-spacing: 0.05em;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Card Content Column */
+    .card-content-column {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .card-status-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 2px;
+    }
+
+    .badge-state {
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .state-ready {
+      background: #ecfdf5;
+      color: #047857;
+      border: 1px solid #a7f3d0;
+    }
+
+    .state-done {
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+    }
+
+    .state-retry {
+      background: #fffbeb;
+      color: #b45309;
+      border: 1px solid #fde68a;
+    }
+
+    .lesson-card-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 17.5px;
+      font-weight: 800;
+      color: var(--ink-primary);
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+      transition: color 0.2s ease;
+    }
+
+    .lesson-journey-card:hover .lesson-card-title {
+      color: var(--accent-primary);
+    }
+
+    .lesson-card-desc {
+      font-size: 13.5px;
+      color: var(--ink-muted);
+      line-height: 1.55;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .lesson-card-footer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 6px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--ink-light);
+    }
+
+    .card-qcount-badge {
+      color: #475569;
+      background: #f1f5f9;
+      padding: 3px 9px;
+      border-radius: 6px;
+    }
+
+    /* Card Action & Progress Meter Column */
+    .card-progress-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-width: 100px;
+      text-align: center;
+    }
+
+    /* Circular SVG Progress Meter */
+    .circular-meter-wrap {
+      position: relative;
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+    }
+
+    .circular-meter-svg {
+      transform: rotate(-90deg);
+      width: 58px;
+      height: 58px;
+    }
+
+    .circular-bg-ring {
+      fill: none;
+      stroke: #e2e8f0;
+      stroke-width: 4.5;
+    }
+
+    .circular-progress-ring {
+      fill: none;
+      stroke: var(--card-accent, #4f46e5);
+      stroke-width: 4.5;
+      stroke-linecap: round;
+      stroke-dasharray: 100;
+      stroke-dashoffset: 100;
+      transition: stroke-dashoffset 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .circular-text-count {
+      position: absolute;
+      font-family: 'Outfit', sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--ink-primary);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .card-action-link {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--accent-primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    .lesson-journey-card:hover .card-action-link {
+      transform: translateX(4px);
+      color: var(--accent-hover);
+    }
+
+    /* Prominent Journey Midpoint CTA Node */
+    .journey-mid-cta-node {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-glass-banner {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(240, 244, 255, 0.85) 100%);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(199, 210, 254, 0.8);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 16px 36px rgba(79, 70, 229, 0.12), var(--shadow-neo-flat);
+      padding: 20px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      width: 100%;
+      max-width: 780px;
+    }
+
+    .cta-banner-text h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--ink-primary);
+      margin-bottom: 4px;
+    }
+
+    .cta-banner-text p {
+      font-size: 13.5px;
+      color: var(--ink-muted);
+    }
+
+    .btn-cta-big-pulse {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      color: #ffffff;
+      font-family: 'Outfit', sans-serif;
+      font-size: 14.5px;
+      font-weight: 800;
+      text-decoration: none;
+      padding: 12px 26px;
+      border-radius: var(--radius-pill);
+      box-shadow: 0 8px 24px rgba(124, 58, 237, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .btn-cta-big-pulse:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 12px 30px rgba(124, 58, 237, 0.48);
+    }
+
+    /* PERSONAL DASHBOARD ("DASHBOARD CÁ NHÂN") */
+    .dashboard-section-wrap {
+      margin-bottom: 64px;
+      position: relative;
+    }
+
+    .dashboard-cockpit-card {
+      background: var(--bg-glass-strong);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-glass);
+      box-shadow: var(--shadow-neo-card);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dashboard-cockpit-card::after {
+      content: '';
+      position: absolute;
+      top: -120px;
+      right: -120px;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .dash-top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .dash-title-group h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--ink-primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .dash-title-group p {
+      font-size: 13.5px;
+      color: var(--ink-muted);
+      margin-top: 3px;
+    }
+
+    .dash-actions-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-dash-reset {
+      background: #ffffff;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      color: var(--ink-muted);
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 7px 14px;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    }
+
+    .btn-dash-reset:hover {
+      background: #fee2e2;
+      color: #b91c1c;
+      border-color: #fca5a5;
+    }
+
+    /* 3 Stat Badges */
+    .dash-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-bottom: 30px;
+    }
+
+    .dash-kpi-card {
+      background: #ffffff;
+      border: 1px solid rgba(226, 232, 240, 0.85);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      box-shadow: var(--shadow-neo-flat);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: all 0.25s ease;
+    }
+
+    .dash-kpi-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-neo-hover);
+      border-color: #c7d2fe;
+    }
+
+    .kpi-icon-circle {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .kpi-1 .kpi-icon-circle {
+      background: #eff6ff;
+      color: #2563eb;
+    }
+
+    .kpi-2 .kpi-icon-circle {
+      background: #f5f3ff;
+      color: #7c3aed;
+    }
+
+    .kpi-3 .kpi-icon-circle {
+      background: #ecfdf5;
+      color: #059669;
+    }
+
+    .kpi-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink-muted);
+      margin-bottom: 4px;
+    }
+
+    .kpi-value {
+      font-family: 'Outfit', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--ink-primary);
+      line-height: 1.1;
+    }
+
+    .kpi-foot-sub {
+      font-size: 11.5px;
+      color: var(--ink-light);
+      margin-top: 4px;
+    }
+
+    /* Breakdown Chart Grid */
+    .dash-chart-section {
+      background: #f8fafc;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      border-radius: var(--radius-md);
+      padding: 22px;
+    }
+
+    .chart-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .chart-title {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--ink-primary);
+    }
+
+    .chart-bars-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .chart-bar-item {
+      display: grid;
+      grid-template-columns: 80px 1fr 90px;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: inherit;
+      padding: 6px 10px;
+      border-radius: 10px;
+      transition: background 0.2s ease;
+    }
+
+    .chart-bar-item:hover {
+      background: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .chart-bar-label {
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink-secondary);
+    }
+
+    .chart-track {
+      height: 10px;
+      background: #e2e8f0;
+      border-radius: var(--radius-pill);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .chart-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #4f46e5, #7c3aed);
+      border-radius: var(--radius-pill);
+      width: 0%;
+      transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .chart-bar-score {
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      text-align: right;
+      color: var(--ink-secondary);
+    }
+
+    /* STUDY TIPS SECTION ("Mẹo Ôn Thi Hiệu Quả") */
+    .tips-section-wrap {
+      margin-bottom: 64px;
+    }
+
+    .tips-grid-neo {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .tip-neo-card {
+      background: var(--bg-glass-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-glass);
+      box-shadow: var(--shadow-neo-card);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tip-neo-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-neo-hover);
+      background: rgba(255, 255, 255, 0.98);
+      border-color: #c7d2fe;
+    }
+
+    .tip-icon-orb {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      box-shadow: var(--shadow-neo-flat);
+      background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      transition: transform 0.25s ease;
+    }
+
+    .tip-neo-card:hover .tip-icon-orb {
+      transform: scale(1.15) rotate(6deg);
+    }
+
+    .tip-card-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16.5px;
+      font-weight: 800;
+      color: var(--ink-primary);
+      line-height: 1.3;
+    }
+
+    .tip-card-body {
+      font-size: 13.5px;
+      color: var(--ink-muted);
+      line-height: 1.6;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid rgba(226, 232, 240, 0.85);
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 34px 0;
+      text-align: center;
+      margin-top: auto;
+    }
+
+    .footer-inner {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-brand {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--ink-primary);
+    }
+
+    .footer-sub {
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.5;
+    }
+
+    .footer-copy {
+      font-size: 11.5px;
+      color: var(--ink-light);
+      margin-top: 6px;
+    }
+
+    /* COMPREHENSIVE RESPONSIVE BREAKPOINTS */
+    @media (max-width: 1024px) {
+      .features-grid-asym {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
       }
-      html {
-        scroll-behavior: smooth;
-        -webkit-text-size-adjust: 100%;
+
+      .journey-step-row.align-left,
+      .journey-step-row.align-right {
+        padding-left: 0;
+        padding-right: 0;
+        justify-content: center;
       }
-      body {
-        margin: 0;
-        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        color: var(--ink);
-        background: linear-gradient(135deg, var(--bg1), var(--bg2));
-        min-height: 100vh;
-        display: flex;
+
+      .dash-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .tips-grid-neo {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+      }
+
+      .cta-glass-banner {
         flex-direction: column;
-        -webkit-font-smoothing: antialiased;
+        text-align: center;
+        padding: 24px;
+        gap: 16px;
       }
-      header {
-        position: sticky;
-        top: 0;
-        z-index: 20;
-        background: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.07);
-        transition: box-shadow 0.25s ease;
+    }
+
+    @media (max-width: 768px) {
+      .layout-container {
+        padding: 0 16px;
       }
-      header.scrolled {
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+
+      .nav-wrapper {
+        top: 8px;
+        margin-bottom: 20px;
       }
-      .wrap {
-        max-width: 960px;
-        margin: 0 auto;
-        padding: 16px 20px;
-        width: 100%;
+
+      .nav-glass-bar {
+        padding: 8px 14px;
       }
-      .nav-bar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+
+      .nav-links-pill {
+        display: none;
+      }
+
+      .nav-right-actions {
+        gap: 8px;
+      }
+
+      .nav-right-actions .btn-purple-glow {
+        padding: 8px 14px;
+        font-size: 12.5px;
+      }
+
+      .hero-wrap {
+        padding: 20px 0 28px;
+      }
+
+      .hero-title {
+        font-size: clamp(26px, 6.5vw, 36px);
+      }
+
+      .hero-desc {
+        font-size: 14.5px;
+        line-height: 1.6;
+        margin-bottom: 24px;
+      }
+
+      .features-flow-wrap {
+        margin: 10px 0 36px;
+      }
+
+      .features-rail-bg {
+        display: none;
+      }
+
+      .features-grid-asym {
+        grid-template-columns: 1fr;
         gap: 12px;
       }
-      .logo {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        text-decoration: none;
-        color: var(--ink);
+
+      .feature-glass-node {
+        transform: none !important;
+        padding: 16px;
       }
-      .logo-icon {
+
+      .roadmap-svg-trail {
+        display: none;
+      }
+
+      .lesson-journey-card {
+        grid-template-columns: 1fr;
+        padding: 20px 18px;
+        gap: 16px;
+        text-align: left;
+      }
+
+      .card-visual-column {
+        flex-direction: row;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .card-motif-box {
+        width: 58px;
+        height: 58px;
+        border-radius: 16px;
+      }
+
+      .card-motif-box svg {
+        width: 32px;
+        height: 32px;
+      }
+
+      .card-progress-column {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        border-top: 1px solid #f1f5f9;
+        padding-top: 14px;
+      }
+
+      .dashboard-cockpit-card {
+        padding: 22px 18px;
+      }
+
+      .dash-kpi-card {
+        padding: 16px;
+      }
+
+      .kpi-icon-circle {
+        width: 44px;
+        height: 44px;
+        font-size: 20px;
+      }
+
+      .kpi-value {
+        font-size: 22px;
+      }
+
+      .tips-grid-neo {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .layout-container {
+        padding: 0 12px;
+      }
+
+      .logo-icon-box {
         width: 38px;
         height: 38px;
-        border-radius: 10px;
-        background: #334155;
-        color: #ffffff;
-        display: grid;
-        place-items: center;
-        font-weight: 800;
-        font-size: 17px;
-        box-shadow: 0 2px 8px rgba(51, 65, 85, 0.2);
-      }
-      .logo-text {
-        display: flex;
-        flex-direction: column;
-      }
-      .logo-title {
-        font-size: 16px;
-        font-weight: 700;
-        line-height: 1.25;
-      }
-      .logo-sub {
-        font-size: 12px;
-        color: var(--muted);
-      }
-      .header-badge {
-        font-weight: 600;
-        color: #3b82f6;
-        font-size: 13px;
-        background: #eff6ff;
-        padding: 6px 14px;
-        border-radius: 999px;
-        border: 1px solid #bfdbfe;
-        white-space: nowrap;
+        font-size: 15px;
       }
 
-      /* Hero Section */
-      .hero {
-        padding: 36px 0 24px;
-        text-align: center;
-      }
-      .hero-tag {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        background: #ffffff;
-        color: var(--muted);
-        border: 1px solid var(--border);
-        padding: 6px 14px;
-        border-radius: 999px;
-        font-size: 13px;
-        font-weight: 600;
-        margin-bottom: 14px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
-      }
-      .hero h1 {
-        margin: 0 0 12px;
-        font-size: clamp(24px, 4vw, 36px);
-        font-weight: 800;
-        color: var(--ink);
-        letter-spacing: -0.02em;
-        line-height: 1.25;
-      }
-      .hero p {
-        margin: 0 auto 20px;
-        max-width: 660px;
-        font-size: clamp(14px, 2vw, 16px);
-        color: var(--muted);
-        line-height: 1.6;
-      }
-      .hero-stats {
-        display: flex;
-        justify-content: center;
-        gap: 12px;
-        flex-wrap: wrap;
-      }
-      .stat-pill {
-        background: #ffffff;
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 8px 16px;
-        font-size: 13.5px;
-        font-weight: 600;
-        color: var(--ink);
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
-      }
-      .stat-pill span {
-        color: var(--accent);
+      .logo-main-title {
+        font-size: 15px;
       }
 
-      /* Grid of 6 Lessons */
-      .section-head {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 16px;
+      .logo-sub-title {
+        display: none;
       }
-      .section-title {
-        font-size: 19px;
-        font-weight: 700;
-        margin: 0;
-      }
-      .section-desc {
-        font-size: 13px;
-        color: var(--muted);
-      }
-      .lesson-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 16px;
-        margin-bottom: 40px;
-      }
-      .lesson-card {
-        background: var(--card);
-        border-radius: 18px;
-        padding: 22px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
-        border: 1px solid rgba(226, 232, 240, 0.9);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        text-decoration: none;
-        color: inherit;
-        position: relative;
-        transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s, border-color 0.2s;
-        -webkit-tap-highlight-color: transparent;
-      }
-      .lesson-card:hover {
-        transform: translateY(-4px);
-        border-color: #93c5fd;
-        box-shadow: 0 12px 28px rgba(37, 99, 235, 0.09);
-      }
-      .lesson-card:active {
-        transform: scale(0.98);
-      }
-      .card-top {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 14px;
-      }
-      .lesson-num {
-        width: 36px;
-        height: 36px;
-        border-radius: 10px;
-        background: #334155;
-        color: #ffffff;
-        font-weight: 700;
-        font-size: 14px;
-        display: grid;
-        place-items: center;
-        transition: background 0.2s ease;
-      }
-      .lesson-card:hover .lesson-num {
-        background: var(--accent);
-      }
-      .status-tags {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        flex-wrap: wrap;
-      }
-      .status-tag {
+
+      .nav-right-actions .btn-purple-glow {
+        padding: 7px 11px;
         font-size: 11.5px;
-        font-weight: 700;
-        padding: 4px 10px;
-        border-radius: 999px;
-        text-transform: uppercase;
-        letter-spacing: 0.02em;
-      }
-      .status-ready {
-        background: #dcfce7;
-        color: #15803d;
-        border: 1px solid #bbf7d0;
-      }
-      .status-done {
-        background: #eff6ff;
-        color: #1d4ed8;
-        border: 1px solid #bfdbfe;
-        font-size: 11px;
-      }
-      .lesson-title {
-        font-size: 16px;
-        font-weight: 700;
-        margin: 0 0 8px;
-        line-height: 1.4;
-        color: var(--ink);
-      }
-      .lesson-desc {
-        font-size: 13.5px;
-        color: var(--muted);
-        line-height: 1.5;
-        margin: 0 0 18px;
-        flex-grow: 1;
-      }
-      .card-bottom {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding-top: 14px;
-        border-top: 1px solid #f1f5f9;
-      }
-      .card-meta {
-        font-size: 12.5px;
-        color: var(--muted);
-        font-weight: 500;
-      }
-      .card-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        font-size: 13px;
-        font-weight: 700;
-        color: var(--accent);
-        transition: transform 0.15s ease;
-      }
-      .lesson-card:hover .card-btn {
-        transform: translateX(3px);
       }
 
-      /* Study Guide Section */
-      .guide-box {
-        background: #ffffff;
-        border-radius: 18px;
-        padding: 22px;
-        border: 1px solid var(--border);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-        margin-bottom: 40px;
+      .nav-user-chip {
+        padding: 5px 8px;
       }
-      .guide-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 16px;
-        margin-top: 16px;
+
+      .nav-user-chip span:last-child {
+        display: none;
       }
-      .guide-item {
-        background: #f8fafc;
-        border: 1px solid #e2e8f0;
-        border-radius: 12px;
-        padding: 14px;
+
+      .hero-title {
+        font-size: 24px;
+        line-height: 1.25;
       }
-      .guide-item h3 {
-        margin: 0 0 6px;
+
+      .hero-cta-group {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+      }
+
+      .btn-hero-primary,
+      .btn-hero-secondary {
+        width: 100%;
+        justify-content: center;
+        padding: 13px 20px;
         font-size: 14.5px;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
+      }
+
+      .btn-cta-big-pulse {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .lesson-journey-card {
+        padding: 16px 14px;
+        border-radius: var(--radius-md);
+      }
+
+      .lesson-card-title {
+        font-size: 15.5px;
+      }
+
+      .lesson-card-desc {
+        font-size: 12.5px;
+      }
+
+      .chart-bar-item {
+        grid-template-columns: 66px 1fr 68px;
         gap: 8px;
-      }
-      .guide-item p {
-        margin: 0;
-        font-size: 13px;
-        color: var(--muted);
-        line-height: 1.45;
+        padding: 6px 4px;
       }
 
-      /* Footer */
-      footer {
-        margin-top: auto;
-        border-top: 1px solid rgba(0, 0, 0, 0.07);
-        background: rgba(255, 255, 255, 0.6);
-        padding: 20px 0;
+      .chart-bar-label {
+        font-size: 12px;
+      }
+
+      .chart-bar-score {
+        font-size: 11.5px;
+      }
+
+      .dash-top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .btn-dash-reset {
+        width: 100%;
         text-align: center;
-        font-size: 13px;
-        color: var(--muted);
       }
 
-      /* Responsive rules */
-      @media (max-width: 768px) {
-        .wrap {
-          padding: 12px 14px;
-        }
-        .hero {
-          padding: 24px 0 18px;
-        }
-        .hero h1 {
-          font-size: 22px;
-        }
-        .lesson-grid {
-          grid-template-columns: 1fr;
-          gap: 12px;
-        }
-        .lesson-card {
-          padding: 18px 16px;
-          border-radius: 16px;
-        }
-        .guide-box {
-          padding: 18px 16px;
-        }
-        .guide-grid {
-          grid-template-columns: 1fr;
-          gap: 10px;
-        }
-        .header-badge {
-          display: none;
-        }
+      footer {
+        padding: 24px 0;
       }
-    </style>
-  </head>
-  <body>
-    <header id="header">
-      <div class="wrap">
-        <div class="nav-bar">
-          <a href="index.html" class="logo">
-            <div class="logo-icon">KH</div>
-            <div class="logo-text">
-              <span class="logo-title">CNXH - KH</span>
-              <span class="logo-sub">Chủ Nghĩa Xã Hội Khoa Học</span>
-            </div>
+
+      .footer-brand {
+        font-size: 13.5px;
+      }
+
+      .footer-sub {
+        font-size: 11.5px;
+      }
+    }
+
+    /* Floating Back-To-Top Button */
+    .btn-scroll-top {
+      position: fixed;
+      bottom: 24px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #1e293b;
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 700;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+      border: none;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(12px);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 99;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+
+    .btn-scroll-top.visible {
+      opacity: 0.95;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .btn-scroll-top:hover {
+      background: #0f172a;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
+    }
+
+    .btn-scroll-top:active {
+      transform: scale(0.92);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="pageTop"></div>
+  <!-- TOP NAVIGATION -->
+  <div class="layout-container nav-wrapper" id="top">
+    <nav class="nav-glass-bar" id="navbar">
+      <!-- Logo Left -->
+      <a href="index.html" class="logo-link">
+        <div class="logo-icon-box">KH</div>
+        <div class="logo-text-col">
+          <span class="logo-main-title">CNXH - KH</span>
+          <span class="logo-sub-title">Chủ Nghĩa Xã Hội Khoa Học</span>
+        </div>
+      </a>
+
+      <!-- Center Nav Links with Sliding Indicator -->
+      <div class="nav-links-pill" id="navTabsContainer">
+        <span class="nav-tab-indicator" id="navTabIndicator"></span>
+        <a href="#pageTop" class="nav-item active">Trang chủ</a>
+        <a href="#roadmap" class="nav-item">Khóa học</a>
+        <a href="#dashboard" class="nav-item">Tài nguyên</a>
+        <a href="#guide" class="nav-item">Hỗ trợ</a>
+      </div>
+
+      <!-- Right Action Button & Dashboard Chip -->
+      <div class="nav-right-actions">
+        <a href="#roadmap" class="btn-purple-glow">
+          <span>🎓 Ôn Thi KTHP 2026</span>
+        </a>
+        <a href="#dashboard" class="nav-user-chip" title="Bảng điều khiển cá nhân">
+          <div class="user-avatar-mini">👤</div>
+          <span class="pulse-dot"></span>
+          <span style="font-size: 12.5px;">Tiến độ</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <!-- MAIN BODY -->
+  <main class="layout-container">
+    <!-- HERO SECTION -->
+    <section class="hero-wrap">
+      <div class="hero-ambient-glow"></div>
+      <div class="hero-inner">
+        <div class="hero-badge-pill">
+          <span>✨</span> Hệ Thống Ôn Tập Trực Tuyến 2026
+        </div>
+        <h1 class="hero-title">Ngân Hàng Câu Hỏi & Đề Ôn Thi KTHP</h1>
+        <p class="hero-desc">
+          Hệ thống câu hỏi trắc nghiệm, đúng/sai và bài tập kéo thả bám sát chương trình chuẩn. Hỗ trợ chấm điểm tức
+          thì, xem đáp án chi tiết và tương thích đa thiết bị.
+        </p>
+        <div class="hero-cta-group">
+          <a href="bai1.html" class="btn-hero-primary" id="heroStartBtn">
+            <span>⚡ BẮT ĐẦU ÔN TẬP NGAY!</span>
           </a>
-          <div class="header-badge">🎓 Ôn Thi KTHP 2026</div>
+          <a href="#dashboard" class="btn-hero-secondary">
+            <span>📊 Bảng Tiến Độ Cá Nhân</span>
+          </a>
         </div>
       </div>
-    </header>
 
-    <main class="wrap">
-      <!-- Hero Banner -->
-      <section class="hero">
-        <div class="hero-tag">✨ Hệ Thống Ôn Tập Trực Tuyến 2026</div>
-        <h1>Ngân Hàng Câu Hỏi & Đề Ôn Thi KTHP</h1>
-        <p>
-          Hệ thống câu hỏi trắc nghiệm, đúng/sai và bài tập kéo thả bám sát chương trình chuẩn. Hỗ trợ chấm điểm tức thì, xem đáp án chi tiết và tương thích đa thiết bị.
-        </p>
-        <div class="hero-stats">
-          <div class="stat-pill"><span>📚</span> 6 Bài học trọng tâm</div>
-          <div class="stat-pill"><span>📝</span> 235 Câu hỏi ôn tập</div>
-          <div class="stat-pill"><span>⚡</span> Chấm điểm tức thì</div>
-          <div class="stat-pill"><span>📱</span> Tối ưu di động</div>
-        </div>
-      </section>
-
-      <!-- Lessons Grid -->
-      <section>
-        <div class="section-head">
-          <div>
-            <h2 class="section-title">Danh Sách Các Bài Ôn Tập</h2>
-            <div class="section-desc">Chọn bài học để bắt đầu luyện tập trắc nghiệm và kéo thả</div>
+      <!-- 4 CONNECTED GLASS FEATURE CARDS -->
+      <div class="features-flow-wrap">
+        <div class="features-rail-bg"></div>
+        <div class="features-grid-asym">
+          <!-- Node 1 -->
+          <div class="feature-glass-node">
+            <div class="feature-icon-bubble">📚</div>
+            <div class="feature-node-title">6 Bài học trọng tâm</div>
+            <div class="feature-node-sub">Hệ thống hóa toàn bộ lý luận & thực tiễn chuẩn KTHP</div>
+          </div>
+          <!-- Node 2 -->
+          <div class="feature-glass-node">
+            <div class="feature-icon-bubble">📝</div>
+            <div class="feature-node-title">235 Câu hỏi ôn tập</div>
+            <div class="feature-node-sub">Trắc nghiệm, Đúng/Sai & Bài tập kéo thả tương tác cao</div>
+          </div>
+          <!-- Node 3 -->
+          <div class="feature-glass-node">
+            <div class="feature-icon-bubble">⚡</div>
+            <div class="feature-node-title">Chấm điểm tức thì</div>
+            <div class="feature-node-sub">Đánh giá chính xác, giải thích chi tiết & rèn phản xạ</div>
+          </div>
+          <!-- Node 4 -->
+          <div class="feature-glass-node">
+            <div class="feature-icon-bubble">📱</div>
+            <div class="feature-node-title">Tối ưu di động</div>
+            <div class="feature-node-sub">Học tập đa nền tảng mượt mà trên điện thoại và máy tính</div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="lesson-grid">
-          <!-- Bài 1 -->
-          <a href="bai1.html" class="lesson-card" id="card_bai1">
-            <div>
-              <div class="card-top">
-                <div class="lesson-num">01</div>
-                <div class="status-tags">
-                  <span class="status-tag status-ready">✓ Sẵn sàng</span>
-                </div>
+    <!-- MAIN JOURNEY: "Lộ trình học tập cá nhân" (FLUID NON-GRID ASYMMETRICAL ROADMAP) -->
+    <section class="roadmap-section-wrap" id="roadmap">
+      <div class="section-header-row">
+        <div>
+          <span class="sec-badge-kicker">HÀNH TRÌNH CHINH PHỤC ĐIỂM CAO</span>
+          <h2 class="sec-main-heading">Lộ trình học tập cá nhân</h2>
+          <p class="sec-desc-lead">Hệ thống 6 chuyên đề trọng tâm được sắp xếp khoa học, tự do luyện tập và theo dõi
+            tiến độ thực tế.</p>
+        </div>
+        <div style="font-size: 13px; font-weight: 700; color: var(--accent-primary);">
+          Tổng cộng: 235 câu hỏi • 6 Chuyên đề
+        </div>
+      </div>
+
+      <div class="roadmap-fluid-container">
+        <!-- Ambient SVG Trail Line (Desktop non-grid connector) -->
+        <svg class="roadmap-svg-trail" viewBox="0 0 1000 1200" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="trailGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#4f46e5" stop-opacity="0.7" />
+              <stop offset="50%" stop-color="#7c3aed" stop-opacity="0.8" />
+              <stop offset="100%" stop-color="#0284c7" stop-opacity="0.7" />
+            </linearGradient>
+          </defs>
+          <path class="roadmap-trail-line"
+            d="M 320,60 C 200,160 180,240 380,320 C 580,400 800,460 680,600 C 540,740 220,780 340,940 C 420,1040 640,1080 620,1180" />
+        </svg>
+
+        <!-- BÀI 1 (Asymmetric Left) -->
+        <div class="journey-step-row align-left">
+          <a href="bai1.html" class="lesson-journey-card" id="card_bai1" style="--card-accent: #4f46e5;">
+            <div class="card-visual-column">
+              <div class="card-motif-box">
+                <!-- Cogwheel + Book/Torch Motif -->
+                <svg viewBox="0 0 48 48" fill="none">
+                  <circle cx="24" cy="24" r="18" fill="#e0e7ff" opacity="0.6" />
+                  <path
+                    d="M24 10V14M24 34V38M10 24H14M34 24H38M14.1 14.1L16.9 16.9M31.1 31.1L33.9 33.9M14.1 33.9L16.9 31.1M31.1 16.9L33.9 14.1"
+                    stroke="#4f46e5" stroke-width="2.5" stroke-linecap="round" />
+                  <circle cx="24" cy="24" r="8" fill="#4f46e5" />
+                  <circle cx="24" cy="24" r="4" fill="#ffffff" />
+                </svg>
               </div>
-              <h3 class="lesson-title">Bài 1: Nhập môn CNXH-KH & Sứ mệnh của GCCN</h3>
-              <p class="lesson-desc">
+              <span class="card-order-badge">BÀI 01</span>
+            </div>
+
+            <div class="card-content-column">
+              <div class="card-status-bar">
+                <span class="badge-state state-ready" id="ready_tag_1">✓ SẴN SÀNG</span>
+                <span class="badge-state state-done" id="done_tag_1" style="display: none;">ĐÃ LÀM</span>
+              </div>
+              <h3 class="lesson-card-title">Bài 1: Nhập môn CNXH-KH & Sứ mệnh của GCCN</h3>
+              <p class="lesson-card-desc">
                 Sự ra đời, phát triển của CNXH-KH; nội dung, đặc điểm sứ mệnh lịch sử của giai cấp công nhân Việt Nam.
               </p>
-            </div>
-            <div class="card-bottom">
-              <span class="card-meta">41 câu hỏi • Trắc nghiệm & Kéo thả</span>
-              <span class="card-btn">Làm bài ngay →</span>
-            </div>
-          </a>
-
-          <!-- Bài 2 -->
-          <a href="bai2.html" class="lesson-card" id="card_bai2">
-            <div>
-              <div class="card-top">
-                <div class="lesson-num">02</div>
-                <div class="status-tags">
-                  <span class="status-tag status-ready">✓ Sẵn sàng</span>
-                </div>
+              <div class="lesson-card-footer">
+                <span class="card-qcount-badge">41 câu hỏi</span>
+                <span>•</span>
+                <span>Trắc nghiệm & Kéo thả</span>
               </div>
-              <h3 class="lesson-title">Bài 2: Chủ nghĩa xã hội & Thời kỳ quá độ lên CNXH</h3>
-              <p class="lesson-desc">
-                Bản chất, đặc trưng của CNXH; tính tất yếu của thời kỳ quá độ và con đường bỏ qua chế độ TBCN ở Việt Nam.
-              </p>
             </div>
-            <div class="card-bottom">
-              <span class="card-meta">40 câu hỏi • Trắc nghiệm & Kéo thả</span>
-              <span class="card-btn">Làm bài ngay →</span>
-            </div>
-          </a>
 
-          <!-- Bài 3 -->
-          <a href="bai3.html" class="lesson-card" id="card_bai3">
-            <div>
-              <div class="card-top">
-                <div class="lesson-num">03</div>
-                <div class="status-tags">
-                  <span class="status-tag status-ready">✓ Sẵn sàng</span>
-                </div>
+            <div class="card-progress-column">
+              <div class="circular-meter-wrap" id="meter_wrap_1">
+                <svg class="circular-meter-svg" viewBox="0 0 36 36">
+                  <path class="circular-bg-ring"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                  <path class="circular-progress-ring" id="ring_bai1"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                </svg>
+                <span class="circular-text-count" id="count_bai1">0/41</span>
               </div>
-              <h3 class="lesson-title">Bài 3: Dân chủ XHCN & Nhà nước XHCN</h3>
-              <p class="lesson-desc">
-                Bản chất nền dân chủ XHCN; chức năng của Nhà nước XHCN và xây dựng Nhà nước pháp quyền XHCN tại Việt Nam.
-              </p>
-            </div>
-            <div class="card-bottom">
-              <span class="card-meta">40 câu hỏi • Trắc nghiệm & Kéo thả</span>
-              <span class="card-btn">Làm bài ngay →</span>
-            </div>
-          </a>
-
-          <!-- Bài 4 -->
-          <a href="bai4.html" class="lesson-card" id="card_bai4">
-            <div>
-              <div class="card-top">
-                <div class="lesson-num">04</div>
-                <div class="status-tags">
-                  <span class="status-tag status-ready">✓ Sẵn sàng</span>
-                </div>
-              </div>
-              <h3 class="lesson-title">Bài 4: Cơ cấu xã hội - giai cấp & Liên minh giai cấp</h3>
-              <p class="lesson-desc">
-                Sự biến đổi cơ cấu xã hội - giai cấp trong thời kỳ quá độ; nội dung và phương hướng xây dựng khối liên minh.
-              </p>
-            </div>
-            <div class="card-bottom">
-              <span class="card-meta">45 câu hỏi • Trắc nghiệm & Kéo thả</span>
-              <span class="card-btn">Làm bài ngay →</span>
-            </div>
-          </a>
-
-          <!-- Bài 5 -->
-          <a href="bai5.html" class="lesson-card" id="card_bai5">
-            <div>
-              <div class="card-top">
-                <div class="lesson-num">05</div>
-                <div class="status-tags">
-                  <span class="status-tag status-ready">✓ Sẵn sàng</span>
-                </div>
-              </div>
-              <h3 class="lesson-title">Bài 5: Vấn đề Dân tộc và Tôn giáo trong thời kỳ quá độ</h3>
-              <p class="lesson-desc">
-                Cương lĩnh dân tộc của V.I.Lênin; bản chất tôn giáo, chính sách dân tộc và tôn giáo của Đảng và Nhà nước Việt Nam.
-              </p>
-            </div>
-            <div class="card-bottom">
-              <span class="card-meta">42 câu hỏi • Trắc nghiệm & Kéo thả</span>
-              <span class="card-btn">Làm bài ngay →</span>
-            </div>
-          </a>
-
-          <!-- Bài 6 -->
-          <a href="bai6.html" class="lesson-card" id="card_bai6">
-            <div>
-              <div class="card-top">
-                <div class="lesson-num">06</div>
-                <div class="status-tags">
-                  <span class="status-tag status-ready">✓ Sẵn sàng</span>
-                </div>
-              </div>
-              <h3 class="lesson-title">Bài 6: Xây dựng gia đình trong thời kỳ quá độ lên CNXH</h3>
-              <p class="lesson-desc">
-                Khái niệm, vị trí, chức năng của gia đình; các mối quan hệ cơ bản và xu hướng biến đổi gia đình Việt Nam hiện nay.
-              </p>
-            </div>
-            <div class="card-bottom">
-              <span class="card-meta">27 câu hỏi • Trắc nghiệm & Kéo thả</span>
-              <span class="card-btn">Làm bài ngay →</span>
+              <span class="card-action-link" id="action_bai1">Làm bài ngay →</span>
             </div>
           </a>
         </div>
-      </section>
 
-      <!-- Study Tips / Guide -->
-      <section class="guide-box">
-        <h2 style="margin: 0; font-size: 17px; font-weight: 700;">💡 Mẹo Ôn Thi Hiệu Quả</h2>
-        <div class="guide-grid">
-          <div class="guide-item">
-            <h3><span>🎯</span> Luyện tập chủ động</h3>
-            <p>Làm bài thử trước khi xem đáp án. Nhấn "Làm lại" để xáo trộn câu hỏi và rèn phản xạ nhận diện kiến thức.</p>
-          </div>
-          <div class="guide-item">
-            <h3><span>📱</span> Ôn tập trên điện thoại</h3>
-            <p>Đối với dạng bài kéo thả hoặc ghép cặp, bạn chỉ cần chạm vào thẻ từ rồi chạm vào ô tương ứng để đặt đáp án.</p>
-          </div>
-          <div class="guide-item">
-            <h3><span>📊</span> Theo dõi tiến độ tức thì</h3>
-            <p>Hệ thống tự động lưu kết quả làm bài của từng bài học trên thiết bị để bạn dễ dàng theo dõi sự tiến bộ.</p>
+        <!-- BÀI 2 (Asymmetric Right) -->
+        <div class="journey-step-row align-right">
+          <a href="bai2.html" class="lesson-journey-card" id="card_bai2" style="--card-accent: #7c3aed;">
+            <div class="card-visual-column">
+              <div class="card-motif-box">
+                <!-- Ascending Pillars & Foundation Motif -->
+                <svg viewBox="0 0 48 48" fill="none">
+                  <rect x="8" y="36" width="32" height="4" rx="2" fill="#7c3aed" />
+                  <rect x="11" y="24" width="6" height="12" rx="1.5" fill="#c4b5fd" />
+                  <rect x="21" y="18" width="6" height="18" rx="1.5" fill="#7c3aed" />
+                  <rect x="31" y="12" width="6" height="24" rx="1.5" fill="#4f46e5" />
+                  <path d="M12 20L23 14L34 8L40 12" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round" />
+                </svg>
+              </div>
+              <span class="card-order-badge" style="background: #5b21b6;">BÀI 02</span>
+            </div>
+
+            <div class="card-content-column">
+              <div class="card-status-bar">
+                <span class="badge-state state-ready" id="ready_tag_2">✓ SẴN SÀNG</span>
+                <span class="badge-state state-done" id="done_tag_2" style="display: none;">ĐÃ LÀM</span>
+              </div>
+              <h3 class="lesson-card-title">Bài 2: Chủ nghĩa xã hội & Thời kỳ quá độ lên CNXH</h3>
+              <p class="lesson-card-desc">
+                Bản chất, đặc trưng của CNXH; tính tất yếu của thời kỳ quá độ và con đường bỏ qua chế độ TBCN ở Việt
+                Nam.
+              </p>
+              <div class="lesson-card-footer">
+                <span class="card-qcount-badge">40 câu hỏi</span>
+                <span>•</span>
+                <span>Trắc nghiệm & Kéo thả</span>
+              </div>
+            </div>
+
+            <div class="card-progress-column">
+              <div class="circular-meter-wrap" id="meter_wrap_2">
+                <svg class="circular-meter-svg" viewBox="0 0 36 36">
+                  <path class="circular-bg-ring"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                  <path class="circular-progress-ring" id="ring_bai2" style="stroke: #7c3aed;"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                </svg>
+                <span class="circular-text-count" id="count_bai2">0/40</span>
+              </div>
+              <span class="card-action-link" id="action_bai2">Làm bài ngay →</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- BÀI 3 (Asymmetric Left) -->
+        <div class="journey-step-row align-left">
+          <a href="bai3.html" class="lesson-journey-card" id="card_bai3" style="--card-accent: #0284c7;">
+            <div class="card-visual-column">
+              <div class="card-motif-box">
+                <!-- Scales of Justice / Governance Motif -->
+                <svg viewBox="0 0 48 48" fill="none">
+                  <path d="M24 10V38M14 16H34M14 16L9 26H19L14 16ZM34 16L29 26H39L34 16Z" stroke="#0284c7"
+                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                  <circle cx="24" cy="10" r="3" fill="#0284c7" />
+                  <rect x="16" y="38" width="16" height="3" rx="1.5" fill="#0284c7" />
+                </svg>
+              </div>
+              <span class="card-order-badge" style="background: #0369a1;">BÀI 03</span>
+            </div>
+
+            <div class="card-content-column">
+              <div class="card-status-bar">
+                <span class="badge-state state-ready" id="ready_tag_3">✓ SẴN SÀNG</span>
+                <span class="badge-state state-done" id="done_tag_3" style="display: none;">ĐÃ LÀM</span>
+              </div>
+              <h3 class="lesson-card-title">Bài 3: Dân chủ XHCN & Nhà nước XHCN</h3>
+              <p class="lesson-card-desc">
+                Bản chất nền dân chủ XHCN; chức năng của Nhà nước XHCN và xây dựng Nhà nước pháp quyền XHCN tại Việt
+                Nam.
+              </p>
+              <div class="lesson-card-footer">
+                <span class="card-qcount-badge">40 câu hỏi</span>
+                <span>•</span>
+                <span>Trắc nghiệm & Kéo thả</span>
+              </div>
+            </div>
+
+            <div class="card-progress-column">
+              <div class="circular-meter-wrap" id="meter_wrap_3">
+                <svg class="circular-meter-svg" viewBox="0 0 36 36">
+                  <path class="circular-bg-ring"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                  <path class="circular-progress-ring" id="ring_bai3" style="stroke: #0284c7;"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                </svg>
+                <span class="circular-text-count" id="count_bai3">0/40</span>
+              </div>
+              <span class="card-action-link" id="action_bai3">Làm bài ngay →</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- PROMINENT MID-JOURNEY ACTION (From image_9.png concept) -->
+        <div class="journey-mid-cta-node">
+          <div class="cta-glass-banner">
+            <div class="cta-banner-text">
+              <h3>🚀 Tăng Tốc Ôn Tập KTHP 2026</h3>
+              <p>Thực hành liên tục giúp củng cố kiến thức lý luận và phản xạ chọn đáp án chính xác.</p>
+            </div>
+            <a href="bai1.html" class="btn-cta-big-pulse" id="journeyMidCtaBtn">
+              <span>BẮT ĐẦU ÔN TẬP NGAY!</span>
+            </a>
           </div>
         </div>
-      </section>
-    </main>
 
-    <footer>
-      <div class="wrap">
-        <div>Hệ Thống Ôn Thi Trắc Nghiệm KTHP - Chủ Nghĩa Xã Hội Khoa Học</div>
-        <div style="margin-top: 4px; font-size: 12px; opacity: 0.8;">
-          Thiết kế giao diện Xanh Xám dịu mắt & tương thích hoàn hảo trên máy tính lẫn di động
+        <!-- BÀI 4 (Asymmetric Right) -->
+        <div class="journey-step-row align-right">
+          <a href="bai4.html" class="lesson-journey-card" id="card_bai4" style="--card-accent: #059669;">
+            <div class="card-visual-column">
+              <div class="card-motif-box">
+                <!-- Alliance Shield & Network Motif -->
+                <svg viewBox="0 0 48 48" fill="none">
+                  <circle cx="16" cy="18" r="5" fill="#a7f3d0" stroke="#059669" stroke-width="2" />
+                  <circle cx="32" cy="18" r="5" fill="#a7f3d0" stroke="#059669" stroke-width="2" />
+                  <circle cx="24" cy="32" r="5" fill="#34d399" stroke="#059669" stroke-width="2" />
+                  <path d="M16 18L32 18M16 18L24 32M32 18L24 32" stroke="#059669" stroke-width="2.5"
+                    stroke-linecap="round" />
+                </svg>
+              </div>
+              <span class="card-order-badge" style="background: #065f46;">BÀI 04</span>
+            </div>
+
+            <div class="card-content-column">
+              <div class="card-status-bar">
+                <span class="badge-state state-ready" id="ready_tag_4">✓ SẴN SÀNG</span>
+                <span class="badge-state state-done" id="done_tag_4" style="display: none;">ĐÃ LÀM</span>
+              </div>
+              <h3 class="lesson-card-title">Bài 4: Cơ cấu xã hội - giai cấp & Liên minh giai cấp</h3>
+              <p class="lesson-card-desc">
+                Sự biến đổi cơ cấu xã hội - giai cấp trong thời kỳ quá độ; nội dung và phương hướng xây dựng khối liên
+                minh.
+              </p>
+              <div class="lesson-card-footer">
+                <span class="card-qcount-badge">45 câu hỏi</span>
+                <span>•</span>
+                <span>Trắc nghiệm & Kéo thả</span>
+              </div>
+            </div>
+
+            <div class="card-progress-column">
+              <div class="circular-meter-wrap" id="meter_wrap_4">
+                <svg class="circular-meter-svg" viewBox="0 0 36 36">
+                  <path class="circular-bg-ring"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                  <path class="circular-progress-ring" id="ring_bai4" style="stroke: #059669;"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                </svg>
+                <span class="circular-text-count" id="count_bai4">0/45</span>
+              </div>
+              <span class="card-action-link" id="action_bai4">Làm bài ngay →</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- BÀI 5 (Asymmetric Left) -->
+        <div class="journey-step-row align-left">
+          <a href="bai5.html" class="lesson-journey-card" id="card_bai5" style="--card-accent: #d97706;">
+            <div class="card-visual-column">
+              <div class="card-motif-box">
+                <!-- Unity Globe & Cultural Motif -->
+                <svg viewBox="0 0 48 48" fill="none">
+                  <circle cx="24" cy="24" r="16" stroke="#d97706" stroke-width="2.5" />
+                  <ellipse cx="24" cy="24" rx="8" ry="16" stroke="#d97706" stroke-width="2" />
+                  <path d="M8 24H40" stroke="#d97706" stroke-width="2" />
+                  <circle cx="24" cy="24" r="3" fill="#f59e0b" />
+                </svg>
+              </div>
+              <span class="card-order-badge" style="background: #92400e;">BÀI 05</span>
+            </div>
+
+            <div class="card-content-column">
+              <div class="card-status-bar">
+                <span class="badge-state state-ready" id="ready_tag_5">✓ SẴN SÀNG</span>
+                <span class="badge-state state-done" id="done_tag_5" style="display: none;">ĐÃ LÀM</span>
+              </div>
+              <h3 class="lesson-card-title">Bài 5: Vấn đề Dân tộc và Tôn giáo trong thời kỳ quá độ</h3>
+              <p class="lesson-card-desc">
+                Cương lĩnh dân tộc của V.I.Lênin; bản chất tôn giáo, chính sách dân tộc và tôn giáo của Đảng và Nhà nước
+                Việt Nam.
+              </p>
+              <div class="lesson-card-footer">
+                <span class="card-qcount-badge">42 câu hỏi</span>
+                <span>•</span>
+                <span>Trắc nghiệm & Kéo thả</span>
+              </div>
+            </div>
+
+            <div class="card-progress-column">
+              <div class="circular-meter-wrap" id="meter_wrap_5">
+                <svg class="circular-meter-svg" viewBox="0 0 36 36">
+                  <path class="circular-bg-ring"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                  <path class="circular-progress-ring" id="ring_bai5" style="stroke: #d97706;"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                </svg>
+                <span class="circular-text-count" id="count_bai5">0/42</span>
+              </div>
+              <span class="card-action-link" id="action_bai5">Làm bài ngay →</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- BÀI 6 (Asymmetric Right / Center Finish) -->
+        <div class="journey-step-row align-right">
+          <a href="bai6.html" class="lesson-journey-card" id="card_bai6" style="--card-accent: #e11d48;">
+            <div class="card-visual-column">
+              <div class="card-motif-box">
+                <!-- Warm Hearth / Family Home Motif -->
+                <svg viewBox="0 0 48 48" fill="none">
+                  <path d="M12 24L24 14L36 24V36H12V24Z" fill="#ffe4e6" stroke="#e11d48" stroke-width="2.5"
+                    stroke-linejoin="round" />
+                  <path d="M21 36V28H27V36" fill="#e11d48" />
+                  <path d="M24 10L27 12.5" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round" />
+                  <circle cx="24" cy="22" r="2.5" fill="#e11d48" />
+                </svg>
+              </div>
+              <span class="card-order-badge" style="background: #9f1239;">BÀI 06</span>
+            </div>
+
+            <div class="card-content-column">
+              <div class="card-status-bar">
+                <span class="badge-state state-ready" id="ready_tag_6">✓ SẴN SÀNG</span>
+                <span class="badge-state state-done" id="done_tag_6" style="display: none;">ĐÃ LÀM</span>
+              </div>
+              <h3 class="lesson-card-title">Bài 6: Xây dựng gia đình trong thời kỳ quá độ lên CNXH</h3>
+              <p class="lesson-card-desc">
+                Khái niệm, vị trí, chức năng của gia đình; các mối quan hệ cơ bản và xu hướng biến đổi gia đình Việt Nam
+                hiện nay.
+              </p>
+              <div class="lesson-card-footer">
+                <span class="card-qcount-badge">27 câu hỏi</span>
+                <span>•</span>
+                <span>Trắc nghiệm & Kéo thả</span>
+              </div>
+            </div>
+
+            <div class="card-progress-column">
+              <div class="circular-meter-wrap" id="meter_wrap_6">
+                <svg class="circular-meter-svg" viewBox="0 0 36 36">
+                  <path class="circular-bg-ring"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                  <path class="circular-progress-ring" id="ring_bai6" style="stroke: #e11d48;"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                </svg>
+                <span class="circular-text-count" id="count_bai6">0/27</span>
+              </div>
+              <span class="card-action-link" id="action_bai6">Làm bài ngay →</span>
+            </div>
+          </a>
         </div>
       </div>
-    </footer>
+    </section>
 
-    <script>
-      // Header shadow on scroll
-      const headerEl = document.getElementById("header");
-      window.addEventListener("scroll", () => {
+    <!-- PERSONAL PROGRESS DASHBOARD ("Dashboard cá nhân") -->
+    <section class="dashboard-section-wrap" id="dashboard">
+      <div class="dashboard-cockpit-card">
+        <div class="dash-top-bar">
+          <div class="dash-title-group">
+            <h3>
+              <span>📊</span> Bảng Điều Khiển Học Tập Cá Nhân
+            </h3>
+            <p>Dữ liệu tự động đồng bộ từ kết quả làm bài trên thiết bị của bạn</p>
+          </div>
+          <div class="dash-actions-group">
+            <button class="btn-dash-reset" id="resetHistoryBtn" title="Đặt lại dữ liệu điểm của tất cả bài">
+              🔄 Đặt lại tiến độ
+            </button>
+          </div>
+        </div>
+
+        <!-- 3 Stat Badges -->
+        <div class="dash-stats-grid">
+          <!-- Metric 1: Bài đã hoàn thành -->
+          <div class="dash-kpi-card kpi-1">
+            <div class="kpi-icon-circle">🎯</div>
+            <div>
+              <div class="kpi-label">Bài đã hoàn thành</div>
+              <div class="kpi-value" id="kpiLessonsDone">0 / 6</div>
+              <div class="kpi-foot-sub" id="kpiLessonsPct">Chưa hoàn thành bài nào</div>
+            </div>
+          </div>
+
+          <!-- Metric 2: Câu hỏi đã làm -->
+          <div class="dash-kpi-card kpi-2">
+            <div class="kpi-icon-circle">📝</div>
+            <div>
+              <div class="kpi-label">Câu hỏi đã làm</div>
+              <div class="kpi-value" id="kpiQuestionsDone">0 / 235</div>
+              <div class="kpi-foot-sub" id="kpiQuestionsPct">0% ngân hàng câu hỏi</div>
+            </div>
+          </div>
+
+          <!-- Metric 3: Tỷ lệ đúng -->
+          <div class="dash-kpi-card kpi-3">
+            <div class="kpi-icon-circle">🏆</div>
+            <div>
+              <div class="kpi-label">Tỷ lệ đúng trung bình</div>
+              <div class="kpi-value" id="kpiAccuracyRate">--%</div>
+              <div class="kpi-foot-sub" id="kpiAccuracyNote">Bắt đầu làm bài để ghi nhận</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Breakdown Chart for 6 lessons -->
+        <div class="dash-chart-section">
+          <div class="chart-header-row">
+            <div class="chart-title">Chi tiết tiến độ từng bài học</div>
+            <div style="font-size: 12px; color: var(--ink-light);">Chạm vào dòng để mở bài tương ứng</div>
+          </div>
+
+          <div class="chart-bars-wrap">
+            <!-- Bar 1 -->
+            <a href="bai1.html" class="chart-bar-item" id="bar_bai1">
+              <span class="chart-bar-label">Bài 1 (41c)</span>
+              <div class="chart-track">
+                <div class="chart-fill" id="fill_bai1"></div>
+              </div>
+              <span class="chart-bar-score" id="score_text_1">0/41 (0%)</span>
+            </a>
+
+            <!-- Bar 2 -->
+            <a href="bai2.html" class="chart-bar-item" id="bar_bai2">
+              <span class="chart-bar-label">Bài 2 (40c)</span>
+              <div class="chart-track">
+                <div class="chart-fill" id="fill_bai2"></div>
+              </div>
+              <span class="chart-bar-score" id="score_text_2">0/40 (0%)</span>
+            </a>
+
+            <!-- Bar 3 -->
+            <a href="bai3.html" class="chart-bar-item" id="bar_bai3">
+              <span class="chart-bar-label">Bài 3 (40c)</span>
+              <div class="chart-track">
+                <div class="chart-fill" id="fill_bai3"></div>
+              </div>
+              <span class="chart-bar-score" id="score_text_3">0/40 (0%)</span>
+            </a>
+
+            <!-- Bar 4 -->
+            <a href="bai4.html" class="chart-bar-item" id="bar_bai4">
+              <span class="chart-bar-label">Bài 4 (45c)</span>
+              <div class="chart-track">
+                <div class="chart-fill" id="fill_bai4"></div>
+              </div>
+              <span class="chart-bar-score" id="score_text_4">0/45 (0%)</span>
+            </a>
+
+            <!-- Bar 5 -->
+            <a href="bai5.html" class="chart-bar-item" id="bar_bai5">
+              <span class="chart-bar-label">Bài 5 (42c)</span>
+              <div class="chart-track">
+                <div class="chart-fill" id="fill_bai5"></div>
+              </div>
+              <span class="chart-bar-score" id="score_text_5">0/42 (0%)</span>
+            </a>
+
+            <!-- Bar 6 -->
+            <a href="bai6.html" class="chart-bar-item" id="bar_bai6">
+              <span class="chart-bar-label">Bài 6 (27c)</span>
+              <div class="chart-track">
+                <div class="chart-fill" id="fill_bai6"></div>
+              </div>
+              <span class="chart-bar-score" id="score_text_6">0/27 (0%)</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STUDY TIPS / GUIDE ("Mẹo Ôn Thi Hiệu Quả") -->
+    <section class="tips-section-wrap" id="guide">
+      <div class="section-header-row">
+        <div>
+          <span class="sec-badge-kicker">PHƯƠNG PHÁP HỌC TẬP</span>
+          <h2 class="sec-main-heading">💡 Mẹo Ôn Thi Hiệu Quả</h2>
+          <p class="sec-desc-lead">Chiến lược làm bài và tối ưu hóa thời gian ôn tập KTHP đạt kết quả cao nhất.</p>
+        </div>
+      </div>
+
+      <div class="tips-grid-neo">
+        <!-- Tip 1 -->
+        <div class="tip-neo-card">
+          <div class="tip-icon-orb">🎯</div>
+          <h3 class="tip-card-title">Luyện tập chủ động</h3>
+          <p class="tip-card-body">
+            Làm bài thử trước khi xem đáp án. Nhấn "Làm lại" để xáo trộn câu hỏi và rèn phản xạ nhận diện kiến thức.
+          </p>
+        </div>
+
+        <!-- Tip 2 -->
+        <div class="tip-neo-card">
+          <div class="tip-icon-orb">📱</div>
+          <h3 class="tip-card-title">Ôn tập trên điện thoại</h3>
+          <p class="tip-card-body">
+            Đối với dạng bài kéo thả hoặc ghép cặp, bạn chỉ cần chạm vào thẻ từ rồi chạm vào ô tương ứng để đặt đáp án.
+          </p>
+        </div>
+
+        <!-- Tip 3 -->
+        <div class="tip-neo-card">
+          <div class="tip-icon-orb">📊</div>
+          <h3 class="tip-card-title">Theo dõi tiến độ tức thì</h3>
+          <p class="tip-card-body">
+            Hệ thống tự động lưu kết quả làm bài của từng bài học trên thiết bị để bạn dễ dàng theo dõi sự tiến bộ.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FLOATING BACK-TO-TOP BUTTON -->
+  <button id="btnScrollTop" class="btn-scroll-top" title="Lên đầu trang" aria-label="Lên đầu trang">↑</button>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">Hệ Thống Ôn Thi Trắc Nghiệm KTHP - Chủ Nghĩa Xã Hội Khoa Học</div>
+      <div class="footer-sub">
+        Thiết kế giao diện Xanh Xám dịu mắt & tương thích hoàn hảo trên máy tính lẫn di động
+      </div>
+      <div class="footer-copy">
+        © 2026 Cổng Ôn Thi Trực Tuyến KTHP. Dành cho sinh viên ôn luyện học phần CNXH-KH.
+      </div>
+    </div>
+  </footer>
+
+  <!-- INTERACTIVE JAVASCRIPT LOGIC -->
+  <script>
+    const TOTAL_QUESTIONS_MAP = {
+      1: 41,
+      2: 40,
+      3: 40,
+      4: 45,
+      5: 42,
+      6: 27
+    };
+    const GRAND_TOTAL_QUESTIONS = 235;
+
+    // Handle navbar scroll effect
+    const navbarEl = document.getElementById("navbar");
+    window.addEventListener(
+      "scroll",
+      () => {
         const y = window.scrollY || document.documentElement.scrollTop;
-        if (headerEl) {
-          if (y > 10) headerEl.classList.add("scrolled");
-          else headerEl.classList.remove("scrolled");
+        if (navbarEl) {
+          if (y > 20) navbarEl.classList.add("scrolled");
+          else navbarEl.classList.remove("scrolled");
         }
-      }, { passive: true });
+      },
+      { passive: true }
+    );
 
-      // Load saved scores from localStorage
-      window.addEventListener("DOMContentLoaded", () => {
-        for (let i = 1; i <= 6; i++) {
-          try {
-            const raw = localStorage.getItem("cnxh_score_bai_" + i);
-            if (raw) {
-              const data = JSON.parse(raw);
-              if (data && typeof data.score === "number") {
-                const card = document.getElementById("card_bai" + i);
-                if (card) {
-                  const tagWrap = card.querySelector(".status-tags");
-                  if (tagWrap) {
-                    const doneTag = document.createElement("span");
-                    doneTag.className = "status-tag status-done";
-                    doneTag.textContent = `✓ Đã làm: ${data.score}/${data.total} (${data.pct}%)`;
-                    tagWrap.prepend(doneTag);
-                  }
+    // Load and Synchronize progress from localStorage
+    function syncStudyProgress() {
+      let completedLessonsCount = 0;
+      let totalQuestionsAnswered = 0;
+      let totalQuestionsCorrect = 0;
+      let firstUnfinishedLesson = 1;
+      let foundUnfinished = false;
+
+      for (let i = 1; i <= 6; i++) {
+        const totalQ = TOTAL_QUESTIONS_MAP[i];
+        let score = 0;
+        let pct = 0;
+        let isDone = false;
+
+        try {
+          const raw = localStorage.getItem("cnxh_score_bai_" + i);
+          if (raw) {
+            const data = JSON.parse(raw);
+            if (data && typeof data.score === "number") {
+              score = data.score;
+              pct = typeof data.pct === "number" ? data.pct : Math.round((score / totalQ) * 100);
+              isDone = true;
+            }
+          }
+        } catch (e) {
+          console.error("Error reading localStorage for lesson " + i, e);
+        }
+
+        const readyTag = document.getElementById("ready_tag_" + i);
+        const doneTag = document.getElementById("done_tag_" + i);
+        const actionLink = document.getElementById("action_bai" + i);
+        const cardEl = document.getElementById("card_bai" + i);
+
+        if (cardEl) {
+          if (isDone) cardEl.classList.add("completed");
+          else cardEl.classList.remove("completed");
+        }
+
+        if (isDone) {
+          completedLessonsCount++;
+          totalQuestionsAnswered += totalQ;
+          totalQuestionsCorrect += score;
+
+          if (readyTag) {
+            readyTag.className = "badge-state state-retry";
+            readyTag.textContent = "↻ LÀM LẠI";
+          }
+          if (doneTag) {
+            doneTag.style.display = "inline-flex";
+            doneTag.textContent = `✓ ĐÃ LÀM: ${score}/${totalQ} (${pct}%)`;
+          }
+          if (actionLink) {
+            actionLink.innerHTML = "Luyện tập lại ↺";
+            actionLink.style.color = "#059669";
+          }
+        } else {
+          if (readyTag) {
+            readyTag.className = "badge-state state-ready";
+            readyTag.textContent = "✓ SẴN SÀNG";
+          }
+          if (doneTag) {
+            doneTag.style.display = "none";
+          }
+          if (actionLink) {
+            actionLink.innerHTML = "Làm bài ngay →";
+            actionLink.style.color = "";
+          }
+          if (!foundUnfinished) {
+            firstUnfinishedLesson = i;
+            foundUnfinished = true;
+          }
+        }
+
+        // Update SVG Circular Ring (Circumference mapped to 100)
+        const ringEl = document.getElementById("ring_bai" + i);
+        const countEl = document.getElementById("count_bai" + i);
+
+        if (ringEl && countEl) {
+          countEl.textContent = `${score}/${totalQ}`;
+          const strokeOffset = 100 - (pct / 100) * 100;
+          ringEl.style.strokeDashoffset = strokeOffset;
+        }
+
+        // Update Dashboard Bar Chart
+        const fillEl = document.getElementById("fill_bai" + i);
+        const scoreTextEl = document.getElementById("score_text_" + i);
+        if (fillEl && scoreTextEl) {
+          fillEl.style.width = pct + "%";
+          scoreTextEl.textContent = isDone ? `${score}/${totalQ} (${pct}%)` : `0/${totalQ} (0%)`;
+        }
+      }
+
+      // Update Dashboard Summary KPIs
+      const kpiLessonsDone = document.getElementById("kpiLessonsDone");
+      const kpiLessonsPct = document.getElementById("kpiLessonsPct");
+      const kpiQuestionsDone = document.getElementById("kpiQuestionsDone");
+      const kpiQuestionsPct = document.getElementById("kpiQuestionsPct");
+      const kpiAccuracyRate = document.getElementById("kpiAccuracyRate");
+      const kpiAccuracyNote = document.getElementById("kpiAccuracyNote");
+
+      if (kpiLessonsDone) {
+        kpiLessonsDone.textContent = `${completedLessonsCount} / 6`;
+        const lPct = Math.round((completedLessonsCount / 6) * 100);
+        kpiLessonsPct.textContent = completedLessonsCount === 6 ? "Đã hoàn thành tất cả bài!" : `Đã hoàn thành ${lPct}% lộ trình`;
+      }
+
+      if (kpiQuestionsDone) {
+        kpiQuestionsDone.textContent = `${totalQuestionsAnswered} / ${GRAND_TOTAL_QUESTIONS}`;
+        const qPct = Math.round((totalQuestionsAnswered / GRAND_TOTAL_QUESTIONS) * 100);
+        kpiQuestionsPct.textContent = `${qPct}% ngân hàng câu hỏi`;
+      }
+
+      if (kpiAccuracyRate) {
+        if (totalQuestionsAnswered > 0) {
+          const accRate = Math.round((totalQuestionsCorrect / totalQuestionsAnswered) * 100);
+          kpiAccuracyRate.textContent = `${accRate}%`;
+          if (accRate >= 90) {
+            kpiAccuracyNote.textContent = "Xuất sắc! Nắm rất chắc lý luận";
+            kpiAccuracyNote.style.color = "#059669";
+          } else if (accRate >= 70) {
+            kpiAccuracyNote.textContent = "Khá tốt! Ôn thêm để đạt điểm 10";
+            kpiAccuracyNote.style.color = "#2563eb";
+          } else {
+            kpiAccuracyNote.textContent = "Cần luyện tập thêm các câu sai";
+            kpiAccuracyNote.style.color = "#d97706";
+          }
+        } else {
+          kpiAccuracyRate.textContent = "--%";
+          kpiAccuracyNote.textContent = "Bắt đầu làm bài để ghi nhận";
+          kpiAccuracyNote.style.color = "";
+        }
+      }
+
+      // Update Hero Primary CTA to point to the next unfinished lesson
+      const heroStartBtn = document.getElementById("heroStartBtn");
+      const journeyMidCtaBtn = document.getElementById("journeyMidCtaBtn");
+      const targetLesson = foundUnfinished ? firstUnfinishedLesson : 1;
+      const targetUrl = `bai${targetLesson}.html`;
+
+      if (heroStartBtn) {
+        heroStartBtn.href = targetUrl;
+        if (completedLessonsCount > 0 && foundUnfinished) {
+          heroStartBtn.innerHTML = `<span>⚡ TIẾP TỤC BÀI ${targetLesson} →</span>`;
+        } else if (completedLessonsCount === 6) {
+          heroStartBtn.innerHTML = `<span>⚡ ÔN TẬP LẠI BÀI 1 →</span>`;
+        } else {
+          heroStartBtn.innerHTML = `<span>⚡ BẮT ĐẦU ÔN TẬP NGAY!</span>`;
+        }
+      }
+
+      if (journeyMidCtaBtn) {
+        journeyMidCtaBtn.href = targetUrl;
+        if (completedLessonsCount > 0 && foundUnfinished) {
+          journeyMidCtaBtn.innerHTML = `<span>⚡ TIẾP TỤC BÀI ${targetLesson} →</span>`;
+        } else if (completedLessonsCount === 6) {
+          journeyMidCtaBtn.innerHTML = `<span>⚡ ÔN TẬP LẠI BÀI 1 →</span>`;
+        } else {
+          journeyMidCtaBtn.innerHTML = `<span>BẮT ĐẦU ÔN TẬP NGAY!</span>`;
+        }
+      }
+    }
+
+    // Reset History Button Listener
+    const resetBtn = document.getElementById("resetHistoryBtn");
+    if (resetBtn) {
+      resetBtn.addEventListener("click", () => {
+        if (confirm("Bạn có chắc chắn muốn đặt lại toàn bộ lịch sử điểm số và tiến độ ôn tập?")) {
+          for (let i = 1; i <= 6; i++) {
+            localStorage.removeItem("cnxh_score_bai_" + i);
+          }
+          syncStudyProgress();
+          alert("Đã đặt lại tiến độ thành công!");
+        }
+      });
+    }
+
+    // Synchronize on back-forward navigation cache (bfcache)
+    window.addEventListener("pageshow", () => {
+      syncStudyProgress();
+    });
+
+    // Initialize on DOM load
+    window.addEventListener("DOMContentLoaded", () => {
+      syncStudyProgress();
+
+      // Magnetic Sliding Pill Indicator for Navigation Tabs
+      const navTabsContainer = document.getElementById("navTabsContainer");
+      const navIndicator = document.getElementById("navTabIndicator");
+
+      if (navTabsContainer && navIndicator) {
+        const navItems = Array.from(navTabsContainer.querySelectorAll(".nav-item"));
+
+        function updateNavIndicator(targetTab, animate = true) {
+          if (!targetTab || !navIndicator || !navTabsContainer) return;
+
+          // Subpixel position relative to container
+          const containerRect = navTabsContainer.getBoundingClientRect();
+          const tabRect = targetTab.getBoundingClientRect();
+          const tabLeft = tabRect.left - containerRect.left;
+          const tabWidth = tabRect.width;
+
+          if (!animate) {
+            navIndicator.style.transition = "none";
+          } else {
+            navIndicator.style.transition =
+              "transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), width 0.4s cubic-bezier(0.22, 1, 0.36, 1)";
+          }
+
+          navIndicator.style.transform = `translateX(${tabLeft}px)`;
+          navIndicator.style.width = `${tabWidth}px`;
+          navIndicator.classList.add("ready");
+        }
+
+        let isManualClick = false;
+        let manualClickTimer = null;
+
+        navItems.forEach((tab) => {
+          tab.addEventListener("click", (e) => {
+            const href = tab.getAttribute("href") || "";
+            const isHome =
+              href === "#pageTop" ||
+              href === "#top" ||
+              href === "#" ||
+              href === "index.html" ||
+              tab.textContent.trim() === "Trang chủ";
+
+            isManualClick = true;
+            if (manualClickTimer) clearTimeout(manualClickTimer);
+
+            navItems.forEach((t) => t.classList.remove("active"));
+            tab.classList.add("active");
+            updateNavIndicator(tab, true);
+
+            if (isHome) {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+              if (window.history && window.history.replaceState) {
+                history.replaceState(null, null, window.location.pathname);
+              }
+            } else if (href.startsWith("#")) {
+              const target = document.querySelector(href);
+              if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: "smooth" });
+                if (window.history && window.history.replaceState) {
+                  history.replaceState(null, null, href);
                 }
               }
             }
-          } catch (e) {}
+
+            // Release scroll lock after smooth scrolling completes
+            manualClickTimer = setTimeout(() => {
+              isManualClick = false;
+            }, 900);
+          });
+        });
+
+        // Also enable smooth scroll to top when clicking the Logo
+        const logoLink = document.querySelector(".logo-link");
+        if (logoLink) {
+          logoLink.addEventListener("click", (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            const homeTab = navItems[0];
+            if (homeTab) {
+              navItems.forEach((t) => t.classList.remove("active"));
+              homeTab.classList.add("active");
+              updateNavIndicator(homeTab, true);
+            }
+            if (window.history && window.history.replaceState) {
+              history.replaceState(null, null, window.location.pathname);
+            }
+          });
         }
-      });
-    </script>
-  </body>
+
+        // Floating Back-To-Top Button
+        const btnScrollTop = document.getElementById("btnScrollTop");
+        if (btnScrollTop) {
+          btnScrollTop.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            const homeTab = navItems[0];
+            if (homeTab) {
+              navItems.forEach((t) => t.classList.remove("active"));
+              homeTab.classList.add("active");
+              updateNavIndicator(homeTab, true);
+            }
+          });
+        }
+
+        const activeItem = navTabsContainer.querySelector(".nav-item.active") || navItems[0];
+        if (activeItem) {
+          updateNavIndicator(activeItem, false);
+          requestAnimationFrame(() => {
+            navIndicator.style.transition = "";
+          });
+        }
+
+        // Recalculate accurately when web fonts finish loading
+        if (document.fonts && document.fonts.ready) {
+          document.fonts.ready.then(() => {
+            const currentActive = navTabsContainer.querySelector(".nav-item.active") || navItems[0];
+            if (currentActive) updateNavIndicator(currentActive, false);
+          });
+        }
+
+        // Scroll-spy to automatically slide indicator as user scrolls
+        const navSections = [
+          { id: "guide", idx: 3 },
+          { id: "dashboard", idx: 2 },
+          { id: "roadmap", idx: 1 }
+        ];
+
+        window.addEventListener(
+          "scroll",
+          () => {
+            const scrollY = window.scrollY || document.documentElement.scrollTop;
+
+            // Toggle floating back-to-top button
+            if (btnScrollTop) {
+              if (scrollY > 350) btnScrollTop.classList.add("visible");
+              else btnScrollTop.classList.remove("visible");
+            }
+
+            if (isManualClick) return;
+
+            let targetIdx = 0; // Trang chủ
+            for (const sec of navSections) {
+              const el = document.getElementById(sec.id);
+              if (el) {
+                const trueTop = el.getBoundingClientRect().top + window.scrollY;
+                if (scrollY >= trueTop - 250) {
+                  targetIdx = sec.idx;
+                  break;
+                }
+              }
+            }
+            const activeTab = navItems[targetIdx];
+            const currentActive = navTabsContainer.querySelector(".nav-item.active");
+            if (activeTab && activeTab !== currentActive) {
+              navItems.forEach((t) => t.classList.remove("active"));
+              activeTab.classList.add("active");
+              updateNavIndicator(activeTab, true);
+            }
+          },
+          { passive: true }
+        );
+
+        window.addEventListener(
+          "resize",
+          () => {
+            const currentActive = navTabsContainer.querySelector(".nav-item.active");
+            if (currentActive) updateNavIndicator(currentActive, false);
+          },
+          { passive: true }
+        );
+      }
+    });
+  </script>
+</body>
+
 </html>
