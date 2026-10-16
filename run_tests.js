@@ -183,6 +183,39 @@ for (let i = 1; i <= 6; i++) {
       console.error('FAIL in ' + file + ' Q' + q.id + ' (' + q.type + '): wrong answer passed isCorrect() evaluation!');
       allPassed = false;
     }
+
+    // Test hasAnswer helper: empty vs answered
+    if (typeof sandbox.hasAnswer === 'function') {
+      let emptyAns = null;
+      let activeAns = null;
+      if (q.type === 'single' || q.type === 'multi') {
+        emptyAns = [];
+        activeAns = [q.options[0]];
+      } else if (q.type === 'tfset') {
+        emptyAns = q.statements.map(() => null);
+        activeAns = q.statements.map((_, idx) => idx === 0 ? true : null);
+      } else if (q.type === 'drag_pairs') {
+        emptyAns = {};
+        const firstKey = Object.keys(q.pairs)[0];
+        activeAns = { [firstKey]: q.pairs[firstKey] };
+      } else if (q.type === 'drag_groups') {
+        emptyAns = {};
+        Object.keys(q.groups).forEach(g => emptyAns[g] = []);
+        const firstGroup = Object.keys(q.groups)[0];
+        activeAns = { ...emptyAns, [firstGroup]: [q.groups[firstGroup][0]] };
+      }
+
+      const emptyHas = sandbox.hasAnswer(q, emptyAns);
+      if (emptyHas !== false) {
+        console.error('FAIL in ' + file + ' Q' + q.id + ' (' + q.type + '): untouched/empty question returned hasAnswer=true!');
+        allPassed = false;
+      }
+      const activeHas = sandbox.hasAnswer(q, activeAns);
+      if (activeHas !== true) {
+        console.error('FAIL in ' + file + ' Q' + q.id + ' (' + q.type + '): answered question returned hasAnswer=false!');
+        allPassed = false;
+      }
+    }
   });
 }
 
