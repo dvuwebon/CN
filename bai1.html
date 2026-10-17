@@ -12,38 +12,55 @@
     />
     <style>
       :root {
-        --primary: #6366f1;
-        --primary-hover: #4f46e5;
-        --primary-light: #f5f3ff;
-        --primary-border: #c7d2fe;
-        --accent-purple: #7c3aed;
+        /* Palette - Premium Marble White, Ice Blue & Deep Indigo matching index.html */
+        --bg-main: #f5f8fc;
+        --bg-surface: #ffffff;
+        --bg-glass: rgba(255, 255, 255, 0.78);
+        --bg-glass-strong: rgba(255, 255, 255, 0.92);
+        --bg-glass-card: rgba(255, 255, 255, 0.88);
 
-        --bg-page: #f8fafc;
-        --surface: #ffffff;
-        --border-subtle: #e2e8f0;
-        --border-strong: #cbd5e1;
+        --border-glass: rgba(255, 255, 255, 0.95);
+        --border-subtle: rgba(226, 232, 240, 0.85);
+        --border-glow: rgba(99, 102, 241, 0.28);
 
         --ink-primary: #0f172a;
         --ink-secondary: #334155;
         --ink-muted: #64748b;
-        --ink-subtle: #94a3b8;
+        --ink-light: #94a3b8;
 
-        --success: #059669;
-        --success-light: #ecfdf5;
-        --danger: #dc2626;
-        --danger-light: #fef2f2;
-        --warning: #ea580c;
-        --warning-light: #fff7ed;
+        --accent-primary: #4f46e5;
+        --accent-hover: #4338ca;
+        --accent-purple: #7c3aed;
+        --accent-cyan: #0284c7;
+        --accent-emerald: #059669;
+        --accent-amber: #d97706;
+        --accent-rose: #e11d48;
 
-        --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
-        --shadow-card: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
-        --shadow-hover: 0 10px 28px -4px rgba(99, 102, 241, 0.15);
+        /* Neomorphic & Glassmorphic Shadows */
+        --shadow-neo-flat: 10px 10px 24px rgba(166, 180, 200, 0.22), -10px -10px 24px rgba(255, 255, 255, 0.95);
+        --shadow-neo-pressed: inset 3px 3px 7px rgba(166, 180, 200, 0.3), inset -3px -3px 7px rgba(255, 255, 255, 0.9);
+        --shadow-neo-card: 14px 14px 32px rgba(166, 180, 200, 0.2), -10px -10px 28px rgba(255, 255, 255, 0.98), 0 4px 16px rgba(15, 23, 42, 0.03);
+        --shadow-neo-hover: 18px 22px 42px rgba(99, 102, 241, 0.16), -12px -12px 30px rgba(255, 255, 255, 1), 0 8px 24px rgba(79, 70, 229, 0.12);
+        --shadow-purple-glow: 0 0 25px rgba(124, 58, 237, 0.35);
 
-        --radius-sm: 8px;
-        --radius-md: 12px;
-        --radius-lg: 18px;
-        --radius-xl: 22px;
+        --radius-sm: 12px;
+        --radius-md: 18px;
+        --radius-lg: 26px;
         --radius-pill: 9999px;
+
+        /* Compatibility Aliases */
+        --primary: var(--accent-primary);
+        --primary-hover: var(--accent-hover);
+        --primary-light: #f5f3ff;
+        --primary-border: #c7d2fe;
+        --surface: var(--bg-surface);
+        --success: var(--accent-emerald);
+        --success-light: #ecfdf5;
+        --warning: var(--accent-amber);
+        --warning-light: #fff7ed;
+        --danger: var(--accent-rose);
+        --danger-light: #fef2f2;
+        --shadow-card: var(--shadow-neo-card);
       }
 
       * {
@@ -61,92 +78,177 @@
       body {
         font-family: Arial, Helvetica, sans-serif;
         color: var(--ink-secondary);
-        background-color: var(--bg-page);
+        background-color: var(--bg-main);
         background-image:
-          radial-gradient(circle at 15% 10%, rgba(99, 102, 241, 0.05) 0%, transparent 40%),
-          radial-gradient(circle at 85% 20%, rgba(124, 58, 237, 0.05) 0%, transparent 45%),
-          radial-gradient(#94a3b8 0.65px, transparent 0.65px);
-        background-size: 100% 100%, 100% 100%, 28px 28px;
+          radial-gradient(circle at 15% 10%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
+          radial-gradient(circle at 85% 20%, rgba(124, 58, 237, 0.07) 0%, transparent 45%),
+          radial-gradient(circle at 50% 65%, rgba(14, 165, 233, 0.06) 0%, transparent 50%),
+          radial-gradient(circle at 20% 90%, rgba(16, 185, 129, 0.06) 0%, transparent 40%),
+          radial-gradient(#94a3b8 0.75px, transparent 0.75px);
+        background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 28px 28px;
         min-height: 100vh;
         display: flex;
         flex-direction: column;
+        overflow-x: hidden;
         -webkit-font-smoothing: antialiased;
       }
 
-      /* TOP NAVBAR - Matching Image 1 */
-      .app-header {
+      /* TOP NAVBAR - Floating Glass Pill matching index.html */
+      .nav-wrapper {
         position: sticky;
-        top: 0;
+        top: 14px;
         z-index: 100;
-        background: rgba(255, 255, 255, 0.92);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        border-bottom: 1px solid var(--border-subtle);
-        box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03);
+        margin-bottom: 24px;
+        width: 100%;
       }
 
-      .header-inner {
-        max-width: 1240px;
+      .layout-container {
+        max-width: 1260px;
         margin: 0 auto;
-        padding: 12px 24px;
+        padding: 0 24px;
+        position: relative;
+      }
+
+      .nav-glass-bar {
+        background: var(--bg-glass);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border: 1px solid var(--border-glass);
+        box-shadow: 0 10px 30px -5px rgba(20, 30, 60, 0.06), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+        border-radius: var(--radius-lg);
+        padding: 10px 20px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 16px;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
-      .brand-group {
+      .nav-glass-bar.scrolled {
+        background: rgba(255, 255, 255, 0.94);
+        box-shadow: 0 12px 36px rgba(15, 23, 42, 0.09);
+        top: 8px;
+      }
+
+      .nav-brand-group {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        flex-shrink: 0;
+      }
+
+      .logo-link {
         display: flex;
         align-items: center;
         gap: 12px;
+        text-decoration: none;
+        color: var(--ink-primary);
+        transition: transform 0.25s ease;
       }
 
-      .lesson-chip-link {
+      .logo-link:hover {
+        transform: translateY(-1px);
+      }
+
+      .logo-icon-box {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        color: #ffffff;
+        display: grid;
+        place-items: center;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 800;
+        font-size: 16px;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.35);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .logo-icon-box::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.2) 50%, transparent 60%);
+        transform: rotate(25deg);
+        pointer-events: none;
+      }
+
+      .logo-text-col {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .logo-main-title {
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 800;
+        font-size: 16px;
+        color: var(--ink-primary);
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+      }
+
+      .logo-sub-title {
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--ink-muted);
+        letter-spacing: 0.01em;
+      }
+
+      .nav-lesson-tag-wrap {
         display: flex;
         align-items: center;
-        gap: 10px;
-        text-decoration: none;
-        color: inherit;
-        padding: 4px 0;
-      }
-
-      .lesson-chip-link:hover .lesson-name {
-        color: var(--primary);
-      }
-
-      .lesson-tag {
-        background: #eff6ff;
-        color: #2563eb;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 12.5px;
-        font-weight: 800;
-        padding: 4px 10px;
-        border-radius: var(--radius-pill);
+        gap: 8px;
+        background: rgba(239, 246, 255, 0.85);
         border: 1px solid #bfdbfe;
+        border-radius: var(--radius-pill);
+        padding: 4px 12px 4px 6px;
+        box-shadow: 0 2px 8px rgba(37, 99, 235, 0.06);
+      }
+
+      .lesson-tag-pill {
+        background: #2563eb;
+        color: #ffffff;
+        font-size: 11px;
+        font-weight: 800;
+        padding: 3px 8px;
+        border-radius: var(--radius-pill);
         letter-spacing: 0.2px;
       }
 
-      .lesson-name {
-        font-size: 15.5px;
+      .lesson-tag-name {
+        font-size: 13px;
         font-weight: 700;
-        color: var(--ink-primary);
+        color: #1e3a8a;
         white-space: nowrap;
+        max-width: 260px;
         overflow: hidden;
         text-overflow: ellipsis;
-        max-width: 440px;
-        transition: color 0.2s ease;
       }
 
-      .nav-links {
+      /* Center Nav Links - Pill container matching index.html */
+      .nav-links-pill {
         display: flex;
         align-items: center;
-        gap: 6px;
+        background: rgba(241, 245, 249, 0.85);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border: 1px solid rgba(226, 232, 240, 0.95);
+        border-radius: var(--radius-pill);
+        padding: 4px;
+        gap: 2px;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04);
       }
 
-      .nav-link {
+      .nav-item {
         text-decoration: none;
         color: var(--ink-secondary);
-        font-size: 13.5px;
+        font-size: 13px;
         font-weight: 600;
         padding: 7px 14px;
         border-radius: var(--radius-pill);
@@ -157,29 +259,21 @@
         display: inline-flex;
         align-items: center;
         gap: 5px;
-        font-family: inherit;
+        font-family: Arial, Helvetica, sans-serif;
+        user-select: none;
+        white-space: nowrap;
       }
 
-      .nav-link:hover {
-        color: var(--primary);
-        background: #f1f5f9;
+      .nav-item:hover {
+        color: var(--accent-primary);
+        background: rgba(255, 255, 255, 0.7);
       }
 
-      .nav-link.active {
-        color: var(--primary);
+      .nav-item.active {
+        color: var(--accent-primary);
         font-weight: 700;
-        position: relative;
-      }
-
-      .nav-link.active::after {
-        content: '';
-        position: absolute;
-        bottom: 2px;
-        left: 14px;
-        right: 14px;
-        height: 2.5px;
-        background: var(--primary);
-        border-radius: 2px;
+        background: #ffffff;
+        box-shadow: 0 2px 8px rgba(79, 70, 229, 0.12);
       }
 
       .nav-dropdown-wrap {
@@ -219,35 +313,20 @@
 
       .dropdown-item:hover {
         background: #f8fafc;
-        color: var(--primary);
+        color: var(--accent-primary);
       }
 
       .dropdown-item.current {
         background: #eff6ff;
-        color: var(--primary);
+        color: var(--accent-primary);
         font-weight: 700;
       }
 
-      .nav-btn-action {
-        border: 1px solid var(--border-subtle);
-        background: #ffffff;
-      }
-
-      .nav-btn-action:hover {
-        border-color: var(--primary-border);
-        background: #f5f3ff;
-      }
-
-      .nav-btn-action.active {
-        background: #eff6ff;
-        border-color: #93c5fd;
-        color: #1d4ed8;
-      }
-
-      .header-right {
+      .nav-right-actions {
         display: flex;
         align-items: center;
         gap: 10px;
+        flex-shrink: 0;
       }
 
       .meta-saved {
@@ -257,12 +336,22 @@
         background: #ecfdf5;
         border: 1px solid #a7f3d0;
         font-size: 12px;
-        padding: 4px 10px;
+        padding: 5px 12px;
         border-radius: var(--radius-pill);
         white-space: nowrap;
         display: inline-flex;
         align-items: center;
-        gap: 4px;
+        gap: 6px;
+        box-shadow: var(--shadow-neo-flat);
+      }
+
+      .pulse-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--accent-emerald);
+        box-shadow: 0 0 8px var(--accent-emerald);
+        display: inline-block;
       }
 
       .btn-menu-mobile {
@@ -277,42 +366,43 @@
 
       /* MAIN 2-COLUMN LAYOUT */
       .quiz-layout-wrap {
-        max-width: 1240px;
+        max-width: 1260px;
         width: 100%;
-        margin: 24px auto;
+        margin: 0 auto 36px;
         padding: 0 24px;
-        display: flex;
-        gap: 24px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 340px;
+        gap: 28px;
         align-items: flex-start;
       }
 
       .quiz-card-col {
-        flex: 1;
         min-width: 0;
       }
 
       .quiz-sidebar-col {
-        width: 320px;
-        flex-shrink: 0;
+        width: 100%;
         position: sticky;
-        top: 80px;
+        top: 90px;
         display: flex;
         flex-direction: column;
         gap: 16px;
       }
 
-      /* QUIZ CARD - Matching Image 1 */
+      /* QUIZ CARD - Neo-Glass */
       .card.quiz-card {
-        background: var(--surface);
-        border: 1px solid var(--border-subtle);
-        border-radius: var(--radius-xl);
-        padding: 28px 32px;
-        box-shadow: var(--shadow-card);
+        background: var(--bg-glass-card);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border: 1.5px solid var(--border-glass);
+        border-radius: 24px;
+        padding: 30px 34px;
+        box-shadow: var(--shadow-neo-card);
         display: none;
         flex-direction: column;
-        min-height: 480px;
+        min-height: 490px;
         position: relative;
-        transition: box-shadow 0.25s ease;
+        transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .card.quiz-card.active {
@@ -320,7 +410,7 @@
       }
 
       .card.quiz-card:hover {
-        box-shadow: 0 6px 24px -2px rgba(15, 23, 42, 0.08);
+        box-shadow: var(--shadow-neo-hover);
       }
 
       /* Card Top Row */
@@ -1234,9 +1324,11 @@
 
       /* FOOTER */
       footer {
-        border-top: 1px solid var(--border-subtle);
-        background: rgba(255, 255, 255, 0.85);
-        padding: 28px 0;
+        border-top: 1px solid rgba(226, 232, 240, 0.85);
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        padding: 34px 0;
         text-align: center;
         margin-top: auto;
       }
@@ -1247,108 +1339,172 @@
         padding: 0 20px;
         display: flex;
         flex-direction: column;
-        gap: 6px;
+        gap: 8px;
       }
 
       .footer-brand {
         font-family: Arial, Helvetica, sans-serif;
         font-weight: 700;
-        font-size: 14.5px;
+        font-size: 15px;
         color: var(--ink-primary);
       }
 
       .footer-sub {
-        font-size: 12.5px;
+        font-size: 13px;
         color: var(--ink-muted);
+        line-height: 1.5;
+      }
+
+      .footer-copy {
+        font-size: 11.5px;
+        color: var(--ink-light);
+        margin-top: 6px;
       }
 
       /* RESPONSIVE BREAKPOINTS */
-      @media (max-width: 960px) {
+      @media (max-width: 1024px) {
         .quiz-layout-wrap {
-          flex-direction: column;
-          padding: 0 16px;
+          grid-template-columns: 1fr;
+          gap: 22px;
+          padding: 0 20px;
         }
+
         .quiz-sidebar-col {
-          width: 100%;
           position: static;
+          top: auto;
         }
+
         .matrix-grid-area {
           grid-template-columns: repeat(8, 1fr);
-          max-height: 200px;
+          max-height: 220px;
         }
       }
 
       @media (max-width: 768px) {
-        .lesson-name {
-          max-width: 200px;
-          font-size: 13.5px;
+        .layout-container {
+          padding: 0 16px;
         }
-        .nav-links {
+
+        .nav-wrapper {
+          top: 8px;
+          margin-bottom: 18px;
+        }
+
+        .nav-glass-bar {
+          padding: 8px 14px;
+        }
+
+        .nav-links-pill {
           display: none;
         }
-        .nav-links.mobile-open {
+
+        .nav-links-pill.mobile-open {
           display: flex;
           position: absolute;
-          top: 60px;
-          left: 10px;
-          right: 10px;
-          background: #ffffff;
-          border: 1px solid var(--border-subtle);
-          border-radius: var(--radius-md);
-          box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15);
+          top: calc(100% + 10px);
+          left: 16px;
+          right: 16px;
+          background: rgba(255, 255, 255, 0.98);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border: 1px solid rgba(226, 232, 240, 0.95);
+          border-radius: 20px;
+          box-shadow: 0 16px 36px rgba(15, 23, 42, 0.16);
           flex-direction: column;
           padding: 12px;
+          gap: 6px;
+          z-index: 1000;
         }
+
+        .nav-links-pill.mobile-open .nav-item {
+          width: 100%;
+          justify-content: flex-start;
+          padding: 10px 16px;
+        }
+
+        .nav-dropdown-menu {
+          position: static;
+          box-shadow: none;
+          border: 1px solid var(--border-subtle);
+          margin-top: 6px;
+          width: 100%;
+        }
+
         .btn-menu-mobile {
           display: block;
         }
+
+        .lesson-tag-name {
+          max-width: 150px;
+        }
+
         .card.quiz-card {
           padding: 20px 18px;
+          border-radius: 18px;
         }
+
         .matrix-grid-area {
           grid-template-columns: repeat(5, 1fr);
+        }
+
+        .lesson-bottom-inner {
+          flex-direction: column;
+          align-items: stretch;
+          text-align: center;
+        }
+
+        .nav-bottom-btn {
+          justify-content: center;
         }
       }
     </style>
   </head>
   <body>
-    <!-- Top Navbar -->
-    <header class="app-header">
-      <div class="header-inner">
-        <div class="brand-group">
-          <a href="index.html" class="lesson-chip-link" title="Quay về trang chủ">
-            <span class="lesson-tag">Bài 1</span>
-            <span class="lesson-name">Nhập môn CNXH-KH & Sứ mệnh của GCCN</span>
-          </a>
-        </div>
-
-        <nav class="nav-links" id="navLinks">
-          <a href="index.html" class="nav-link">Trang Chủ</a>
-          <div class="nav-dropdown-wrap">
-            <button class="nav-link nav-dropdown-btn active" id="navDropdownBtn" type="button">
-              Ôn Luyện & Thi <span style="font-size:10px;">▾</span>
-            </button>
-            <div class="nav-dropdown-menu" id="navDropdownMenu">
-              <a href="bai1.html" class="dropdown-item current">Bài 1: Nhập môn & Sứ mệnh GCCN</a>
-              <a href="bai2.html" class="dropdown-item">Bài 2: CNXH & Thời kỳ quá độ</a>
-              <a href="bai3.html" class="dropdown-item">Bài 3: Dân chủ XHCN & Nhà nước</a>
-              <a href="bai4.html" class="dropdown-item">Bài 4: Cơ cấu XH - Giai cấp & Liên minh</a>
-              <a href="bai5.html" class="dropdown-item">Bài 5: Vấn đề Dân tộc và Tôn giáo</a>
-              <a href="bai6.html" class="dropdown-item">Bài 6: Vấn đề Gia đình</a>
+    <!-- Top Navbar - Floating Glass Pill matching index.html -->
+    <header class="nav-wrapper" id="mainHeader">
+      <div class="layout-container">
+        <nav class="nav-glass-bar" id="navbar">
+          <div class="nav-brand-group">
+            <a href="index.html" class="logo-link" title="Quay về trang chủ">
+              <div class="logo-icon-box">KH</div>
+              <div class="logo-text-col">
+                <span class="logo-main-title">CNXH - KH</span>
+                <span class="logo-sub-title">Chủ Nghĩa Xã Hội Khoa Học</span>
+              </div>
+            </a>
+            <div class="nav-lesson-tag-wrap">
+              <span class="lesson-tag-pill">Bài 1</span>
+              <span class="lesson-tag-name">Nhập môn &amp; Sứ mệnh GCCN</span>
             </div>
           </div>
-          <a href="index.html" class="nav-link">Quản Lý Nội Dung</a>
-          <button class="nav-link nav-btn-action" id="btnToggleKey" type="button">👁 Đáp Án</button>
-          <button class="nav-link nav-btn-action" id="btnReset" type="button">↻ Làm Lại</button>
-        </nav>
 
-        <div class="header-right">
-          <div class="meta-saved" id="metaPrevScore" style="display: none;"></div>
-          <!-- Compatibility elements for tests -->
-          <div id="meta" style="display: none;">0/0 câu</div>
-          <div class="progress-line-mini" style="display:none;"><div id="progressFill"></div></div>
-          <button class="btn-menu-mobile" id="btnMenuMobile" aria-label="Menu" type="button">☰</button>
-        </div>
+          <div class="nav-links-pill" id="navLinks">
+            <a href="index.html" class="nav-item">🏠 Trang chủ</a>
+            <div class="nav-dropdown-wrap">
+              <button class="nav-item nav-dropdown-btn active" id="navDropdownBtn" type="button">
+                📚 Chọn bài ôn ▾
+              </button>
+              <div class="nav-dropdown-menu" id="navDropdownMenu">
+                <a href="bai1.html" class="dropdown-item current">Bài 1: Nhập môn &amp; Sứ mệnh GCCN</a>
+                <a href="bai2.html" class="dropdown-item">Bài 2: CNXH &amp; Thời kỳ quá độ</a>
+                <a href="bai3.html" class="dropdown-item">Bài 3: Dân chủ XHCN &amp; Nhà nước</a>
+                <a href="bai4.html" class="dropdown-item">Bài 4: Cơ cấu XH - Giai cấp &amp; Liên minh</a>
+                <a href="bai5.html" class="dropdown-item">Bài 5: Vấn đề Dân tộc và Tôn giáo</a>
+                <a href="bai6.html" class="dropdown-item">Bài 6: Vấn đề Gia đình</a>
+              </div>
+            </div>
+            <button class="nav-item nav-btn-action" id="btnToggleKey" type="button">👁 Đáp Án</button>
+            <button class="nav-item nav-btn-action" id="btnReset" type="button">↻ Làm Lại</button>
+          </div>
+
+          <div class="nav-right-actions">
+            <div class="meta-saved" id="metaPrevScore" style="display: none;"></div>
+            <!-- Compatibility elements for tests -->
+            <div id="meta" style="display: none;">0/0 câu</div>
+            <div class="progress-line-mini" style="display:none;"><div id="progressFill"></div></div>
+            <button class="btn-menu-mobile" id="btnMenuMobile" aria-label="Menu" type="button">☰</button>
+          </div>
+        </nav>
       </div>
     </header>
 
@@ -1401,20 +1557,21 @@
       <div class="lesson-bottom-inner">
         <a href="index.html" class="nav-bottom-btn">← Về trang chủ</a>
         <a href="index.html" class="nav-bottom-btn">📚 Danh sách 6 bài</a>
-        <a href="bai2.html" class="nav-bottom-btn nav-bottom-primary">Bài 2: CNXH & Thời kỳ quá độ →</a>
+        <a href="bai2.html" class="nav-bottom-btn nav-bottom-primary">Bài 2: CNXH &amp; Thời kỳ quá độ →</a>
       </div>
     </div>
 
     <!-- Scroll Top button -->
     <button id="btnScrollTop" class="btn-scroll-top" title="Lên đầu trang" aria-label="Lên đầu trang">↑</button>
 
+    <!-- FOOTER -->
     <footer>
       <div class="footer-inner">
         <div class="footer-brand">Hệ Thống Ôn Thi Trắc Nghiệm KTHP - Chủ Nghĩa Xã Hội Khoa Học</div>
         <div class="footer-sub">
-          Thiết kế giao diện hiện đại & tiện lợi ôn thi theo dạng ma trận trực quan
+          Thiết kế giao diện Xanh Xám dịu mắt &amp; tương thích hoàn hảo trên máy tính lẫn di động
         </div>
-        <div class="footer-sub" style="font-size: 11.5px; opacity: 0.8; margin-top: 2px;">
+        <div class="footer-copy">
           © 2026 Cổng Ôn Thi Trực Tuyến KTHP. Dành cho sinh viên ôn luyện học phần CNXH-KH.
         </div>
       </div>
@@ -2818,6 +2975,31 @@ if (btnMenuMobile && navLinks) {
     navLinks.classList.toggle("mobile-open");
   });
 }
+
+const navDropdownBtn = document.getElementById("navDropdownBtn");
+const navDropdownMenu = document.getElementById("navDropdownMenu");
+if (navDropdownBtn && navDropdownMenu) {
+  navDropdownBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    navDropdownMenu.classList.toggle("open");
+  });
+  document.addEventListener("click", () => {
+    navDropdownMenu.classList.remove("open");
+  });
+}
+
+const navbarEl = document.getElementById("navbar");
+window.addEventListener(
+  "scroll",
+  () => {
+    const y = window.scrollY || document.documentElement.scrollTop;
+    if (navbarEl) {
+      if (y > 20) navbarEl.classList.add("scrolled");
+      else navbarEl.classList.remove("scrolled");
+    }
+  },
+  { passive: true }
+);
 
 const listEl = document.getElementById("list");
 if (listEl) {
