@@ -373,20 +373,29 @@
         display: grid;
         grid-template-columns: minmax(0, 1fr) 340px;
         gap: 28px;
-        align-items: flex-start;
+        align-items: stretch;
       }
 
       .quiz-card-col {
         min-width: 0;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      .quiz-cards-container {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        height: 100%;
       }
 
       .quiz-sidebar-col {
         width: 100%;
-        position: sticky;
-        top: 90px;
         display: flex;
         flex-direction: column;
         gap: 16px;
+        height: 100%;
       }
 
       /* QUIZ CARD - Neo-Glass */
@@ -400,13 +409,16 @@
         box-shadow: var(--shadow-neo-card);
         display: none;
         flex-direction: column;
-        min-height: 490px;
+        min-height: 520px;
         position: relative;
         transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+        box-sizing: border-box;
       }
 
       .card.quiz-card.active {
         display: flex;
+        flex: 1;
+        height: 100%;
       }
 
       .card.quiz-card:hover {
@@ -936,11 +948,23 @@
 
       /* SIDEBAR: QUESTION MATRIX */
       .matrix-box-card {
-        background: var(--surface);
-        border: 1.5px solid var(--border-subtle);
-        border-radius: var(--radius-xl);
-        padding: 22px 20px;
-        box-shadow: var(--shadow-card);
+        background: var(--bg-glass-card);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border: 1.5px solid var(--border-glass);
+        border-radius: 24px;
+        padding: 24px 22px;
+        box-shadow: var(--shadow-neo-card);
+        transition: all 0.28s ease;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        height: 100%;
+        box-sizing: border-box;
+      }
+
+      .matrix-box-card:hover {
+        box-shadow: var(--shadow-neo-hover);
       }
 
       .matrix-card-header {
@@ -949,6 +973,7 @@
         justify-content: space-between;
         gap: 10px;
         margin-bottom: 14px;
+        flex-shrink: 0;
       }
 
       .matrix-heading {
@@ -979,6 +1004,7 @@
         font-size: 12px;
         color: var(--ink-muted);
         font-weight: 600;
+        flex-shrink: 0;
       }
 
       .legend-item {
@@ -1014,9 +1040,11 @@
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         gap: 8px;
-        max-height: 380px;
+        flex: 1;
+        min-height: 240px;
         overflow-y: auto;
-        padding-right: 2px;
+        padding-right: 4px;
+        margin-bottom: 16px;
       }
 
       .matrix-grid-area::-webkit-scrollbar {
@@ -1087,7 +1115,7 @@
 
       /* Submit Exam Button */
       .btn-submit-action {
-        background: var(--success);
+        background: linear-gradient(135deg, #059669 0%, #047857 100%);
         color: #ffffff;
         font-family: Arial, Helvetica, sans-serif;
         font-size: 15px;
@@ -1097,17 +1125,19 @@
         padding: 13px 18px;
         width: 100%;
         cursor: pointer;
-        margin-top: 18px;
+        margin-top: auto;
+        margin-bottom: 0;
         box-shadow: 0 4px 14px rgba(5, 150, 105, 0.28);
         transition: all 0.22s ease;
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 8px;
+        flex-shrink: 0;
       }
 
       .btn-submit-action:hover {
-        background: #047857;
+        filter: brightness(1.06);
         transform: translateY(-1px);
         box-shadow: 0 6px 18px rgba(5, 150, 105, 0.38);
       }
@@ -1369,14 +1399,37 @@
           padding: 0 20px;
         }
 
+        .quiz-card-col {
+          height: auto;
+        }
+
+        .quiz-cards-container {
+          height: auto;
+        }
+
+        .card.quiz-card {
+          min-height: auto;
+          height: auto;
+        }
+
+        .card.quiz-card.active {
+          height: auto;
+        }
+
         .quiz-sidebar-col {
           position: static;
           top: auto;
+          height: auto;
+        }
+
+        .matrix-box-card {
+          height: auto;
         }
 
         .matrix-grid-area {
           grid-template-columns: repeat(8, 1fr);
           max-height: 220px;
+          flex: none;
         }
       }
 
@@ -1567,12 +1620,12 @@
     <!-- FOOTER -->
     <footer>
       <div class="footer-inner">
-        <div class="footer-brand">Hệ Thống Ôn Thi Trắc Nghiệm KTHP - Chủ Nghĩa Xã Hội Khoa Học</div>
+        <div class="footer-brand">Cổng Ôn Thi Trực Tuyến - CNXH-KH</div>
         <div class="footer-sub">
-          Thiết kế giao diện Xanh Xám dịu mắt &amp; tương thích hoàn hảo trên máy tính lẫn di động
+          Hệ thống câu hỏi trắc nghiệm ôn tập và chuẩn bị kỳ thi kết thúc học phần Chủ Nghĩa Xã Hội Khoa Học.
         </div>
         <div class="footer-copy">
-          © 2026 Cổng Ôn Thi Trực Tuyến KTHP. Dành cho sinh viên ôn luyện học phần CNXH-KH.
+          © 2026 KTHP Portal. Thiết kế giao diện hiện đại &amp; tối ưu ôn luyện.
         </div>
       </div>
     </footer>
